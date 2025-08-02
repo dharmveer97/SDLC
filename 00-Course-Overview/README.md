@@ -1,160 +1,109 @@
-# 📋 Hello world
+# 🌐 Website Fundamentals for Business Analysts
 
-## 🎯 Hello
+## What You'll Learn
+- Static vs Dynamic websites: Business implications
+- When to choose each type
+- Cost and maintenance considerations
+- How this affects your project requirements
 
-This comprehensive course takes you through the entire software development lifecycle from a developer's perspective. Here's everything you'll learn:
+## Static vs Dynamic Websites: A Business Perspective
 
-### 🔧 Development Fundamentals
+### Static Websites 📄
 
-- **Version Control**: Git and GitHub for code management
-- **Development Environment**: VS Code, extensions, and setup
-- **Code Quality**: ESLint, Prettier, and best practices
+**What it means for BAs:**
+A static website is like a digital brochure. Once created, the content doesn't change unless a developer manually updates it.
 
-### 🌐 Frontend Development
+**Business Use Cases:**
+- Company landing pages
+- Marketing websites
+- Documentation sites
+- Simple portfolio sites
 
-- **Web Basics**: HTML, CSS, JavaScript
-- **Modern CSS**: SCSS, CSS-in-JS, responsive design
-- **Frameworks**: React, Next.js, Vite, Remix
-- **State Management**: Context API, Redux, Zustand
+**Advantages for Business:**
+- **Lower cost** - Cheaper to build and host
+- **Faster loading** - Better user experience
+- **More secure** - Fewer things can break
+- **Easy hosting** - Can use simple, cheap hosting
 
-### ⚙️ Backend Development
+**When to Recommend Static:**
+- Content changes infrequently (monthly or less)
+- No user accounts or login needed
+- Simple contact forms are sufficient
+- Budget is limited
 
-- **Server-Side**: Node.js, Express, Hono
-- **APIs**: REST vs GraphQL
-- **Authentication**: JWT, OAuth, session management
-- **Real-time**: Socket.io, WebSockets
+### Dynamic Websites ⚡
 
-### 💾 Databases & Storage
+**What it means for BAs:**
+Dynamic websites can change content based on user interactions, database information, or real-time data.
 
-- **SQL Databases**: PostgreSQL, MySQL
-- **NoSQL**: MongoDB, DynamoDB
-- **ORMs/ODMs**: Mongoose, Prisma
-- **Caching**: Redis, in-memory caching
+**Business Use Cases:**
+- E-commerce platforms
+- Social media sites
+- User dashboards
+- Booking systems
+- Any site with user accounts
 
-### ☁️ Cloud & Infrastructure
+**Advantages for Business:**
+- **Personalization** - Show different content to different users
+- **Real-time updates** - Content changes automatically
+- **User interaction** - Comments, reviews, user profiles
+- **Data collection** - Track user behavior and analytics
 
-- **AWS Services**: EC2, S3, Lambda, SES, Route 53
-- **Deployment**: Netlify, Vercel, Railway
-- **Serverless vs Server-full**: Pros and cons
-- **Microservices**: Architecture and patterns
+**When to Recommend Dynamic:**
+- Users need accounts or personalized experience
+- Content updates frequently (daily or hourly)
+- E-commerce or booking functionality needed
+- User-generated content required
 
-### 🤖 AI & Modern Tools
+## Key Questions for BAs to Ask
 
-- **AI Integration**: OpenAI, Claude, Gemini
-- **Vector Databases**: Pinecone, Weaviate
-- **RAG Systems**: Retrieval Augmented Generation
-- **AI Agents**: Autonomous coding assistants
+When gathering requirements, ask:
 
-### 📱 Mobile Development
+1. **"Will different users see different content?"**
+   - If yes → Dynamic likely needed
 
-- **React Native**: Cross-platform apps
-- **Expo**: Rapid mobile development
-- **Native Features**: Camera, location, push notifications
+2. **"How often will content change?"**
+   - Weekly/monthly → Static might work
+   - Daily/hourly → Dynamic needed
 
-### 🎨 UI/UX & Styling
+3. **"Do users need to login or have accounts?"**
+   - If yes → Dynamic required
 
-- **UI Libraries**: Tailwind CSS, Material UI, Ant Design
-- **Component Libraries**: Shadcn/ui, Chakra UI
-- **Design Systems**: Building consistent UIs
+4. **"Will users create content (reviews, posts, etc.)?"**
+   - If yes → Dynamic required
 
-### 🚀 DevOps & Deployment
+5. **"What's the budget for hosting and maintenance?"**
+   - Limited → Consider static first
 
-- **CI/CD**: GitHub Actions, automated testing
-- **Containerization**: Docker basics
-- **Monitoring**: Error tracking, performance
+## Business Impact Example
 
-### 📧 Third-Party Services
+**Scenario:** A restaurant wants a website
 
-- **Email**: SendGrid, Sendinblue, AWS SES
-- **CMS**: Strapi, Sanity, Contentful
-- **Search**: Algolia, Typesense, Elasticsearch
-- **Analytics**: Google Analytics, Mixpanel
+**Static Approach:**
+- Menu, hours, contact info, photos
+- Cost: $500-2000 to build, $10/month hosting
+- Updates: Email developer for menu changes
 
-## 📈 Learning Progression
+**Dynamic Approach:**
+- Online ordering, user accounts, real-time inventory
+- Cost: $5000-20000 to build, $50-200/month hosting
+- Updates: Restaurant staff can update through admin panel
 
-### Week 1-2: Foundation
+**BA Recommendation:** Start with static for basic web presence, plan dynamic features for phase 2 if budget allows.
 
-- Git & GitHub
-- VS Code setup
-- HTML & CSS basics
+## Technical Terms BAs Should Know
 
-### Week 3-4: JavaScript
+- **Content Management System (CMS)**: Allows non-technical users to update content
+- **Database**: Where dynamic content is stored
+- **API**: How different systems talk to each other
+- **Hosting**: Where the website lives on the internet
 
-- JavaScript fundamentals
-- DOM manipulation
-- Async programming
+## Next Steps
 
-### Week 5-6: React
+Understanding static vs dynamic helps you make better decisions about:
+- Project scope and timeline
+- Budget allocation
+- Technology choices
+- Team requirements
 
-- Components and props
-- State and hooks
-- Building a simple app
-
-### Week 7-8: Backend
-
-- Node.js basics
-- Building APIs
-- Database connections
-
-### Week 9-10: Full Stack
-
-- Connecting frontend to backend
-- Authentication
-- Deployment
-
-### Week 11-12
-
-- Cloud services
-- AI integration
-- Performance optimization
-
-## 🎓 How to Succeed in This Course
-
-### 1. **Practice Daily**
-
-Even 30 minutes of coding practice makes a huge difference.
-
-### 2. \*\*Bui
-
-Theory is important, but building real things solidifies learning.
-
-### 3. **Ask Questions**
-
-No question is too simple. Developers Google things all the time!
-
-### 4. **Join Communities**
-
-- Stack Overflow for questions
-- GitHub for collaboration
-- Discord/Slack for real-time help
-
-### 5. **Document Your Learning**
-
-Keep notes, create your own examples, and explain concepts to others.
-
-## 🔑 Key Concepts You'll Master
-
-1. **How Code Works**: From writing to execution
-2. **Problem Solving**: Breaking down complex problems
-3. **Debugging**: Finding and fixing issues
-4. **Collaboration**: Working with Git and teams
-5. **Best Practices**: Writing clean, maintainable code
-6. **Deployment**: Getting code to production
-7. **Scaling**: Making applications handle growth
-
-## 💼 Real-World Applications
-
-After this course, you'll understand:
-
-- Why developers make certain technical decisions
-- How to write better requirements
-- What's technically feasible vs difficult
-- How to estimate development time better
-- How to communicate technical concepts
-- When to use different technologies
-
-## 🚀 Your Journey Starts Here
-
-Remember: Every developer started exactly where you are now. The key is to start, stay consistent, and enjoy the journey of learning.
-
-Let's begin with [Git & GitHub Basics](../01-Git-GitHub-Basics/README.md) →
+Continue to [Module 1: Git & GitHub Basics](../01-Git-GitHub-Basics/README.md) to learn how developers manage these projects.
