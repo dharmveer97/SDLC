@@ -1,6 +1,6 @@
 # 📋 Course Overview & Learning Path
 
-## 🎯 What This Course Covers
+## 🎯 Hello world
 
 This comprehensive course takes you through the entire software development lifecycle from a developer's perspective. Here's everything you'll learn:
 
@@ -102,7 +102,7 @@ This comprehensive course takes you through the entire software development life
 - Authentication
 - Deployment
 
-### Week 11-12: Advanced Topics
+### Week 11-12
 
 - Cloud services
 - AI integration
@@ -114,7 +114,7 @@ This comprehensive course takes you through the entire software development life
 
 Even 30 minutes of coding practice makes a huge difference.
 
-### 2. **Build Projects**
+### 2. \*\*Bui
 
 Theory is important, but building real things solidifies learning.
 
