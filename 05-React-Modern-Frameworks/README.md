@@ -3,6 +3,7 @@
 ## 🎯 What Is React?
 
 React is a JavaScript library for building user interfaces. Think of it like:
+
 - **LEGO blocks** for websites
 - Each component is a reusable piece
 - Snap them together to build complex apps
@@ -10,11 +11,13 @@ React is a JavaScript library for building user interfaces. Think of it like:
 ### Why React?
 
 Before React, updating websites was like:
+
 1. Find the element
 2. Change its content
 3. Repeat for every change
 
 With React:
+
 1. Describe what you want
 2. React figures out what changed
 3. Updates only what needs updating
@@ -32,7 +35,7 @@ function WelcomeMessage() {
 }
 
 // Using the component
-<WelcomeMessage />
+<WelcomeMessage />;
 ```
 
 ### JSX - HTML in JavaScript
@@ -78,13 +81,11 @@ import { useState } from 'react';
 function Counter() {
   // Create state variable
   const [count, setCount] = useState(0);
-  
+
   return (
     <div>
       <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </div>
   );
 }
@@ -146,16 +147,8 @@ function App() {
   return (
     <div className="app">
       <h1>Our Products</h1>
-      <ProductCard 
-        name="Laptop" 
-        price={999} 
-        image="/laptop.jpg" 
-      />
-      <ProductCard 
-        name="Phone" 
-        price={599} 
-        image="/phone.jpg" 
-      />
+      <ProductCard name="Laptop" price={999} image="/laptop.jpg" />
+      <ProductCard name="Phone" price={599} image="/phone.jpg" />
     </div>
   );
 }
@@ -171,20 +164,17 @@ Hooks are functions that let you use React features:
 function TodoApp() {
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState('');
-  
+
   const addTodo = () => {
     setTodos([...todos, input]);
     setInput('');
   };
-  
+
   return (
     <div>
-      <input 
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
+      <input value={input} onChange={(e) => setInput(e.target.value)} />
       <button onClick={addTodo}>Add</button>
-      
+
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>{todo}</li>
@@ -203,19 +193,19 @@ import { useState, useEffect } from 'react';
 function UserProfile({ userId }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     // Run when component mounts or userId changes
     fetch(`/api/users/${userId}`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setUser(data);
         setLoading(false);
       });
   }, [userId]); // Dependencies
-  
+
   if (loading) return <p>Loading...</p>;
-  
+
   return (
     <div>
       <h1>{user.name}</h1>
@@ -233,33 +223,33 @@ function useApi(url) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
+
   useEffect(() => {
     fetch(url)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setData(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch((err) => {
         setError(err);
         setLoading(false);
       });
   }, [url]);
-  
+
   return { data, loading, error };
 }
 
 // Using the custom hook
 function Products() {
   const { data: products, loading, error } = useApi('/api/products');
-  
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-  
+
   return (
     <div>
-      {products.map(product => (
+      {products.map((product) => (
         <ProductCard key={product.id} {...product} />
       ))}
     </div>
@@ -280,8 +270,8 @@ import './App.css';
 function Task({ task, onToggle, onDelete }) {
   return (
     <div className={`task ${task.completed ? 'completed' : ''}`}>
-      <input 
-        type="checkbox" 
+      <input
+        type="checkbox"
         checked={task.completed}
         onChange={() => onToggle(task.id)}
       />
@@ -294,7 +284,7 @@ function Task({ task, onToggle, onDelete }) {
 // TaskForm component
 function TaskForm({ onAdd }) {
   const [text, setText] = useState('');
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text.trim()) {
@@ -302,7 +292,7 @@ function TaskForm({ onAdd }) {
       setText('');
     }
   };
-  
+
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -323,41 +313,41 @@ function App() {
     const saved = localStorage.getItem('tasks');
     return saved ? JSON.parse(saved) : [];
   });
-  
+
   // Save to localStorage whenever tasks change
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
-  
+
   const addTask = (text) => {
     setTasks([
       ...tasks,
       {
         id: Date.now(),
         text,
-        completed: false
-      }
+        completed: false,
+      },
     ]);
   };
-  
+
   const toggleTask = (id) => {
-    setTasks(tasks.map(task =>
-      task.id === id 
-        ? { ...task, completed: !task.completed }
-        : task
-    ));
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task,
+      ),
+    );
   };
-  
+
   const deleteTask = (id) => {
-    setTasks(tasks.filter(task => task.id !== id));
+    setTasks(tasks.filter((task) => task.id !== id));
   };
-  
+
   return (
     <div className="app">
       <h1>Task Manager</h1>
       <TaskForm onAdd={addTask} />
       <div className="tasks">
-        {tasks.map(task => (
+        {tasks.map((task) => (
           <Task
             key={task.id}
             task={task}
@@ -366,7 +356,7 @@ function App() {
           />
         ))}
       </div>
-      <p>{tasks.filter(t => !t.completed).length} tasks remaining</p>
+      <p>{tasks.filter((t) => !t.completed).length} tasks remaining</p>
     </div>
   );
 }
@@ -379,27 +369,33 @@ export default App;
 ### Create React App vs Vite vs Next.js
 
 #### Create React App (CRA)
+
 ```bash
 npx create-react-app my-app
 ```
+
 - ✅ Official React tool
 - ✅ Good for learning
 - ❌ Slow build times
 - ❌ Being phased out
 
 #### Vite
+
 ```bash
 npm create vite@latest my-app -- --template react
 ```
+
 - ✅ Super fast
 - ✅ Modern tooling
 - ✅ Great developer experience
 - ✅ Recommended for new projects
 
 #### Next.js
+
 ```bash
 npx create-next-app@latest my-app
 ```
+
 - ✅ Full-stack React framework
 - ✅ Server-side rendering (SSR)
 - ✅ Built-in routing
@@ -409,12 +405,14 @@ npx create-next-app@latest my-app
 ### When to Use What?
 
 **Use Vite when:**
+
 - Building single-page apps (SPAs)
 - Learning React
 - Need fast development
 - Client-side only apps
 
 **Use Next.js when:**
+
 - Need SEO (Google needs to find your pages)
 - Building e-commerce sites
 - Need server-side features
@@ -425,6 +423,7 @@ npx create-next-app@latest my-app
 ### What Makes Next.js Special?
 
 1. **File-based Routing**
+
 ```
 pages/
 ├── index.js        → /
@@ -435,21 +434,22 @@ pages/
 ```
 
 2. **Server-Side Rendering (SSR)**
+
 ```jsx
 // This runs on the server!
 export async function getServerSideProps() {
   const res = await fetch('https://api.example.com/products');
   const products = await res.json();
-  
+
   return {
-    props: { products }
+    props: { products },
   };
 }
 
 function Products({ products }) {
   return (
     <div>
-      {products.map(product => (
+      {products.map((product) => (
         <div key={product.id}>{product.name}</div>
       ))}
     </div>
@@ -458,6 +458,7 @@ function Products({ products }) {
 ```
 
 3. **API Routes**
+
 ```jsx
 // pages/api/hello.js
 export default function handler(req, res) {
@@ -481,7 +482,7 @@ export default function Home() {
         <title>My Store</title>
         <meta name="description" content="Best products online" />
       </Head>
-      
+
       <main>
         <h1>Welcome to My Store</h1>
         <Link href="/products">
@@ -498,18 +499,18 @@ import { useRouter } from 'next/router';
 export async function getStaticPaths() {
   // Get all product IDs
   const products = await fetch('/api/products').then(r => r.json());
-  
+
   const paths = products.map(product => ({
     params: { id: product.id.toString() }
   }));
-  
+
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
   // Get specific product
   const product = await fetch(`/api/products/${params.id}`).then(r => r.json());
-  
+
   return {
     props: { product }
   };
@@ -537,11 +538,11 @@ const ThemeContext = React.createContext();
 // Provider component
 function ThemeProvider({ children }) {
   const [theme, setTheme] = useState('light');
-  
+
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
-  
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
@@ -552,7 +553,7 @@ function ThemeProvider({ children }) {
 // Using context
 function Header() {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  
+
   return (
     <header className={theme}>
       <button onClick={toggleTheme}>
@@ -597,9 +598,9 @@ const counterReducer = (state = 0, action) => {
 
 // 3. Using in component
 function Counter() {
-  const count = useSelector(state => state.counter);
+  const count = useSelector((state) => state.counter);
   const dispatch = useDispatch();
-  
+
   return (
     <div>
       <p>{count}</p>
@@ -653,7 +654,7 @@ const Button = styled.button`
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
-  
+
   &:hover {
     opacity: 0.8;
   }
@@ -667,6 +668,7 @@ const Button = styled.button`
 ## 🔍 React Developer Tools
 
 Browser extension that helps debug React:
+
 - See component tree
 - Inspect props and state
 - Track re-renders
@@ -675,6 +677,7 @@ Browser extension that helps debug React:
 ## 💡 React Best Practices
 
 ### 1. Component Organization
+
 ```jsx
 // Good: Small, focused components
 function UserAvatar({ user }) {
@@ -692,19 +695,23 @@ function UserInfo({ user }) {
 ```
 
 ### 2. Key Prop for Lists
+
 ```jsx
 // Always use unique keys
-{users.map(user => (
-  <UserCard key={user.id} user={user} />
-))}
+{
+  users.map((user) => <UserCard key={user.id} user={user} />);
+}
 
 // NOT index (unless no other option)
-{users.map((user, index) => (
-  <UserCard key={index} user={user} />  // Avoid this
-))}
+{
+  users.map((user, index) => (
+    <UserCard key={index} user={user} /> // Avoid this
+  ));
+}
 ```
 
 ### 3. Event Handler Naming
+
 ```jsx
 // Good naming convention
 <button onClick={handleClick}>Click</button>
@@ -716,21 +723,25 @@ function UserInfo({ user }) {
 ## 🌐 Other Modern Frameworks
 
 ### Vue.js
+
 - Similar to React but simpler
 - Template-based
 - Good for beginners
 
 ### Angular
+
 - Full framework (not just UI)
 - Uses TypeScript
 - Good for large enterprise apps
 
 ### Svelte
+
 - Compiles to vanilla JavaScript
 - No virtual DOM
 - Very fast
 
 ### Solid.js
+
 - Similar to React
 - Better performance
 - Growing popularity

@@ -9,8 +9,7 @@ Here's a clear breakdown of **.net vs .com vs .org vs .in vs .co.uk**, including
 - **Best for**: Businesses, startups, personal brands, and general websites.
 - **Perception**: Most trusted and globally recognized domain. Easier to remember.
 - **SEO/Reach**: Best global reach and SEO potential.
-
-✅ **Best choice if available**, especially for international or commercial presence.
+  **Best choice if available**, especially for international or commercial presence.
 
 ---
 

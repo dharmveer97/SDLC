@@ -5,6 +5,7 @@
 Frontend = Everything users see and interact with on a website
 
 Think of building a website like building a house:
+
 - **HTML** = Structure (walls, rooms, doors)
 - **CSS** = Design (paint, decorations, style)
 - **JavaScript** = Functionality (electricity, plumbing, doorbell)
@@ -12,7 +13,9 @@ Think of building a website like building a house:
 ## 📄 HTML - The Structure
 
 ### What Is HTML?
+
 HTML (HyperText Markup Language) is the skeleton of every website. It defines:
+
 - What content appears
 - How content is organized
 - The meaning of each piece of content
@@ -50,7 +53,7 @@ HTML (HyperText Markup Language) is the skeleton of every website. It defines:
 <a href="https://google.com">Click me!</a>
 
 <!-- Images -->
-<img src="photo.jpg" alt="Description of photo">
+<img src="photo.jpg" alt="Description of photo" />
 
 <!-- Lists -->
 <ul>
@@ -69,9 +72,9 @@ HTML (HyperText Markup Language) is the skeleton of every website. It defines:
 
 <!-- Forms -->
 <form>
-  <input type="text" placeholder="Enter your name">
-  <input type="email" placeholder="Enter email">
-  <input type="password" placeholder="Enter password">
+  <input type="text" placeholder="Enter your name" />
+  <input type="email" placeholder="Enter email" />
+  <input type="password" placeholder="Enter password" />
   <button>Submit</button>
 </form>
 
@@ -89,19 +92,22 @@ HTML (HyperText Markup Language) is the skeleton of every website. It defines:
 ```
 
 ### HTML Attributes
+
 Attributes provide extra information about elements:
 
 ```html
-<img src="photo.jpg" alt="Beach sunset" width="300" height="200">
+<img src="photo.jpg" alt="Beach sunset" width="300" height="200" />
 <a href="https://google.com" target="_blank">Opens in new tab</a>
-<input type="text" id="username" class="form-input" required>
+<input type="text" id="username" class="form-input" required />
 <div id="unique-id" class="reusable-class" data-user="123">Content</div>
 ```
 
 ## 🎨 CSS - The Style
 
 ### What Is CSS?
+
 CSS (Cascading Style Sheets) makes websites look good. It controls:
+
 - Colors and backgrounds
 - Fonts and text size
 - Spacing and layout
@@ -110,11 +116,13 @@ CSS (Cascading Style Sheets) makes websites look good. It controls:
 ### How to Add CSS
 
 #### 1. Inline CSS (directly on element)
+
 ```html
 <p style="color: blue; font-size: 20px;">Blue text</p>
 ```
 
 #### 2. Internal CSS (in HTML head)
+
 ```html
 <head>
   <style>
@@ -127,9 +135,10 @@ CSS (Cascading Style Sheets) makes websites look good. It controls:
 ```
 
 #### 3. External CSS (separate file) - BEST PRACTICE
+
 ```html
 <head>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 ```
 
@@ -158,7 +167,9 @@ p {
 }
 
 /* Select multiple */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: Arial, sans-serif;
 }
 ```
@@ -168,39 +179,39 @@ h1, h2, h3 {
 ```css
 /* Text Styling */
 .text-styling {
-  color: #333333;                  /* Text color */
-  font-size: 16px;                 /* Text size */
-  font-weight: bold;               /* Bold text */
-  font-family: Arial, sans-serif;  /* Font type */
-  text-align: center;              /* Alignment */
-  text-decoration: underline;      /* Underline */
-  line-height: 1.5;                /* Space between lines */
+  color: #333333; /* Text color */
+  font-size: 16px; /* Text size */
+  font-weight: bold; /* Bold text */
+  font-family: Arial, sans-serif; /* Font type */
+  text-align: center; /* Alignment */
+  text-decoration: underline; /* Underline */
+  line-height: 1.5; /* Space between lines */
 }
 
 /* Box Model */
 .box {
-  width: 300px;                    /* Width */
-  height: 200px;                   /* Height */
-  padding: 20px;                   /* Space inside */
-  margin: 10px;                    /* Space outside */
-  border: 2px solid black;         /* Border */
-  border-radius: 10px;             /* Rounded corners */
+  width: 300px; /* Width */
+  height: 200px; /* Height */
+  padding: 20px; /* Space inside */
+  margin: 10px; /* Space outside */
+  border: 2px solid black; /* Border */
+  border-radius: 10px; /* Rounded corners */
 }
 
 /* Background */
 .background {
-  background-color: lightblue;     /* Color */
+  background-color: lightblue; /* Color */
   background-image: url('bg.jpg'); /* Image */
-  background-size: cover;          /* Image sizing */
+  background-size: cover; /* Image sizing */
 }
 
 /* Display and Position */
 .layout {
-  display: block;                  /* Block element */
-  display: inline;                 /* Inline element */
-  display: flex;                   /* Flexbox layout */
-  position: relative;              /* Positioning */
-  position: absolute;              /* Absolute positioning */
+  display: block; /* Block element */
+  display: inline; /* Inline element */
+  display: flex; /* Flexbox layout */
+  position: relative; /* Positioning */
+  position: absolute; /* Absolute positioning */
 }
 ```
 
@@ -229,9 +240,10 @@ Every HTML element is a box with:
 ### How to Use Google Fonts
 
 1. **Visit Google Fonts**
-   Go to: https://fonts.google.com/
+   Go to: <https://fonts.google.com/>
 
 2. **Choose a Font**
+
    - Browse fonts
    - Click on one you like
    - Select the styles you need
@@ -240,9 +252,12 @@ Every HTML element is a box with:
 
 ```html
 <!-- Add this to your HTML head -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+  rel="stylesheet"
+/>
 ```
 
 4. **Use in CSS**
@@ -266,6 +281,7 @@ p {
 Sometimes you need fonts to work offline:
 
 1. **Download from Google Fonts**
+
    - Select your font
    - Click download icon
    - Extract the ZIP file
@@ -338,13 +354,13 @@ Websites must work on all devices (phones, tablets, desktops).
 .flex-container {
   display: flex;
   justify-content: space-between; /* Horizontal alignment */
-  align-items: center;            /* Vertical alignment */
-  flex-wrap: wrap;                /* Allow wrapping */
+  align-items: center; /* Vertical alignment */
+  flex-wrap: wrap; /* Allow wrapping */
 }
 
 /* Items */
 .flex-item {
-  flex: 1;                        /* Equal width */
+  flex: 1; /* Equal width */
   margin: 10px;
 }
 ```
@@ -355,7 +371,7 @@ Websites must work on all devices (phones, tablets, desktops).
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
-  gap: 20px;                             /* Space between items */
+  gap: 20px; /* Space between items */
 }
 ```
 
@@ -368,64 +384,67 @@ Let's build a complete example:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Business Website</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container">
-      <h1 class="logo">MyBusiness</h1>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Business Website</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <h1 class="logo">MyBusiness</h1>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <h2>Welcome to Our Business</h2>
-      <p>We provide amazing services for your needs</p>
-      <button class="cta-button">Get Started</button>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h2>Welcome to Our Business</h2>
+        <p>We provide amazing services for your needs</p>
+        <button class="cta-button">Get Started</button>
+      </div>
+    </section>
 
-  <!-- Services -->
-  <section class="services">
-    <div class="container">
-      <h2>Our Services</h2>
-      <div class="service-grid">
-        <div class="service-card">
-          <h3>Web Design</h3>
-          <p>Beautiful, responsive websites</p>
-        </div>
-        <div class="service-card">
-          <h3>Development</h3>
-          <p>Custom web applications</p>
-        </div>
-        <div class="service-card">
-          <h3>SEO</h3>
-          <p>Improve your search rankings</p>
+    <!-- Services -->
+    <section class="services">
+      <div class="container">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+          <div class="service-card">
+            <h3>Web Design</h3>
+            <p>Beautiful, responsive websites</p>
+          </div>
+          <div class="service-card">
+            <h3>Development</h3>
+            <p>Custom web applications</p>
+          </div>
+          <div class="service-card">
+            <h3>SEO</h3>
+            <p>Improve your search rankings</p>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2024 MyBusiness. All rights reserved.</p>
-    </div>
-  </footer>
-</body>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 MyBusiness. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>
 ```
 
@@ -482,7 +501,7 @@ body {
 }
 
 .nav-links a:hover {
-  color: #4CAF50;
+  color: #4caf50;
 }
 
 /* Hero Section */
@@ -498,7 +517,7 @@ body {
 }
 
 .cta-button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 12px 30px;
@@ -534,7 +553,7 @@ body {
   padding: 2rem;
   border-radius: 8px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Footer */
@@ -551,13 +570,13 @@ body {
     flex-direction: column;
     gap: 1rem;
   }
-  
+
   .nav-links {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
   }
-  
+
   .hero h2 {
     font-size: 2rem;
   }
@@ -569,6 +588,7 @@ body {
 ### HTML Best Practices
 
 1. **Use Semantic HTML**
+
 ```html
 <!-- Good -->
 <nav>...</nav>
@@ -582,41 +602,50 @@ body {
 ```
 
 2. **Always Include Alt Text**
+
 ```html
-<img src="logo.png" alt="Company logo">
+<img src="logo.png" alt="Company logo" />
 ```
 
 3. **Use Proper Heading Hierarchy**
+
 ```html
 <h1>Main Title</h1>
-  <h2>Section</h2>
-    <h3>Subsection</h3>
+<h2>Section</h2>
+<h3>Subsection</h3>
 ```
 
 ### CSS Best Practices
 
 1. **Use Classes Over IDs for Styling**
+
 ```css
 /* Good */
-.button { }
+.button {
+}
 
 /* Avoid for styling */
-#button { }
+#button {
+}
 ```
 
 2. **Keep Specificity Low**
+
 ```css
 /* Good */
-.card-title { }
+.card-title {
+}
 
 /* Too specific */
-body div.container div.card h3.card-title { }
+body div.container div.card h3.card-title {
+}
 ```
 
 3. **Use CSS Variables**
+
 ```css
 :root {
-  --primary-color: #4CAF50;
+  --primary-color: #4caf50;
   --text-color: #333;
 }
 

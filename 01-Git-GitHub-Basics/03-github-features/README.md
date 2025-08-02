@@ -5,6 +5,7 @@
 GitHub = Social network for developers + Cloud storage for code
 
 Think of it as:
+
 - **Facebook** for programmers
 - **Google Drive** for code projects
 - **Project management** tool
@@ -13,6 +14,7 @@ Think of it as:
 ## 📁 Repositories
 
 ### What Is a Repository?
+
 A repository (repo) = A project folder stored online
 
 ```
@@ -29,12 +31,14 @@ Repository: "MyWebsite"
 ### Types of Repositories
 
 #### Public Repository
+
 - Anyone can see your code
 - Free for everyone
 - Great for open source projects
 - Good for portfolios
 
 #### Private Repository
+
 - Only you and invited people can see
 - Free for small teams
 - Good for company projects
@@ -43,9 +47,11 @@ Repository: "MyWebsite"
 ## 🔀 Pull Requests (PRs)
 
 ### What Is a Pull Request?
+
 Pull Request = "Hey team, I made some changes. Can you review them before we add them to the main project?"
 
 ### PR Workflow
+
 ```
 1. Developer creates branch: "add-contact-form"
 2. Makes changes and commits
@@ -56,6 +62,7 @@ Pull Request = "Hey team, I made some changes. Can you review them before we add
 ```
 
 ### PR Example
+
 ```
 Title: Add contact form to homepage
 
@@ -72,6 +79,7 @@ Changes:
 ```
 
 ### Why Pull Requests Matter for BAs
+
 - **Quality Control**: Code is reviewed before going live
 - **Documentation**: Changes are explained and discussed
 - **Collaboration**: Team members can suggest improvements
@@ -80,22 +88,25 @@ Changes:
 ## 🐛 Issues
 
 ### What Are Issues?
+
 Issues = Digital to-do list for the project
 
 Think of Issues like:
+
 - Bug reports
 - Feature requests
 - Tasks to complete
 - Questions and discussions
 
 ### Issue Example
+
 ```
 Title: Login button doesn't work on mobile
 
 Labels: bug, mobile, high-priority
 
 Description:
-The login button on the homepage doesn't respond when 
+The login button on the homepage doesn't respond when
 tapped on mobile devices (tested on iPhone and Android).
 
 Steps to reproduce:
@@ -111,6 +122,7 @@ Device: iPhone 12, Samsung Galaxy S21
 ```
 
 ### Issue Labels
+
 ```
 🐛 bug          → Something is broken
 ✨ enhancement  → New feature request
@@ -132,6 +144,7 @@ Device: iPhone 12, Samsung Galaxy S21
 ```
 
 ### Project Workflow
+
 1. **Backlog**: All the things we want to do
 2. **To Do**: What we're planning to work on next
 3. **In Progress**: Currently being worked on
@@ -139,6 +152,7 @@ Device: iPhone 12, Samsung Galaxy S21
 5. **Done**: Completed and deployed
 
 ### Connecting Issues to Projects
+
 - Drag issues from different repositories
 - Track progress across multiple projects
 - Assign team members
@@ -147,6 +161,7 @@ Device: iPhone 12, Samsung Galaxy S21
 ## 👥 Collaboration Features
 
 ### User Roles
+
 ```
 Owner    → Full control, can delete repository
 Admin    → Manage settings, add/remove people
@@ -156,13 +171,16 @@ Read     → View and clone repository, no changes
 ```
 
 ### Teams
+
 Organize people into groups:
+
 - **Frontend Team**: Works on user interface
 - **Backend Team**: Works on server and database
 - **Design Team**: Creates mockups and designs
 - **QA Team**: Tests and finds bugs
 
 ### Mentions and Notifications
+
 ```
 @username      → Notify specific person
 @team-name     → Notify entire team
@@ -173,12 +191,14 @@ PR #456        → Reference pull request #456
 ## 📈 Insights and Analytics
 
 ### Repository Insights
+
 - **Contributors**: Who's working on the project
 - **Commits**: How much activity over time
 - **Code Frequency**: Lines added/removed
 - **Traffic**: How many people visit the repo
 
-### Useful for BAs:
+### Useful for BAs
+
 - Track project progress
 - See team productivity
 - Identify bottlenecks
@@ -187,12 +207,15 @@ PR #456        → Reference pull request #456
 ## 🔒 Security Features
 
 ### Security Alerts
+
 GitHub automatically scans for:
+
 - Vulnerable dependencies
 - Security issues in code
 - Exposed secrets (passwords, API keys)
 
 ### Branch Protection Rules
+
 ```
 Main branch protection:
 ✅ Require pull request reviews
@@ -205,33 +228,44 @@ Main branch protection:
 ## 📚 Documentation
 
 ### README.md
+
 The front page of your repository:
+
 ```markdown
 # Project Name
+
 Description of what this project does
 
 ## Installation
+
 How to set up the project locally
 
 ## Usage
+
 How to use the project
 
 ## Contributing
+
 How others can help
 
 ## License
+
 Legal information
 ```
 
 ### Wiki
+
 More detailed documentation:
+
 - User guides
 - Technical specifications
 - Architecture decisions
 - API documentation
 
 ### GitHub Pages
+
 Host websites directly from your repository:
+
 - Portfolio sites
 - Documentation sites
 - Project demos
@@ -240,16 +274,19 @@ Host websites directly from your repository:
 ## ⚡ GitHub Actions (Automation)
 
 ### What Are GitHub Actions?
+
 Automated workflows that run when something happens:
+
 - Run tests when code is pushed
 - Deploy website when changes are merged
 - Send notifications to Slack
 - Check code quality
 
 ### Example Workflow
+
 ```
 When: Someone pushes code to main branch
-Then: 
+Then:
 1. Run all tests
 2. If tests pass → Deploy to production
 3. If tests fail → Send email to developer
@@ -259,18 +296,21 @@ Then:
 ## 🌟 Advanced Features
 
 ### GitHub Codespaces
+
 - VS Code in your browser
 - Full development environment
 - No setup required
 - Code from anywhere
 
 ### GitHub Copilot
+
 - AI coding assistant
 - Suggests code as you type
 - Helps write functions
 - Explains code
 
 ### Discussions
+
 - Community forum for your project
 - Q&A section
 - Announcements
@@ -281,24 +321,28 @@ Then:
 ### How BAs Can Use GitHub
 
 #### 1. Track Requirements
+
 - Create issues for each requirement
 - Use labels to categorize
 - Assign to developers
 - Track progress
 
 #### 2. Review Changes
+
 - Check pull requests
 - Ensure requirements are met
 - Test new features
 - Approve or request changes
 
 #### 3. Manage Projects
+
 - Create project boards
 - Move issues through workflow
 - Set milestones and deadlines
 - Report on progress
 
 #### 4. Documentation
+
 - Maintain README files
 - Update user guides
 - Keep requirements current
@@ -307,13 +351,16 @@ Then:
 ## 🔍 GitHub Desktop
 
 ### GUI Alternative
+
 If command line seems scary:
+
 - GitHub Desktop app
 - Visual interface
 - Point and click
 - Same functionality as command line
 
 ### Basic Operations
+
 - Clone repositories
 - Create branches
 - Commit changes
@@ -323,6 +370,7 @@ If command line seems scary:
 ## 📱 GitHub Mobile
 
 ### Stay Connected
+
 - Review pull requests
 - Respond to issues
 - Get notifications

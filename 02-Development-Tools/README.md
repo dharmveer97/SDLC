@@ -3,6 +3,7 @@
 ## 🎯 What Are Development Tools?
 
 Think of development tools like a chef's kitchen equipment:
+
 - **VS Code** = Your main workspace (like a kitchen counter)
 - **ESLint** = Quality checker (like a food safety inspector)
 - **Prettier** = Formatter (like a plate decorator)
@@ -11,14 +12,18 @@ Think of development tools like a chef's kitchen equipment:
 ## 📝 VS Code (Visual Studio Code)
 
 ### What Is VS Code?
+
 VS Code is where developers write code. It's like Microsoft Word, but for programming. It's:
+
 - Free and open source
 - Used by millions of developers
 - Works with every programming language
 - Highly customizable
 
 ### Why VS Code?
+
 Before VS Code, developers used simple text editors. VS Code is special because it:
+
 - Highlights code in colors
 - Auto-completes your code
 - Shows errors before you run the program
@@ -44,24 +49,32 @@ Before VS Code, developers used simple text editors. VS Code is special because 
 ### Essential VS Code Features
 
 #### 1. **File Explorer** (Ctrl/Cmd + Shift + E)
+
 Shows all your project files, like Windows Explorer or Mac Finder.
 
 #### 2. **Search** (Ctrl/Cmd + Shift + F)
+
 Find any text across all files in your project.
 
 #### 3. **Terminal** (Ctrl/Cmd + `)
+
 Run commands without leaving VS Code.
 
 #### 4. **Command Palette** (Ctrl/Cmd + Shift + P)
+
 The "Google search" of VS Code - type what you want to do!
 
 ### Must-Have VS Code Extensions
 
 #### 1. **Prettier - Code Formatter**
+
 Automatically formats your code to look nice.
+
 ```javascript
 // Before Prettier
-function messy(  a,b,   c){return a+b   +c}
+function messy(a, b, c) {
+  return a + b + c;
+}
 
 // After Prettier
 function messy(a, b, c) {
@@ -70,15 +83,19 @@ function messy(a, b, c) {
 ```
 
 #### 2. **ESLint**
+
 Finds problems in your JavaScript code.
 
 #### 3. **Live Server**
+
 Preview your website instantly as you code.
 
 #### 4. **GitLens**
+
 See who wrote each line of code and when.
 
 #### 5. **Auto Rename Tag**
+
 When you change an HTML tag, it updates the closing tag too.
 
 ### VS Code Shortcuts Every Developer Uses
@@ -97,7 +114,9 @@ Ctrl/Cmd + Shift + Z → Redo
 ## 🔍 ESLint - The Code Quality Checker
 
 ### What Is ESLint?
+
 ESLint is like a spelling and grammar checker for code. It:
+
 - Finds errors before you run the code
 - Enforces coding standards
 - Makes code consistent across the team
@@ -108,13 +127,13 @@ ESLint is like a spelling and grammar checker for code. It:
 // ESLint catches these problems:
 
 // 1. Unused variables
-const userName = "John"; // ⚠️ 'userName' is declared but never used
+const userName = 'John'; // ⚠️ 'userName' is declared but never used
 
 // 2. Missing semicolons (if required)
-console.log("Hello") // ⚠️ Missing semicolon
+console.log('Hello'); // ⚠️ Missing semicolon
 
 // 3. Console statements in production
-console.log("Debug info"); // ⚠️ Unexpected console statement
+console.log('Debug info'); // ⚠️ Unexpected console statement
 
 // 4. Undefined variables
 userAge = 25; // ❌ 'userAge' is not defined
@@ -138,8 +157,8 @@ npx eslint yourfile.js
 ```json
 {
   "rules": {
-    "no-console": "warn",        // Warn about console.log
-    "no-unused-vars": "error",   // Error for unused variables
+    "no-console": "warn", // Warn about console.log
+    "no-unused-vars": "error", // Error for unused variables
     "semi": ["error", "always"], // Require semicolons
     "quotes": ["error", "double"] // Use double quotes
   }
@@ -149,7 +168,9 @@ npx eslint yourfile.js
 ## 🎨 Prettier - The Code Formatter
 
 ### What Is Prettier?
+
 Prettier automatically formats your code to look consistent. No more debates about:
+
 - Tabs vs spaces
 - Where to put brackets
 - Line length
@@ -158,22 +179,24 @@ Prettier automatically formats your code to look consistent. No more debates abo
 
 ```javascript
 // You write:
-const data={name:"John",age:30,city:"New York"}
+const data = { name: 'John', age: 30, city: 'New York' };
 
 // Prettier formats to:
 const data = {
-  name: "John",
+  name: 'John',
   age: 30,
-  city: "New York"
+  city: 'New York',
 };
 ```
 
 ## 📦 npm (Node Package Manager)
 
 ### What Is npm?
+
 npm is like an app store for code. Instead of reinventing the wheel, developers download pre-made code packages.
 
 ### Understanding package.json
+
 This file is like a shopping list for your project:
 
 ```json
@@ -187,11 +210,11 @@ This file is like a shopping list for your project:
     "build": "webpack"
   },
   "dependencies": {
-    "react": "^18.0.0",    // Packages your app needs to run
+    "react": "^18.0.0", // Packages your app needs to run
     "axios": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.0.0",    // Packages only for development
+    "eslint": "^8.0.0", // Packages only for development
     "jest": "^29.0.0"
   }
 }
@@ -221,18 +244,22 @@ npm update
 ## 🔧 Other Essential Tools
 
 ### 1. **Git Integration in VS Code**
+
 See changes right in the editor:
+
 - Green lines = Added code
 - Blue lines = Modified code
 - Red arrows = Deleted code
 
 ### 2. **Debugger**
+
 Instead of using console.log everywhere, use breakpoints:
+
 ```javascript
 function calculateTotal(items) {
-  let total = 0;           // Set breakpoint here
+  let total = 0; // Set breakpoint here
   for (let item of items) {
-    total += item.price;   // Step through code
+    total += item.price; // Step through code
   }
   return total;
 }
@@ -240,15 +267,18 @@ function calculateTotal(items) {
 
 ### 3. **Extensions for Specific Languages**
 
-#### For React Development:
+#### For React Development
+
 - ES7+ React/Redux/React-Native snippets
 - Simple React Snippets
 
-#### For Python:
+#### For Python
+
 - Python extension by Microsoft
 - Pylint
 
-#### For General Web Development:
+#### For General Web Development
+
 - Live Server
 - Path Intellisense
 - CSS Peek
@@ -256,12 +286,15 @@ function calculateTotal(items) {
 ## 🏗️ Setting Up a Development Environment
 
 ### Step 1: Install VS Code
-Download from: https://code.visualstudio.com/
+
+Download from: <https://code.visualstudio.com/>
 
 ### Step 2: Install Node.js
-This gives you npm. Download from: https://nodejs.org/
+
+This gives you npm. Download from: <https://nodejs.org/>
 
 ### Step 3: Install Essential Extensions
+
 1. Open VS Code
 2. Click Extensions icon (or Ctrl+Shift+X)
 3. Search and install:
@@ -271,6 +304,7 @@ This gives you npm. Download from: https://nodejs.org/
    - Live Server
 
 ### Step 4: Configure Settings
+
 ```json
 // VS Code settings.json
 {
@@ -318,26 +352,26 @@ git push
 ## 🚀 Pro Tips
 
 ### 1. **Use Snippets**
+
 Type shortcuts that expand to full code:
+
 ```javascript
 // Type "rafce" + Tab in a React file:
-import React from 'react'
+import React from 'react';
 
 const ComponentName = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <div></div>;
+};
 
-export default ComponentName
+export default ComponentName;
 ```
 
 ### 2. **Multi-Cursor Editing**
+
 Hold Alt and click to edit multiple places at once!
 
 ### 3. **Emmet for HTML**
+
 ```html
 <!-- Type this: -->
 div.container>ul>li*5
@@ -357,6 +391,7 @@ div.container>ul>li*5
 ## 🎯 Why These Tools Matter for BAs
 
 Understanding development tools helps you:
+
 1. **Read code** when reviewing implementations
 2. **Understand errors** developers mention
 3. **Know what's possible** in terms of automation
