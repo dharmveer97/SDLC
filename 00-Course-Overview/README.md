@@ -1,6 +1,6 @@
 # 📋 Course Overview & Learning Path
 
-## 🎯 Hello world
+## 🎯 Hello
 
 This comprehensive course takes you through the entire software development lifecycle from a developer's perspective. Here's everything you'll learn:
 
