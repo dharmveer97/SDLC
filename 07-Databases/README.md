@@ -3,6 +3,7 @@
 ## 🎯 What Is a Database?
 
 Think of a database like:
+
 - **Filing Cabinet** = Database
 - **Drawers** = Tables/Collections
 - **Folders** = Records/Documents
@@ -13,13 +14,17 @@ Databases store information in an organized way so you can find it quickly.
 ## 📊 Types of Databases
 
 ### SQL (Relational) Databases
+
 Like Excel spreadsheets with relationships:
+
 - Data in tables with rows and columns
 - Tables can reference each other
 - Examples: PostgreSQL, MySQL, SQLite
 
 ### NoSQL (Non-Relational) Databases
+
 Like flexible document storage:
+
 - Data in various formats
 - More flexible structure
 - Examples: MongoDB, DynamoDB, Redis
@@ -30,11 +35,11 @@ Like flexible document storage:
 
 Imagine a table for users:
 
-| id | name    | email           | age | city     |
-|----|---------|-----------------|-----|----------|
-| 1  | John    | john@email.com  | 25  | New York |
-| 2  | Jane    | jane@email.com  | 30  | Boston   |
-| 3  | Bob     | bob@email.com   | 28  | Chicago  |
+| id  | name | email            | age | city     |
+| --- | ---- | ---------------- | --- | -------- |
+| 1   | John | <john@email.com> | 25  | New York |
+| 2   | Jane | <jane@email.com> | 30  | Boston   |
+| 3   | Bob  | <bob@email.com>  | 28  | Chicago  |
 
 ### SQL Commands
 
@@ -50,7 +55,7 @@ CREATE TABLE users (
 );
 
 -- Insert data
-INSERT INTO users (name, email, age, city) 
+INSERT INTO users (name, email, age, city)
 VALUES ('John', 'john@email.com', 25, 'New York');
 
 -- Select (read) data
@@ -60,8 +65,8 @@ SELECT * FROM users WHERE age > 25;           -- Filter results
 SELECT * FROM users WHERE city = 'Boston';    -- Exact match
 
 -- Update data
-UPDATE users 
-SET age = 26 
+UPDATE users
+SET age = 26
 WHERE id = 1;
 
 -- Delete data
@@ -88,7 +93,7 @@ CREATE TABLE posts (
 );
 
 -- Join tables to get related data
-SELECT 
+SELECT
   posts.title,
   posts.content,
   users.name as author
@@ -112,8 +117,8 @@ SELECT COUNT(*) FROM users;                   -- Total users
 SELECT COUNT(*) FROM users WHERE age > 25;    -- Users over 25
 
 -- Grouping
-SELECT city, COUNT(*) as user_count 
-FROM users 
+SELECT city, COUNT(*) as user_count
+FROM users
 GROUP BY city;                               -- Users per city
 
 -- Aggregate functions
@@ -158,29 +163,29 @@ mongoose.connect('mongodb://localhost:27017/myapp');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
     required: true,
     unique: true,
-    lowercase: true
+    lowercase: true,
   },
   age: {
     type: Number,
     min: 0,
-    max: 120
+    max: 120,
   },
   address: {
     street: String,
     city: String,
-    zip: String
+    zip: String,
   },
   hobbies: [String],
   createdAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 // Create model
@@ -192,24 +197,21 @@ const newUser = new User({
   email: 'john@email.com',
   age: 25,
   address: {
-    city: 'New York'
+    city: 'New York',
   },
-  hobbies: ['reading', 'gaming']
+  hobbies: ['reading', 'gaming'],
 });
 
 // Save to database
 await newUser.save();
 
 // Find users
-const users = await User.find();                    // All users
+const users = await User.find(); // All users
 const adults = await User.find({ age: { $gte: 18 } }); // Age >= 18
 const johnDoe = await User.findOne({ name: 'John Doe' });
 
 // Update user
-await User.updateOne(
-  { _id: userId },
-  { $set: { age: 26 } }
-);
+await User.updateOne({ _id: userId }, { $set: { age: 26 } });
 
 // Delete user
 await User.deleteOne({ _id: userId });
@@ -219,37 +221,31 @@ await User.deleteOne({ _id: userId });
 
 ```javascript
 // Comparison operators
-User.find({ age: { $gt: 25 } });      // Greater than
-User.find({ age: { $gte: 25 } });     // Greater than or equal
-User.find({ age: { $lt: 25 } });      // Less than
-User.find({ age: { $lte: 25 } });     // Less than or equal
-User.find({ age: { $ne: 25 } });      // Not equal
+User.find({ age: { $gt: 25 } }); // Greater than
+User.find({ age: { $gte: 25 } }); // Greater than or equal
+User.find({ age: { $lt: 25 } }); // Less than
+User.find({ age: { $lte: 25 } }); // Less than or equal
+User.find({ age: { $ne: 25 } }); // Not equal
 
 // Logical operators
 User.find({
-  $or: [
-    { age: { $lt: 18 } },
-    { age: { $gt: 65 } }
-  ]
-});  // Young OR old
+  $or: [{ age: { $lt: 18 } }, { age: { $gt: 65 } }],
+}); // Young OR old
 
 User.find({
-  $and: [
-    { city: 'New York' },
-    { age: { $gte: 21 } }
-  ]
-});  // New York AND adult
+  $and: [{ city: 'New York' }, { age: { $gte: 21 } }],
+}); // New York AND adult
 
 // Array queries
-User.find({ hobbies: 'gaming' });              // Has gaming hobby
+User.find({ hobbies: 'gaming' }); // Has gaming hobby
 User.find({ hobbies: { $in: ['gaming', 'reading'] } }); // Has any
-User.find({ 'address.city': 'New York' });     // Nested field
+User.find({ 'address.city': 'New York' }); // Nested field
 
 // Sorting and limiting
 User.find()
-  .sort({ age: -1 })     // Sort by age descending
-  .limit(10)             // Take first 10
-  .skip(20);             // Skip first 20
+  .sort({ age: -1 }) // Sort by age descending
+  .limit(10) // Take first 10
+  .skip(20); // Skip first 20
 ```
 
 ## 🔄 SQL vs NoSQL Comparison
@@ -326,14 +322,16 @@ CREATE TABLE order_items (
 
 ## 📈 When to Use What?
 
-### Use SQL When:
+### Use SQL When
+
 - Data has clear relationships
 - You need ACID compliance (transactions)
 - Complex queries and reporting
 - Data structure is well-defined
 - Examples: Banking, inventory, accounting
 
-### Use NoSQL When:
+### Use NoSQL When
+
 - Data structure varies
 - Need to scale horizontally
 - Working with big data
@@ -345,6 +343,7 @@ CREATE TABLE order_items (
 Indexes are like a book's index - they help find data faster.
 
 ### SQL Index
+
 ```sql
 -- Create index on email for faster lookups
 CREATE INDEX idx_users_email ON users(email);
@@ -357,6 +356,7 @@ CREATE UNIQUE INDEX idx_users_username ON users(username);
 ```
 
 ### MongoDB Index
+
 ```javascript
 // Single field index
 db.users.createIndex({ email: 1 });
@@ -365,15 +365,16 @@ db.users.createIndex({ email: 1 });
 db.users.createIndex({ city: 1, age: -1 });
 
 // Text index for search
-db.products.createIndex({ name: "text", description: "text" });
+db.products.createIndex({ name: 'text', description: 'text' });
 
 // Search using text index
-db.products.find({ $text: { $search: "laptop" } });
+db.products.find({ $text: { $search: 'laptop' } });
 ```
 
 ## 🏗️ Database Design Best Practices
 
 ### 1. Normalization (SQL)
+
 Don't repeat data:
 
 ```sql
@@ -443,6 +444,7 @@ CREATE TABLE orders (
 ## 💾 Other Database Types
 
 ### Redis (Key-Value Store)
+
 ```javascript
 // Super fast for caching
 redis.set('user:123', JSON.stringify(userData));
@@ -453,6 +455,7 @@ redis.setex('session:abc', 3600, sessionData);
 ```
 
 ### Elasticsearch (Search Database)
+
 ```javascript
 // Full-text search
 {
@@ -465,13 +468,14 @@ redis.setex('session:abc', 3600, sessionData);
 ```
 
 ### DynamoDB (AWS NoSQL)
+
 ```javascript
 // Key-value and document database
 const params = {
   TableName: 'Users',
   Key: {
-    'userId': { S: '123' }
-  }
+    userId: { S: '123' },
+  },
 };
 dynamodb.getItem(params);
 ```
@@ -479,6 +483,7 @@ dynamodb.getItem(params);
 ## 🔒 Database Security
 
 ### SQL Security
+
 ```sql
 -- Use parameterized queries (prevent SQL injection)
 -- Bad (vulnerable):
@@ -489,10 +494,11 @@ SELECT * FROM users WHERE email = ?;
 ```
 
 ### MongoDB Security
+
 ```javascript
 // Never build queries with string concatenation
 // Bad:
-db.users.find({ email: userInput });  // If userInput is an object
+db.users.find({ email: userInput }); // If userInput is an object
 
 // Good:
 db.users.find({ email: String(userInput) });
@@ -501,6 +507,7 @@ db.users.find({ email: String(userInput) });
 ## 🚀 Real-World Example: Blog Database
 
 ### SQL Version
+
 ```sql
 -- Users
 CREATE TABLE users (
@@ -552,13 +559,14 @@ CREATE TABLE post_tags (
 ```
 
 ### MongoDB Version
+
 ```javascript
 // User schema
 const userSchema = {
   username: String,
   email: String,
   passwordHash: String,
-  createdAt: Date
+  createdAt: Date,
 };
 
 // Post schema
@@ -569,13 +577,15 @@ const postSchema = {
   content: String,
   published: Boolean,
   tags: [String],
-  comments: [{
-    userId: ObjectId,
-    content: String,
-    createdAt: Date
-  }],
+  comments: [
+    {
+      userId: ObjectId,
+      content: String,
+      createdAt: Date,
+    },
+  ],
   createdAt: Date,
-  updatedAt: Date
+  updatedAt: Date,
 };
 ```
 

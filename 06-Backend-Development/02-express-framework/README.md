@@ -5,6 +5,7 @@
 Express is the **most popular web framework for Node.js**. It's like having a pre-built foundation for creating web applications and APIs - providing the essential tools and structure developers need without having to build everything from scratch.
 
 Think of it as:
+
 - **Construction framework** - Pre-built structure for building websites
 - **Restaurant kitchen** - All the tools and equipment ready to use
 - **Office template** - Standard setup that can be customized
@@ -13,26 +14,31 @@ Think of it as:
 ## 🏗️ Real-World Analogy
 
 **Building a Restaurant:**
+
 - **Without Express** - Build everything: tables, kitchen, plumbing, electrical
 - **With Express** - Get a fully equipped restaurant space ready to customize
 
 **Building Web Applications:**
+
 - **Without Express** - Write all server code: routing, security, parsing
 - **With Express** - Get a complete web server framework ready to customize
 
 ## 🎯 What This Means for Business Analysts
 
 ### 1. **Faster Development**
+
 ```markdown
 Development Speed Comparison:
 Without Express (Raw Node.js):
+
 - Basic web server: 2-3 days
-- URL routing: 1-2 days  
+- URL routing: 1-2 days
 - Request parsing: 1 day
 - Security setup: 2-3 days
 - Total: 6-9 days
 
 With Express:
+
 - Complete setup: 2-4 hours
 - URL routing: Built-in
 - Request parsing: Built-in
@@ -43,14 +49,17 @@ Time savings: 90%+ for basic setup
 ```
 
 ### 2. **Proven Reliability**
+
 ```markdown
 Express Usage:
+
 - Used by Netflix, Uber, WhatsApp, IBM
 - 20+ million weekly downloads
 - 10+ years of development
 - Extensive community support
 
 Business Benefits:
+
 - Reduced risk (proven in production)
 - Faster problem resolution (large community)
 - Easier hiring (widely known framework)
@@ -58,7 +67,9 @@ Business Benefits:
 ```
 
 ### 3. **Scalable Architecture**
+
 Express supports business growth:
+
 - **Small apps** - Simple websites and APIs
 - **Medium apps** - E-commerce platforms, dashboards
 - **Large apps** - Enterprise systems, microservices
@@ -67,6 +78,7 @@ Express supports business growth:
 ## 🔧 Express in Business Applications
 
 ### API Development
+
 ```javascript
 const express = require('express');
 const app = express();
@@ -81,12 +93,12 @@ app.get('/api/customers', async (req, res) => {
     res.json({
       success: true,
       data: customers,
-      count: customers.length
+      count: customers.length,
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Failed to retrieve customers'
+      message: 'Failed to retrieve customers',
     });
   }
 });
@@ -95,40 +107,40 @@ app.get('/api/customers', async (req, res) => {
 app.post('/api/orders', async (req, res) => {
   try {
     const { customerId, items, paymentMethod } = req.body;
-    
+
     // Validate order data
     if (!customerId || !items || items.length === 0) {
       return res.status(400).json({
         success: false,
-        message: 'Invalid order data'
+        message: 'Invalid order data',
       });
     }
-    
+
     // Process the order
     const order = await processOrder({
       customerId,
       items,
       paymentMethod,
-      timestamp: new Date()
+      timestamp: new Date(),
     });
-    
+
     res.status(201).json({
       success: true,
       orderId: order.id,
       total: order.total,
-      estimatedDelivery: order.deliveryDate
+      estimatedDelivery: order.deliveryDate,
     });
-    
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Order processing failed'
+      message: 'Order processing failed',
     });
   }
 });
 ```
 
 ### Business Dashboard Backend
+
 ```javascript
 // Dashboard data endpoints
 app.get('/api/dashboard/metrics', async (req, res) => {
@@ -139,7 +151,7 @@ app.get('/api/dashboard/metrics', async (req, res) => {
       newCustomers: metrics.customers,
       orderCount: metrics.orders,
       conversionRate: metrics.conversion,
-      lastUpdated: new Date()
+      lastUpdated: new Date(),
     });
   } catch (error) {
     res.status(500).json({ error: 'Metrics unavailable' });
@@ -153,7 +165,7 @@ app.get('/api/sales/today', async (req, res) => {
     res.json({
       hourlyBreakdown: salesData.byHour,
       topProducts: salesData.topSelling,
-      totalRevenue: salesData.total
+      totalRevenue: salesData.total,
     });
   } catch (error) {
     res.status(500).json({ error: 'Sales data unavailable' });
@@ -162,6 +174,7 @@ app.get('/api/sales/today', async (req, res) => {
 ```
 
 ### User Authentication System
+
 ```javascript
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -170,35 +183,35 @@ const jwt = require('jsonwebtoken');
 app.post('/api/auth/register', async (req, res) => {
   try {
     const { email, password, firstName, lastName } = req.body;
-    
+
     // Check if user already exists
     const existingUser = await findUserByEmail(email);
     if (existingUser) {
       return res.status(409).json({
         success: false,
-        message: 'User already exists'
+        message: 'User already exists',
       });
     }
-    
+
     // Hash password for security
     const hashedPassword = await bcrypt.hash(password, 10);
-    
+
     // Create new user
     const user = await createUser({
       email,
       password: hashedPassword,
       firstName,
       lastName,
-      createdAt: new Date()
+      createdAt: new Date(),
     });
-    
+
     // Generate authentication token
     const token = jwt.sign(
       { userId: user.id, email: user.email },
       process.env.JWT_SECRET,
-      { expiresIn: '24h' }
+      { expiresIn: '24h' },
     );
-    
+
     res.status(201).json({
       success: true,
       token,
@@ -206,14 +219,13 @@ app.post('/api/auth/register', async (req, res) => {
         id: user.id,
         email: user.email,
         firstName: user.firstName,
-        lastName: user.lastName
-      }
+        lastName: user.lastName,
+      },
     });
-    
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Registration failed'
+      message: 'Registration failed',
     });
   }
 });
@@ -222,32 +234,32 @@ app.post('/api/auth/register', async (req, res) => {
 app.post('/api/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     // Find user
     const user = await findUserByEmail(email);
     if (!user) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid credentials'
+        message: 'Invalid credentials',
       });
     }
-    
+
     // Verify password
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
       return res.status(401).json({
         success: false,
-        message: 'Invalid credentials'
+        message: 'Invalid credentials',
       });
     }
-    
+
     // Generate token
     const token = jwt.sign(
       { userId: user.id, email: user.email },
       process.env.JWT_SECRET,
-      { expiresIn: '24h' }
+      { expiresIn: '24h' },
     );
-    
+
     res.json({
       success: true,
       token,
@@ -255,14 +267,13 @@ app.post('/api/auth/login', async (req, res) => {
         id: user.id,
         email: user.email,
         firstName: user.firstName,
-        lastName: user.lastName
-      }
+        lastName: user.lastName,
+      },
     });
-    
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Login failed'
+      message: 'Login failed',
     });
   }
 });
@@ -271,6 +282,7 @@ app.post('/api/auth/login', async (req, res) => {
 ## 📊 Express Middleware (Business Logic Layer)
 
 ### Security Middleware
+
 ```javascript
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
@@ -282,28 +294,32 @@ app.use(helmet());
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
-  message: 'Too many requests, please try again later'
+  message: 'Too many requests, please try again later',
 });
 app.use('/api/', limiter);
 
 // CORS for cross-origin requests
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL);
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+  );
   next();
 });
 ```
 
 ### Business Logic Middleware
+
 ```javascript
 // Authentication middleware
 const authenticateUser = (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
-  
+
   if (!token) {
     return res.status(401).json({ error: 'Access denied' });
   }
-  
+
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
@@ -329,11 +345,16 @@ const requireRole = (role) => {
 };
 
 // Usage in routes
-app.get('/api/admin/users', authenticateUser, requireRole('admin'), async (req, res) => {
-  // Only authenticated admins can access this endpoint
-  const users = await getAllUsers();
-  res.json(users);
-});
+app.get(
+  '/api/admin/users',
+  authenticateUser,
+  requireRole('admin'),
+  async (req, res) => {
+    // Only authenticated admins can access this endpoint
+    const users = await getAllUsers();
+    res.json(users);
+  },
+);
 ```
 
 ## 📋 Common BA Questions & Answers
@@ -356,23 +377,28 @@ A: Express has robust error handling. Add monitoring tools like New Relic or Dat
 ## 🎯 What BAs Should Include in Requirements
 
 ### API Endpoint Requirements
+
 ```markdown
 ✅ Good Requirements:
+
 - "GET /api/customers should return paginated customer list with search capability"
 - "POST /api/orders must validate all required fields and return order confirmation"
-- "Authentication required for all /api/admin/* endpoints"
+- "Authentication required for all /api/admin/\* endpoints"
 - "API responses must include success/error status and descriptive messages"
 - "Rate limiting: 100 requests per 15 minutes per IP address"
 
 ❌ Vague Requirements:
+
 - "Create customer API"
 - "Handle orders"
 - "Make it secure"
 ```
 
 ### Performance Requirements
+
 ```markdown
 Include in Requirements:
+
 - Response time targets (e.g., under 200ms for API calls)
 - Concurrent user capacity (e.g., 1,000 simultaneous users)
 - Error rate thresholds (e.g., less than 0.1% error rate)
@@ -382,27 +408,29 @@ Include in Requirements:
 ## 🚦 Express Development Process
 
 ### Project Structure
+
 ```markdown
 Typical Express Project:
-├── server.js              # Main application file
+├── server.js # Main application file
 ├── routes/
-│   ├── customers.js        # Customer-related endpoints
-│   ├── orders.js          # Order management endpoints
-│   └── auth.js            # Authentication endpoints
+│ ├── customers.js # Customer-related endpoints
+│ ├── orders.js # Order management endpoints
+│ └── auth.js # Authentication endpoints
 ├── middleware/
-│   ├── auth.js            # Authentication middleware
-│   └── validation.js      # Input validation
+│ ├── auth.js # Authentication middleware
+│ └── validation.js # Input validation
 ├── models/
-│   ├── Customer.js        # Customer data model
-│   └── Order.js           # Order data model
+│ ├── Customer.js # Customer data model
+│ └── Order.js # Order data model
 ├── services/
-│   ├── emailService.js    # Email functionality
-│   └── paymentService.js  # Payment processing
+│ ├── emailService.js # Email functionality
+│ └── paymentService.js # Payment processing
 └── config/
-    └── database.js        # Database configuration
+└── database.js # Database configuration
 ```
 
 ### Development Timeline
+
 ```markdown
 Express API Development:
 Week 1: Project setup and basic routing
@@ -418,23 +446,26 @@ Total: 6 weeks for comprehensive business API
 ## 📈 Measuring Express Success
 
 ### Performance Metrics
+
 - **Response time** (API endpoint speed)
 - **Throughput** (requests handled per second)
 - **Error rates** (percentage of failed requests)
 - **Uptime** (system availability)
 
 ### Business Metrics
+
 - **API adoption** (number of API calls)
 - **Integration success** (successful third-party connections)
 - **Development velocity** (features delivered per sprint)
 - **Support tickets** (API-related issues)
 
 ### Monitoring Example
+
 ```javascript
 // Request logging middleware
 app.use((req, res, next) => {
   const start = Date.now();
-  
+
   res.on('finish', () => {
     const duration = Date.now() - start;
     const log = {
@@ -442,17 +473,17 @@ app.use((req, res, next) => {
       url: req.url,
       status: res.statusCode,
       duration: duration,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
-    
+
     console.log(JSON.stringify(log));
-    
+
     // Send to monitoring service
     if (duration > 1000 || res.statusCode >= 500) {
       sendToMonitoring(log);
     }
   });
-  
+
   next();
 });
 ```
@@ -460,6 +491,7 @@ app.use((req, res, next) => {
 ## 🌟 Advanced Express Features
 
 ### Microservices Architecture
+
 ```javascript
 // Service separation
 const customerService = express();
@@ -470,7 +502,7 @@ const paymentService = express();
 customerService.get('/customers', getCustomers);
 customerService.post('/customers', createCustomer);
 
-// Order service routes  
+// Order service routes
 orderService.get('/orders', getOrders);
 orderService.post('/orders', createOrder);
 
@@ -485,6 +517,7 @@ app.use('/api/payments', paymentService);
 ```
 
 ### Real-time Features
+
 ```javascript
 const http = require('http');
 const socketIo = require('socket.io');

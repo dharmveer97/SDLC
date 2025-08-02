@@ -5,6 +5,7 @@
 APIs (Application Programming Interfaces) are like **digital contracts** that allow different software systems to communicate with each other. They define how applications can request and exchange data.
 
 Think of them as:
+
 - **Restaurant menu** - Shows what's available and how to order
 - **Universal translator** - Enables different systems to understand each other
 - **Business agreement** - Defines terms for data exchange
@@ -13,12 +14,14 @@ Think of them as:
 ## 🌐 Real-World Business Analogy
 
 **Traditional Business Partnership:**
+
 - **Written contract** defines terms
 - **Specific procedures** for requests
 - **Standard format** for communication
 - **Expected responses** to requests
 
 **API Partnership:**
+
 - **API documentation** defines capabilities
 - **Specific endpoints** for different requests
 - **Standard data format** (JSON/XML)
@@ -27,14 +30,17 @@ Think of them as:
 ## 🎯 What This Means for Business Analysts
 
 ### 1. **System Integration**
+
 ```markdown
 Without APIs:
+
 - Manual data entry between systems
 - Data inconsistencies across platforms
 - Time-consuming synchronization
 - Limited automation capabilities
 
 With APIs:
+
 - Automatic data synchronization
 - Real-time information sharing
 - Seamless system integration
@@ -42,14 +48,18 @@ With APIs:
 ```
 
 ### 2. **Business Agility**
+
 APIs enable rapid business capabilities:
+
 - **Payment processing** - Integrate Stripe, PayPal in days
-- **Shipping** - Connect FedEx, UPS tracking automatically  
+- **Shipping** - Connect FedEx, UPS tracking automatically
 - **Communication** - Add SMS, email notifications
 - **Analytics** - Pull data from Google Analytics, social media
 
 ### 3. **Platform Strategy**
+
 APIs as business assets:
+
 - **Partner integrations** - Allow others to connect to your systems
 - **Mobile apps** - Same backend serves web and mobile
 - **Third-party developers** - Expand your platform's capabilities
@@ -58,10 +68,12 @@ APIs as business assets:
 ## 🔄 REST APIs (Representational State Transfer)
 
 ### REST Principles for Business
+
 ```markdown
 REST = Simple, Predictable Web APIs
 
 Business Benefits:
+
 - Easy to understand and implement
 - Works with existing web infrastructure
 - Cacheable for better performance
@@ -70,6 +82,7 @@ Business Benefits:
 ```
 
 ### REST API Example
+
 ```javascript
 // Customer Management REST API
 app.get('/api/customers', async (req, res) => {
@@ -78,7 +91,7 @@ app.get('/api/customers', async (req, res) => {
   res.json({
     success: true,
     data: customers,
-    total: customers.length
+    total: customers.length,
   });
 });
 
@@ -88,7 +101,7 @@ app.post('/api/customers', async (req, res) => {
   res.status(201).json({
     success: true,
     data: newCustomer,
-    message: 'Customer created successfully'
+    message: 'Customer created successfully',
   });
 });
 
@@ -98,7 +111,7 @@ app.put('/api/customers/:id', async (req, res) => {
   res.json({
     success: true,
     data: updatedCustomer,
-    message: 'Customer updated successfully'
+    message: 'Customer updated successfully',
   });
 });
 
@@ -110,28 +123,31 @@ app.delete('/api/customers/:id', async (req, res) => {
 ```
 
 ### REST Business Operations
+
 ```markdown
 Common Business Patterns:
 
-GET /api/orders           → List all orders
-GET /api/orders/123       → Get specific order
-POST /api/orders          → Create new order
-PUT /api/orders/123       → Update entire order
-PATCH /api/orders/123     → Update part of order
-DELETE /api/orders/123    → Cancel/delete order
+GET /api/orders → List all orders
+GET /api/orders/123 → Get specific order
+POST /api/orders → Create new order
+PUT /api/orders/123 → Update entire order
+PATCH /api/orders/123 → Update part of order
+DELETE /api/orders/123 → Cancel/delete order
 
 GET /api/customers/456/orders → Get orders for specific customer
-POST /api/orders/123/ship     → Ship an order (action)
-GET /api/reports/sales        → Get sales reports
+POST /api/orders/123/ship → Ship an order (action)
+GET /api/reports/sales → Get sales reports
 ```
 
 ## 🔗 GraphQL (Modern API Alternative)
 
 ### GraphQL Benefits for Business
+
 ```markdown
 GraphQL = Flexible Data Querying
 
 Business Advantages:
+
 - Request exactly the data you need
 - Single endpoint for all operations
 - Faster mobile apps (less data transfer)
@@ -140,6 +156,7 @@ Business Advantages:
 ```
 
 ### GraphQL Example
+
 ```graphql
 # Single request gets all needed data
 query CustomerDashboard($customerId: ID!) {
@@ -165,6 +182,7 @@ query CustomerDashboard($customerId: ID!) {
 ```
 
 Equivalent REST would require multiple requests:
+
 ```markdown
 GET /api/customers/123
 GET /api/customers/123/orders?limit=5
@@ -172,14 +190,17 @@ GET /api/customers/123/preferences
 ```
 
 ### When to Choose REST vs GraphQL
+
 ```markdown
 Choose REST when:
+
 - Simple CRUD operations
 - Team familiar with REST
 - Caching is important
 - Third-party integrations needed
 
 Choose GraphQL when:
+
 - Complex data relationships
 - Mobile app performance critical
 - Multiple frontend applications
@@ -189,16 +210,17 @@ Choose GraphQL when:
 ## 📊 API Business Patterns
 
 ### Pagination for Large Datasets
+
 ```javascript
 // REST pagination
 app.get('/api/orders', async (req, res) => {
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 20;
   const offset = (page - 1) * limit;
-  
+
   const orders = await getOrders({ limit, offset });
   const total = await countOrders();
-  
+
   res.json({
     data: orders,
     pagination: {
@@ -207,13 +229,14 @@ app.get('/api/orders', async (req, res) => {
       total,
       pages: Math.ceil(total / limit),
       hasNext: page * limit < total,
-      hasPrev: page > 1
-    }
+      hasPrev: page > 1,
+    },
   });
 });
 ```
 
 ### API Versioning Strategy
+
 ```javascript
 // Version in URL path
 app.use('/api/v1', v1Routes);
@@ -228,6 +251,7 @@ app.use((req, res, next) => {
 ```
 
 ### Error Handling Standards
+
 ```javascript
 // Consistent error responses
 app.use((error, req, res, next) => {
@@ -236,15 +260,15 @@ app.use((error, req, res, next) => {
     error: {
       code: error.code || 'INTERNAL_ERROR',
       message: error.message || 'An unexpected error occurred',
-      details: error.details || null
+      details: error.details || null,
     },
     timestamp: new Date().toISOString(),
-    path: req.path
+    path: req.path,
   };
-  
+
   // Log error for debugging
   console.error('API Error:', errorResponse);
-  
+
   // Send appropriate status code
   const statusCode = error.statusCode || 500;
   res.status(statusCode).json(errorResponse);
@@ -271,8 +295,10 @@ A: Automated testing with tools like Postman, unit tests, integration tests, loa
 ## 🎯 What BAs Should Include in Requirements
 
 ### API Functional Requirements
+
 ```markdown
 ✅ Good Requirements:
+
 - "Customer API must return customer data with orders, preferences, and payment methods"
 - "Order API must validate inventory before accepting orders"
 - "Search API must support filtering by price range, category, and availability"
@@ -280,14 +306,17 @@ A: Automated testing with tools like Postman, unit tests, integration tests, loa
 - "All APIs must return responses within 200ms for 95% of requests"
 
 ❌ Vague Requirements:
+
 - "Create customer API"
 - "Handle payments"
 - "Search functionality"
 ```
 
 ### API Security Requirements
+
 ```markdown
 Include in Requirements:
+
 - Authentication method (API keys, OAuth, JWT)
 - Rate limiting (requests per minute/hour)
 - Data validation rules
@@ -298,6 +327,7 @@ Include in Requirements:
 ## 🚦 API Development Process
 
 ### API Design First Approach
+
 ```markdown
 1. Document API endpoints before coding
 2. Define request/response formats
@@ -307,6 +337,7 @@ Include in Requirements:
 6. Test against documentation
 
 Benefits:
+
 - Clearer requirements
 - Faster development
 - Better team communication
@@ -314,6 +345,7 @@ Benefits:
 ```
 
 ### API Documentation Example
+
 ```yaml
 # OpenAPI specification example
 /api/customers/{id}:
@@ -346,46 +378,47 @@ Benefits:
 ## 📈 Measuring API Success
 
 ### Technical Metrics
+
 - **Response time** (average, 95th percentile)
 - **Error rate** (percentage of failed requests)
 - **Throughput** (requests per second)
 - **Availability** (uptime percentage)
 
 ### Business Metrics
+
 - **API adoption** (number of consumers)
 - **Integration success rate** (successful implementations)
 - **Developer satisfaction** (ease of use surveys)
 - **Business value generated** (revenue from API-enabled features)
 
 ### API Analytics
+
 ```javascript
 // Basic API analytics middleware
 const analytics = {
   requests: new Map(),
-  errors: new Map()
+  errors: new Map(),
 };
 
 app.use((req, res, next) => {
   const start = Date.now();
   const endpoint = `${req.method} ${req.path}`;
-  
+
   // Count requests
-  analytics.requests.set(endpoint, 
-    (analytics.requests.get(endpoint) || 0) + 1);
-  
+  analytics.requests.set(endpoint, (analytics.requests.get(endpoint) || 0) + 1);
+
   res.on('finish', () => {
     const duration = Date.now() - start;
-    
+
     // Track errors
     if (res.statusCode >= 400) {
-      analytics.errors.set(endpoint,
-        (analytics.errors.get(endpoint) || 0) + 1);
+      analytics.errors.set(endpoint, (analytics.errors.get(endpoint) || 0) + 1);
     }
-    
+
     // Log performance
     console.log(`${endpoint} - ${res.statusCode} - ${duration}ms`);
   });
-  
+
   next();
 });
 ```
@@ -393,6 +426,7 @@ app.use((req, res, next) => {
 ## 🌟 Advanced API Concepts
 
 ### Microservices APIs
+
 ```javascript
 // Service mesh communication
 const userService = 'http://user-service:3001';
@@ -404,40 +438,40 @@ app.post('/api/checkout', async (req, res) => {
     // Call multiple services
     const userResponse = await fetch(`${userService}/users/${req.body.userId}`);
     const user = await userResponse.json();
-    
+
     const orderResponse = await fetch(`${orderService}/orders`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(req.body.order)
+      body: JSON.stringify(req.body.order),
     });
     const order = await orderResponse.json();
-    
+
     const paymentResponse = await fetch(`${paymentService}/process`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         amount: order.total,
-        paymentMethod: req.body.paymentMethod
-      })
+        paymentMethod: req.body.paymentMethod,
+      }),
     });
     const payment = await paymentResponse.json();
-    
+
     res.json({
       success: true,
       orderId: order.id,
-      transactionId: payment.id
+      transactionId: payment.id,
     });
-    
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Checkout failed'
+      message: 'Checkout failed',
     });
   }
 });
 ```
 
 ### Real-time APIs with WebSockets
+
 ```javascript
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 8080 });
@@ -446,7 +480,7 @@ const wss = new WebSocket.Server({ port: 8080 });
 wss.on('connection', (ws) => {
   ws.on('message', (message) => {
     const data = JSON.parse(message);
-    
+
     if (data.type === 'subscribe') {
       ws.userId = data.userId;
     }
@@ -457,10 +491,12 @@ wss.on('connection', (ws) => {
 function broadcastOrderUpdate(userId, orderData) {
   wss.clients.forEach((client) => {
     if (client.userId === userId && client.readyState === WebSocket.OPEN) {
-      client.send(JSON.stringify({
-        type: 'order_update',
-        data: orderData
-      }));
+      client.send(
+        JSON.stringify({
+          type: 'order_update',
+          data: orderData,
+        }),
+      );
     }
   });
 }

@@ -4,14 +4,16 @@
 
 Mobile development = Building apps for phones and tablets
 
-### Types of Mobile Apps:
+### Types of Mobile Apps
 
 1. **Native Apps**
+
    - iOS: Swift/Objective-C (Xcode)
    - Android: Java/Kotlin (Android Studio)
    - Best performance, platform-specific
 
 2. **Cross-Platform Apps**
+
    - React Native, Flutter, Xamarin
    - One codebase for both platforms
    - Good performance, shared code
@@ -28,11 +30,13 @@ Mobile development = Building apps for phones and tablets
 React Native = React for mobile apps
 
 Instead of:
+
 - Learning Swift for iOS
 - Learning Kotlin for Android
 - Building two separate apps
 
 You can:
+
 - Use JavaScript/TypeScript
 - Share code between platforms
 - Still get native performance
@@ -75,6 +79,7 @@ function App() {
 Expo = React Native with superpowers
 
 Expo provides:
+
 - Easy setup (no Xcode/Android Studio needed)
 - Pre-built components
 - Over-the-air updates
@@ -118,11 +123,13 @@ import { View } from 'react-native';
 
 function Container({ children }) {
   return (
-    <View style={{
-      flex: 1,
-      backgroundColor: '#f5f5f5',
-      padding: 20
-    }}>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: '#f5f5f5',
+        padding: 20,
+      }}
+    >
       {children}
     </View>
   );
@@ -137,12 +144,8 @@ import { Text } from 'react-native';
 function Typography() {
   return (
     <>
-      <Text style={{ fontSize: 24, fontWeight: 'bold' }}>
-        Title
-      </Text>
-      <Text style={{ fontSize: 16, color: '#666' }}>
-        Subtitle
-      </Text>
+      <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Title</Text>
+      <Text style={{ fontSize: 16, color: '#666' }}>Subtitle</Text>
     </>
   );
 }
@@ -160,7 +163,7 @@ function Button({ title, onPress }) {
         backgroundColor: '#007AFF',
         padding: 15,
         borderRadius: 8,
-        alignItems: 'center'
+        alignItems: 'center',
       }}
       onPress={onPress}
     >
@@ -198,12 +201,8 @@ import { FlatList, View, Text } from 'react-native';
 function UserList({ users }) {
   const renderUser = ({ item }) => (
     <View style={{ padding: 15, borderBottomWidth: 1 }}>
-      <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-        {item.name}
-      </Text>
-      <Text style={{ color: '#666' }}>
-        {item.email}
-      </Text>
+      <Text style={{ fontSize: 18, fontWeight: 'bold' }}>{item.name}</Text>
+      <Text style={{ color: '#666' }}>{item.email}</Text>
     </View>
   );
 
@@ -213,7 +212,9 @@ function UserList({ users }) {
       renderItem={renderUser}
       keyExtractor={(item) => item.id.toString()}
       refreshing={false}
-      onRefresh={() => {/* Refresh logic */}}
+      onRefresh={() => {
+        /* Refresh logic */
+      }}
     />
   );
 }
@@ -240,22 +241,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5'
+    backgroundColor: '#f5f5f5',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#333',
-    marginBottom: 10
+    marginBottom: 10,
   },
   text: {
     fontSize: 16,
-    color: '#666'
+    color: '#666',
   },
   highlighted: {
     backgroundColor: 'yellow',
-    padding: 5
-  }
+    padding: 5,
+  },
 });
 ```
 
@@ -268,26 +269,26 @@ const styles = StyleSheet.create({
   column: {
     flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
-  
+
   // Horizontal layout
   row: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center'
+    alignItems: 'center',
   },
-  
+
   // Taking available space
   expanded: {
-    flex: 1  // Takes all available space
+    flex: 1, // Takes all available space
   },
-  
+
   // Fixed size
   fixed: {
     width: 100,
-    height: 50
-  }
+    height: 50,
+  },
 });
 ```
 
@@ -313,13 +314,13 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen 
-          name="Home" 
+        <Stack.Screen
+          name="Home"
           component={HomeScreen}
           options={{ title: 'Welcome' }}
         />
-        <Stack.Screen 
-          name="Profile" 
+        <Stack.Screen
+          name="Profile"
           component={ProfileScreen}
           options={{ title: 'My Profile' }}
         />
@@ -342,14 +343,11 @@ function HomeScreen({ navigation }) {
 
 function ProfileScreen({ route, navigation }) {
   const { userId } = route.params;
-  
+
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Profile Screen for User {userId}</Text>
-      <Button
-        title="Go Back"
-        onPress={() => navigation.goBack()}
-      />
+      <Button title="Go Back" onPress={() => navigation.goBack()} />
     </View>
   );
 }
@@ -369,13 +367,13 @@ function TabNavigator() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          
+
           if (route.name === 'Home') {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Search') {
             iconName = focused ? 'search' : 'search-outline';
           }
-          
+
           return <Icon name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: '#007AFF',
@@ -410,7 +408,9 @@ function PostList() {
   const fetchPosts = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+      const response = await fetch(
+        'https://jsonplaceholder.typicode.com/posts',
+      );
       const data = await response.json();
       setPosts(data);
     } catch (err) {
@@ -442,9 +442,7 @@ function PostList() {
       <Text style={{ fontSize: 16, fontWeight: 'bold', marginBottom: 5 }}>
         {item.title}
       </Text>
-      <Text style={{ color: '#666' }}>
-        {item.body}
-      </Text>
+      <Text style={{ color: '#666' }}>{item.body}</Text>
     </View>
   );
 
@@ -474,7 +472,7 @@ const AppContext = createContext();
 const ACTIONS = {
   LOGIN: 'LOGIN',
   LOGOUT: 'LOGOUT',
-  SET_LOADING: 'SET_LOADING'
+  SET_LOADING: 'SET_LOADING',
 };
 
 // Reducer
@@ -484,18 +482,18 @@ function appReducer(state, action) {
       return {
         ...state,
         user: action.payload,
-        isAuthenticated: true
+        isAuthenticated: true,
       };
     case ACTIONS.LOGOUT:
       return {
         ...state,
         user: null,
-        isAuthenticated: false
+        isAuthenticated: false,
       };
     case ACTIONS.SET_LOADING:
       return {
         ...state,
-        loading: action.payload
+        loading: action.payload,
       };
     default:
       return state;
@@ -507,7 +505,7 @@ export function AppProvider({ children }) {
   const [state, dispatch] = useReducer(appReducer, {
     user: null,
     isAuthenticated: false,
-    loading: false
+    loading: false,
   });
 
   const login = async (email, password) => {
@@ -528,11 +526,13 @@ export function AppProvider({ children }) {
   };
 
   return (
-    <AppContext.Provider value={{
-      ...state,
-      login,
-      logout
-    }}>
+    <AppContext.Provider
+      value={{
+        ...state,
+        login,
+        logout,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
@@ -586,25 +586,27 @@ function CameraScreen() {
 
   return (
     <View style={{ flex: 1 }}>
-      <Camera 
-        style={{ flex: 1 }} 
-        type={type}
-        ref={cameraRef}
-      >
-        <View style={{ flex: 1, backgroundColor: 'transparent', flexDirection: 'row' }}>
+      <Camera style={{ flex: 1 }} type={type} ref={cameraRef}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'transparent',
+            flexDirection: 'row',
+          }}
+        >
           <TouchableOpacity
             style={{ position: 'absolute', bottom: 20, left: 20 }}
             onPress={() => {
               setType(
                 type === Camera.Constants.Type.back
                   ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
+                  : Camera.Constants.Type.back,
               );
             }}
           >
             <Text style={{ fontSize: 18, color: 'white' }}>Flip Camera</Text>
           </TouchableOpacity>
-          
+
           <TouchableOpacity
             style={{ position: 'absolute', bottom: 20, right: 20 }}
             onPress={takePicture}
@@ -652,9 +654,9 @@ function LocationScreen() {
       try {
         const addresses = await Location.reverseGeocodeAsync({
           latitude: location.coords.latitude,
-          longitude: location.coords.longitude
+          longitude: location.coords.longitude,
         });
-        
+
         if (addresses.length > 0) {
           const address = addresses[0];
           console.log('Address:', `${address.street}, ${address.city}`);
@@ -673,7 +675,7 @@ function LocationScreen() {
         <View>
           <Text>Latitude: {location.coords.latitude}</Text>
           <Text>Longitude: {location.coords.longitude}</Text>
-          <TouchableOpacity 
+          <TouchableOpacity
             style={{ marginTop: 20 }}
             onPress={getAddressFromCoords}
           >
@@ -709,19 +711,25 @@ function NotificationScreen() {
   const responseListener = useRef();
 
   useEffect(() => {
-    registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
+    registerForPushNotificationsAsync().then((token) =>
+      setExpoPushToken(token),
+    );
 
     // Listen for notifications
-    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
-      console.log('Notification received:', notification);
-    });
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) => {
+        console.log('Notification received:', notification);
+      });
 
-    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log('Notification tapped:', response);
-    });
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        console.log('Notification tapped:', response);
+      });
 
     return () => {
-      Notifications.removeNotificationSubscription(notificationListener.current);
+      Notifications.removeNotificationSubscription(
+        notificationListener.current,
+      );
       Notifications.removeNotificationSubscription(responseListener.current);
     };
   }, []);
@@ -761,7 +769,7 @@ import {
   TouchableOpacity,
   FlatList,
   StyleSheet,
-  Alert
+  Alert,
 } from 'react-native';
 
 function TodoApp() {
@@ -775,44 +783,44 @@ function TodoApp() {
         {
           id: Date.now(),
           text: inputText,
-          completed: false
-        }
+          completed: false,
+        },
       ]);
       setInputText('');
     }
   };
 
   const toggleTodo = (id) => {
-    setTodos(todos.map(todo =>
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
   };
 
   const deleteTodo = (id) => {
-    Alert.alert(
-      'Delete Todo',
-      'Are you sure you want to delete this todo?',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        { 
-          text: 'Delete', 
-          style: 'destructive',
-          onPress: () => setTodos(todos.filter(todo => todo.id !== id))
-        }
-      ]
-    );
+    Alert.alert('Delete Todo', 'Are you sure you want to delete this todo?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: () => setTodos(todos.filter((todo) => todo.id !== id)),
+      },
+    ]);
   };
 
   const renderTodo = ({ item }) => (
     <View style={styles.todoItem}>
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.todoText}
         onPress={() => toggleTodo(item.id)}
       >
-        <Text style={[
-          styles.todoTextContent,
-          item.completed && styles.completedTodo
-        ]}>
+        <Text
+          style={[
+            styles.todoTextContent,
+            item.completed && styles.completedTodo,
+          ]}
+        >
           {item.text}
         </Text>
       </TouchableOpacity>
@@ -828,7 +836,7 @@ function TodoApp() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Todo App</Text>
-      
+
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -850,7 +858,7 @@ function TodoApp() {
       />
 
       <Text style={styles.footer}>
-        {todos.filter(t => !t.completed).length} of {todos.length} remaining
+        {todos.filter((t) => !t.completed).length} of {todos.length} remaining
       </Text>
     </View>
   );
@@ -861,17 +869,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
     padding: 20,
-    paddingTop: 60
+    paddingTop: 60,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 30
+    marginBottom: 30,
   },
   inputContainer: {
     flexDirection: 'row',
-    marginBottom: 20
+    marginBottom: 20,
   },
   input: {
     flex: 1,
@@ -880,20 +888,20 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: 'white',
     borderRadius: 8,
-    marginRight: 10
+    marginRight: 10,
   },
   addButton: {
     backgroundColor: '#007AFF',
     padding: 15,
     borderRadius: 8,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   addButtonText: {
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   todoList: {
-    flex: 1
+    flex: 1,
   },
   todoItem: {
     flexDirection: 'row',
@@ -905,30 +913,30 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.2,
     shadowRadius: 2,
-    elevation: 2
+    elevation: 2,
   },
   todoText: {
-    flex: 1
+    flex: 1,
   },
   todoTextContent: {
-    fontSize: 16
+    fontSize: 16,
   },
   completedTodo: {
     textDecorationLine: 'line-through',
-    color: '#999'
+    color: '#999',
   },
   deleteButton: {
     justifyContent: 'center',
-    paddingLeft: 15
+    paddingLeft: 15,
   },
   deleteText: {
-    fontSize: 18
+    fontSize: 18,
   },
   footer: {
     textAlign: 'center',
     marginTop: 20,
-    color: '#666'
-  }
+    color: '#666',
+  },
 });
 
 export default TodoApp;
@@ -954,6 +962,7 @@ eas build --platform android
 ### App Store Submission
 
 1. **iOS (App Store)**
+
    - Need Apple Developer account ($99/year)
    - Use Xcode or EAS Submit
    - Review process (1-7 days)
@@ -966,6 +975,7 @@ eas build --platform android
 ## 🎯 React Native vs Other Options
 
 ### React Native Pros
+
 - Code sharing between platforms
 - Large community
 - Facebook/Meta backing
@@ -973,6 +983,7 @@ eas build --platform android
 - Access to native APIs
 
 ### React Native Cons
+
 - Not truly native
 - Bridge overhead
 - Platform-specific bugs
@@ -981,6 +992,7 @@ eas build --platform android
 ### Alternatives
 
 #### Flutter (Google)
+
 ```dart
 // Dart language
 Widget build(BuildContext context) {
@@ -992,6 +1004,7 @@ Widget build(BuildContext context) {
 ```
 
 #### Native Development
+
 ```swift
 // iOS Swift
 class ViewController: UIViewController {

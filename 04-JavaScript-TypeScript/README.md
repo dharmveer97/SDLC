@@ -4,7 +4,8 @@
 
 JavaScript is the programming language that makes websites interactive. If HTML is the skeleton and CSS is the skin, JavaScript is the brain and muscles.
 
-### JavaScript Can:
+### JavaScript Can
+
 - React to user clicks
 - Update content without refreshing
 - Validate forms
@@ -17,13 +18,15 @@ JavaScript is the programming language that makes websites interactive. If HTML 
 ### Where to Write JavaScript
 
 #### 1. In HTML file
+
 ```html
 <script>
-  alert("Hello World!");
+  alert('Hello World!');
 </script>
 ```
 
 #### 2. External file (recommended)
+
 ```html
 <script src="script.js"></script>
 ```
@@ -32,18 +35,18 @@ JavaScript is the programming language that makes websites interactive. If HTML 
 
 ```javascript
 // Old way (avoid)
-var name = "John";
+var name = 'John';
 
 // Modern ways
-let age = 25;        // Can change
-const city = "NYC";  // Cannot change
+let age = 25; // Can change
+const city = 'NYC'; // Cannot change
 
 // Examples
 let score = 0;
-score = 10;          // ✅ This works
+score = 10; // ✅ This works
 
 const pi = 3.14;
-pi = 3.15;           // ❌ Error! Cannot change const
+pi = 3.15; // ❌ Error! Cannot change const
 ```
 
 ### Data Types
@@ -55,7 +58,7 @@ let price = 19.99;
 let temperature = -5;
 
 // 2. Strings (text)
-let firstName = "John";
+let firstName = 'John';
 let lastName = 'Doe';
 let message = `Hello ${firstName}`; // Template literal
 
@@ -64,43 +67,43 @@ let isLoggedIn = true;
 let isVip = false;
 
 // 4. Arrays (lists)
-let fruits = ["apple", "banana", "orange"];
+let fruits = ['apple', 'banana', 'orange'];
 let numbers = [1, 2, 3, 4, 5];
-let mixed = ["John", 25, true];
+let mixed = ['John', 25, true];
 
 // 5. Objects (key-value pairs)
 let user = {
-  name: "John",
+  name: 'John',
   age: 25,
-  email: "john@example.com",
-  isActive: true
+  email: 'john@example.com',
+  isActive: true,
 };
 
 // 6. Null and Undefined
-let empty = null;        // Intentionally empty
-let notDefined;          // undefined (no value assigned)
+let empty = null; // Intentionally empty
+let notDefined; // undefined (no value assigned)
 ```
 
 ### Basic Operations
 
 ```javascript
 // Math
-let sum = 10 + 5;         // 15
-let difference = 10 - 5;  // 5
-let product = 10 * 5;     // 50
-let quotient = 10 / 5;    // 2
-let remainder = 10 % 3;   // 1 (modulo)
+let sum = 10 + 5; // 15
+let difference = 10 - 5; // 5
+let product = 10 * 5; // 50
+let quotient = 10 / 5; // 2
+let remainder = 10 % 3; // 1 (modulo)
 
 // String operations
-let greeting = "Hello" + " " + "World";  // "Hello World"
-let name = "John";
-let welcome = `Welcome, ${name}!`;       // "Welcome, John!"
+let greeting = 'Hello' + ' ' + 'World'; // "Hello World"
+let name = 'John';
+let welcome = `Welcome, ${name}!`; // "Welcome, John!"
 
 // Comparison
-let isEqual = 5 === 5;        // true (strict equality)
-let isNotEqual = 5 !== 3;     // true
-let isGreater = 10 > 5;       // true
-let isLess = 3 < 8;           // true
+let isEqual = 5 === 5; // true (strict equality)
+let isNotEqual = 5 !== 3; // true
+let isGreater = 10 > 5; // true
+let isLess = 3 < 8; // true
 ```
 
 ### Functions - Reusable Code
@@ -112,7 +115,7 @@ function greet(name) {
 }
 
 // Function call
-let message = greet("Alice");  // "Hello, Alice!"
+let message = greet('Alice'); // "Hello, Alice!"
 
 // Arrow function (modern way)
 const add = (a, b) => {
@@ -129,7 +132,7 @@ function calculateTotal(price, tax) {
   return total;
 }
 
-let finalPrice = calculateTotal(100, 0.08);  // 108
+let finalPrice = calculateTotal(100, 0.08); // 108
 ```
 
 ### Conditionals - Making Decisions
@@ -139,43 +142,43 @@ let finalPrice = calculateTotal(100, 0.08);  // 108
 let age = 18;
 
 if (age >= 18) {
-  console.log("You can vote!");
+  console.log('You can vote!');
 } else {
-  console.log("Too young to vote");
+  console.log('Too young to vote');
 }
 
 // Multiple conditions
 let score = 85;
 
 if (score >= 90) {
-  console.log("Grade: A");
+  console.log('Grade: A');
 } else if (score >= 80) {
-  console.log("Grade: B");
+  console.log('Grade: B');
 } else if (score >= 70) {
-  console.log("Grade: C");
+  console.log('Grade: C');
 } else {
-  console.log("Grade: F");
+  console.log('Grade: F');
 }
 
 // Ternary operator (shorthand)
-let status = age >= 18 ? "Adult" : "Minor";
+let status = age >= 18 ? 'Adult' : 'Minor';
 
 // Switch statement
-let day = "Monday";
+let day = 'Monday';
 
 switch (day) {
-  case "Monday":
-    console.log("Start of work week");
+  case 'Monday':
+    console.log('Start of work week');
     break;
-  case "Friday":
-    console.log("TGIF!");
+  case 'Friday':
+    console.log('TGIF!');
     break;
-  case "Saturday":
-  case "Sunday":
-    console.log("Weekend!");
+  case 'Saturday':
+  case 'Sunday':
+    console.log('Weekend!');
     break;
   default:
-    console.log("Regular day");
+    console.log('Regular day');
 }
 ```
 
@@ -195,7 +198,7 @@ while (count < 5) {
 }
 
 // Looping through arrays
-const fruits = ["apple", "banana", "orange"];
+const fruits = ['apple', 'banana', 'orange'];
 
 // For...of loop (modern)
 for (const fruit of fruits) {
@@ -203,23 +206,23 @@ for (const fruit of fruits) {
 }
 
 // forEach method
-fruits.forEach(fruit => {
+fruits.forEach((fruit) => {
   console.log(`I like ${fruit}`);
 });
 
 // Map - transform array
 const numbers = [1, 2, 3, 4, 5];
-const doubled = numbers.map(num => num * 2);
+const doubled = numbers.map((num) => num * 2);
 // Result: [2, 4, 6, 8, 10]
 
 // Filter - keep certain items
 const adults = [
-  { name: "John", age: 25 },
-  { name: "Jane", age: 17 },
-  { name: "Bob", age: 30 }
+  { name: 'John', age: 25 },
+  { name: 'Jane', age: 17 },
+  { name: 'Bob', age: 30 },
 ];
 
-const onlyAdults = adults.filter(person => person.age >= 18);
+const onlyAdults = adults.filter((person) => person.age >= 18);
 // Result: John and Bob
 ```
 
@@ -228,39 +231,39 @@ const onlyAdults = adults.filter(person => person.age >= 18);
 ```javascript
 // Creating objects
 const user = {
-  firstName: "John",
-  lastName: "Doe",
+  firstName: 'John',
+  lastName: 'Doe',
   age: 30,
-  email: "john@example.com",
+  email: 'john@example.com',
   address: {
-    street: "123 Main St",
-    city: "Boston",
-    zip: "02101"
-  }
+    street: '123 Main St',
+    city: 'Boston',
+    zip: '02101',
+  },
 };
 
 // Accessing properties
-console.log(user.firstName);           // "John"
-console.log(user["lastName"]);          // "Doe"
-console.log(user.address.city);         // "Boston"
+console.log(user.firstName); // "John"
+console.log(user['lastName']); // "Doe"
+console.log(user.address.city); // "Boston"
 
 // Modifying properties
 user.age = 31;
-user.phone = "555-1234";  // Adding new property
+user.phone = '555-1234'; // Adding new property
 
 // Object methods
 const calculator = {
-  add: function(a, b) {
+  add: function (a, b) {
     return a + b;
   },
   subtract: (a, b) => a - b,
   // Shorthand method
   multiply(a, b) {
     return a * b;
-  }
+  },
 };
 
-console.log(calculator.add(5, 3));      // 8
+console.log(calculator.add(5, 3)); // 8
 console.log(calculator.multiply(4, 2)); // 8
 ```
 
@@ -281,8 +284,8 @@ const buttons = document.getElementsByClassName('btn');
 const paragraphs = document.getElementsByTagName('p');
 
 // Modern selectors (like CSS)
-const header2 = document.querySelector('#header');        // One element
-const allButtons = document.querySelectorAll('.btn');    // All elements
+const header2 = document.querySelector('#header'); // One element
+const allButtons = document.querySelectorAll('.btn'); // All elements
 
 // Examples
 const submitBtn = document.querySelector('#submit-button');
@@ -295,7 +298,7 @@ const firstParagraph = document.querySelector('p');
 ```javascript
 // Change text
 const title = document.querySelector('h1');
-title.textContent = "New Title";
+title.textContent = 'New Title';
 
 // Change HTML
 const container = document.querySelector('.container');
@@ -303,14 +306,14 @@ container.innerHTML = '<p>New paragraph</p>';
 
 // Change attributes
 const image = document.querySelector('img');
-image.src = "new-image.jpg";
-image.alt = "New description";
+image.src = 'new-image.jpg';
+image.alt = 'New description';
 
 // Change styles
 const box = document.querySelector('.box');
 box.style.backgroundColor = 'blue';
 box.style.width = '200px';
-box.style.display = 'none';  // Hide element
+box.style.display = 'none'; // Hide element
 ```
 
 ### Event Handling
@@ -318,7 +321,7 @@ box.style.display = 'none';  // Hide element
 ```javascript
 // Click event
 const button = document.querySelector('#myButton');
-button.addEventListener('click', function() {
+button.addEventListener('click', function () {
   alert('Button clicked!');
 });
 
@@ -330,8 +333,8 @@ button.addEventListener('click', () => {
 // Form submission
 const form = document.querySelector('#myForm');
 form.addEventListener('submit', (event) => {
-  event.preventDefault();  // Stop form from submitting
-  
+  event.preventDefault(); // Stop form from submitting
+
   const name = document.querySelector('#name').value;
   console.log(`Form submitted with name: ${name}`);
 });
@@ -343,12 +346,12 @@ input.addEventListener('input', (e) => {
 });
 
 // Common events
-element.addEventListener('click', handler);     // Click
-element.addEventListener('submit', handler);    // Form submit
-element.addEventListener('input', handler);     // Text input
-element.addEventListener('change', handler);    // Select/checkbox change
+element.addEventListener('click', handler); // Click
+element.addEventListener('submit', handler); // Form submit
+element.addEventListener('input', handler); // Text input
+element.addEventListener('change', handler); // Select/checkbox change
 element.addEventListener('mouseover', handler); // Mouse hover
-element.addEventListener('keydown', handler);   // Key press
+element.addEventListener('keydown', handler); // Key press
 ```
 
 ### Creating Elements
@@ -372,13 +375,13 @@ container.insertBefore(newDiv, reference);
 function addTodoItem(text) {
   const li = document.createElement('li');
   li.textContent = text;
-  
+
   const deleteBtn = document.createElement('button');
   deleteBtn.textContent = 'Delete';
   deleteBtn.addEventListener('click', () => {
     li.remove();
   });
-  
+
   li.appendChild(deleteBtn);
   document.querySelector('#todo-list').appendChild(li);
 }
@@ -409,7 +412,7 @@ clearInterval(timer);
 // Creating a promise
 const myPromise = new Promise((resolve, reject) => {
   const success = true;
-  
+
   if (success) {
     resolve('Operation succeeded!');
   } else {
@@ -419,10 +422,10 @@ const myPromise = new Promise((resolve, reject) => {
 
 // Using a promise
 myPromise
-  .then(result => {
-    console.log(result);  // "Operation succeeded!"
+  .then((result) => {
+    console.log(result); // "Operation succeeded!"
   })
-  .catch(error => {
+  .catch((error) => {
     console.log(error);
   });
 ```
@@ -450,11 +453,11 @@ const userData = await fetchUserData();
 ```javascript
 // Using fetch (modern way)
 fetch('https://api.example.com/users')
-  .then(response => response.json())
-  .then(data => {
+  .then((response) => response.json())
+  .then((data) => {
     console.log(data);
   })
-  .catch(error => {
+  .catch((error) => {
     console.error('Error:', error);
   });
 
@@ -463,9 +466,9 @@ async function getUsers() {
   try {
     const response = await fetch('https://api.example.com/users');
     const users = await response.json();
-    
+
     // Display users
-    users.forEach(user => {
+    users.forEach((user) => {
       console.log(user.name);
     });
   } catch (error) {
@@ -481,6 +484,7 @@ async function getUsers() {
 TypeScript is JavaScript with type checking. It helps catch errors before your code runs.
 
 Think of it like spell-check for code:
+
 - JavaScript: You can write anything, errors show when running
 - TypeScript: Errors show while writing, before running
 
@@ -488,26 +492,26 @@ Think of it like spell-check for code:
 
 ```typescript
 // Type annotations
-let username: string = "John";
+let username: string = 'John';
 let age: number = 25;
 let isActive: boolean = true;
 
 // Arrays
 let numbers: number[] = [1, 2, 3];
-let names: string[] = ["John", "Jane"];
+let names: string[] = ['John', 'Jane'];
 
 // Objects
 interface User {
   id: number;
   name: string;
   email: string;
-  isAdmin?: boolean;  // Optional property
+  isAdmin?: boolean; // Optional property
 }
 
 const user: User = {
   id: 1,
-  name: "John",
-  email: "john@example.com"
+  name: 'John',
+  email: 'john@example.com',
 };
 
 // Functions
@@ -543,10 +547,10 @@ interface Product {
 // Using interface
 const laptop: Product = {
   id: 1,
-  name: "MacBook Pro",
+  name: 'MacBook Pro',
   price: 1999,
   inStock: true,
-  categories: ["Electronics", "Computers"]
+  categories: ['Electronics', 'Computers'],
 };
 
 // Function using interface
@@ -559,16 +563,16 @@ function calculateDiscount(product: Product, percent: number): number {
 
 ```typescript
 // Type alias
-type ID = string | number;  // Can be either string or number
+type ID = string | number; // Can be either string or number
 
-type Status = "active" | "inactive" | "pending";  // Specific values
+type Status = 'active' | 'inactive' | 'pending'; // Specific values
 
 // Using types
-let userId: ID = "abc123";
-userId = 123;  // Also valid
+let userId: ID = 'abc123';
+userId = 123; // Also valid
 
-let userStatus: Status = "active";
-userStatus = "deleted";  // ❌ Error! Not a valid status
+let userStatus: Status = 'active';
+userStatus = 'deleted'; // ❌ Error! Not a valid status
 ```
 
 ### Generics (Advanced)
@@ -579,8 +583,8 @@ function getFirstItem<T>(items: T[]): T | undefined {
   return items[0];
 }
 
-const firstNumber = getFirstItem([1, 2, 3]);    // number
-const firstName = getFirstItem(["a", "b", "c"]); // string
+const firstNumber = getFirstItem([1, 2, 3]); // number
+const firstName = getFirstItem(['a', 'b', 'c']); // string
 
 // Generic interface
 interface ApiResponse<T> {
@@ -590,9 +594,9 @@ interface ApiResponse<T> {
 }
 
 const userResponse: ApiResponse<User> = {
-  data: { id: 1, name: "John", email: "john@example.com" },
+  data: { id: 1, name: 'John', email: 'john@example.com' },
   status: 200,
-  message: "Success"
+  message: 'Success',
 };
 ```
 
@@ -608,24 +612,24 @@ const errorDiv = document.querySelector('#error-message');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  
+
   // Clear previous errors
   errorDiv.textContent = '';
-  
+
   // Validate email
   const email = emailInput.value;
   if (!email.includes('@')) {
     errorDiv.textContent = 'Please enter a valid email';
     return;
   }
-  
+
   // Validate password
   const password = passwordInput.value;
   if (password.length < 8) {
     errorDiv.textContent = 'Password must be at least 8 characters';
     return;
   }
-  
+
   // If valid, submit
   console.log('Form is valid! Submitting...');
 });
@@ -647,15 +651,15 @@ function hideLoading() {
 // Load and display posts
 async function loadPosts() {
   showLoading();
-  
+
   try {
     const response = await fetch('/api/posts');
     const posts = await response.json();
-    
+
     const container = document.querySelector('#posts-container');
     container.innerHTML = '';
-    
-    posts.forEach(post => {
+
+    posts.forEach((post) => {
       const postDiv = document.createElement('div');
       postDiv.className = 'post';
       postDiv.innerHTML = `
@@ -686,62 +690,62 @@ class TodoList {
     this.todoInput = document.querySelector('#todo-input');
     this.todoList = document.querySelector('#todo-list');
     this.addButton = document.querySelector('#add-button');
-    
+
     this.addButton.addEventListener('click', () => this.addTodo());
     this.todoInput.addEventListener('keypress', (e) => {
       if (e.key === 'Enter') this.addTodo();
     });
   }
-  
+
   addTodo() {
     const text = this.todoInput.value.trim();
     if (!text) return;
-    
+
     const todo = {
       id: Date.now(),
       text: text,
-      completed: false
+      completed: false,
     };
-    
+
     this.todos.push(todo);
     this.todoInput.value = '';
     this.render();
   }
-  
+
   toggleTodo(id) {
-    const todo = this.todos.find(t => t.id === id);
+    const todo = this.todos.find((t) => t.id === id);
     if (todo) {
       todo.completed = !todo.completed;
       this.render();
     }
   }
-  
+
   deleteTodo(id) {
-    this.todos = this.todos.filter(t => t.id !== id);
+    this.todos = this.todos.filter((t) => t.id !== id);
     this.render();
   }
-  
+
   render() {
     this.todoList.innerHTML = '';
-    
-    this.todos.forEach(todo => {
+
+    this.todos.forEach((todo) => {
       const li = document.createElement('li');
       li.className = todo.completed ? 'completed' : '';
-      
+
       li.innerHTML = `
         <input type="checkbox" ${todo.completed ? 'checked' : ''}>
         <span>${todo.text}</span>
         <button class="delete">Delete</button>
       `;
-      
+
       li.querySelector('input').addEventListener('change', () => {
         this.toggleTodo(todo.id);
       });
-      
+
       li.querySelector('.delete').addEventListener('click', () => {
         this.deleteTodo(todo.id);
       });
-      
+
       this.todoList.appendChild(li);
     });
   }
@@ -754,12 +758,14 @@ const app = new TodoList();
 ## 💡 JavaScript vs TypeScript
 
 ### When to Use JavaScript
+
 - Small projects
 - Quick prototypes
 - Learning to code
 - When team doesn't know TypeScript
 
 ### When to Use TypeScript
+
 - Large applications
 - Team projects
 - Long-term maintenance
@@ -770,19 +776,19 @@ const app = new TodoList();
 ```javascript
 // JavaScript
 function calculatePrice(price, tax, discount) {
-  return price + (price * tax) - discount;
+  return price + price * tax - discount;
 }
 
-calculatePrice(100, 0.08, "10");  // Bug! "10" is a string
+calculatePrice(100, 0.08, '10'); // Bug! "10" is a string
 ```
 
 ```typescript
 // TypeScript
 function calculatePrice(price: number, tax: number, discount: number): number {
-  return price + (price * tax) - discount;
+  return price + price * tax - discount;
 }
 
-calculatePrice(100, 0.08, "10");  // ❌ Error caught immediately!
+calculatePrice(100, 0.08, '10'); // ❌ Error caught immediately!
 ```
 
 ## 🎯 What This Means for BAs

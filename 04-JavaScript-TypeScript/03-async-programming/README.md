@@ -5,6 +5,7 @@
 Async (asynchronous) programming is like **multitasking for websites**. Instead of waiting for one task to finish before starting the next, websites can handle multiple operations simultaneously - like loading data, processing forms, and updating displays all at once.
 
 Think of it as:
+
 - **Restaurant kitchen** - Multiple orders cooking simultaneously
 - **Call center** - Agents handling multiple customers on hold
 - **Assembly line** - Different stages working in parallel
@@ -13,22 +14,25 @@ Think of it as:
 ## 🍽️ Real-World Analogy
 
 **Traditional Restaurant (Synchronous):**
+
 1. Take order from Customer 1
 2. Cook meal completely
 3. Serve Customer 1
 4. Only then take order from Customer 2
-Result: Long wait times, unhappy customers
+   Result: Long wait times, unhappy customers
 
 **Modern Restaurant (Asynchronous):**
+
 1. Take multiple orders simultaneously
 2. Kitchen works on all orders in parallel
 3. Serve meals as they're completed
 4. Take new orders while cooking continues
-Result: Faster service, satisfied customers
+   Result: Faster service, satisfied customers
 
 ## ⚡ Async Operations in Web Applications
 
 ### Data Loading
+
 ```javascript
 // Loading user profile data
 async function loadUserProfile(userId) {
@@ -37,16 +41,16 @@ async function loadUserProfile(userId) {
     const userPromise = fetch(`/api/users/${userId}`);
     const ordersPromise = fetch(`/api/users/${userId}/orders`);
     const preferencesPromise = fetch(`/api/users/${userId}/preferences`);
-    
+
     // Wait for all data to arrive
-    const [userResponse, ordersResponse, preferencesResponse] = 
+    const [userResponse, ordersResponse, preferencesResponse] =
       await Promise.all([userPromise, ordersPromise, preferencesPromise]);
-    
+
     // Process the data
     const user = await userResponse.json();
     const orders = await ordersResponse.json();
     const preferences = await preferencesResponse.json();
-    
+
     // Update the page
     displayUserProfile(user, orders, preferences);
   } catch (error) {
@@ -56,21 +60,22 @@ async function loadUserProfile(userId) {
 ```
 
 ### Form Submission
+
 ```javascript
 // Non-blocking form submission
 async function submitOrderForm(formData) {
   // Show loading state immediately
   showLoadingSpinner();
   disableSubmitButton();
-  
+
   try {
     // Submit form in background
     const response = await fetch('/api/orders', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     });
-    
+
     if (response.ok) {
       const result = await response.json();
       showSuccessMessage(`Order #${result.orderNumber} submitted!`);
@@ -90,19 +95,23 @@ async function submitOrderForm(formData) {
 ## 🎯 What This Means for Business Analysts
 
 ### 1. **Improved User Experience**
+
 ```markdown
 Without Async Programming:
+
 - User clicks "Submit" → Page freezes for 5 seconds → Response appears
 - Loading product list → Entire page blank until data loads
 - Uploading file → Browser locked until upload complete
 
 With Async Programming:
+
 - User clicks "Submit" → Immediate feedback → Continues using site
 - Loading product list → Shows skeleton/placeholder → Updates with data
 - Uploading file → Progress indicator → User can browse other sections
 ```
 
 ### 2. **Business Process Efficiency**
+
 ```javascript
 // Example: Order processing workflow
 async function processOrder(orderData) {
@@ -110,15 +119,15 @@ async function processOrder(orderData) {
   const inventoryCheck = checkInventory(orderData.items);
   const paymentProcessing = processPayment(orderData.payment);
   const shippingCalculation = calculateShipping(orderData.address);
-  
+
   try {
     // Wait for all operations to complete
     const [inventory, payment, shipping] = await Promise.all([
       inventoryCheck,
-      paymentProcessing, 
-      shippingCalculation
+      paymentProcessing,
+      shippingCalculation,
     ]);
-    
+
     if (inventory.available && payment.successful) {
       // Continue with order fulfillment
       await createOrder(orderData, shipping.cost);
@@ -134,15 +143,18 @@ async function processOrder(orderData) {
 ```
 
 ### 3. **Performance Benefits**
+
 ```markdown
 Performance Comparison:
 Synchronous Approach:
+
 - Load user data: 2 seconds
-- Load order history: 3 seconds  
+- Load order history: 3 seconds
 - Load preferences: 1 second
 - Total time: 6 seconds
 
 Asynchronous Approach:
+
 - Load all data simultaneously
 - Total time: 3 seconds (longest individual request)
 - Performance improvement: 50% faster
@@ -151,6 +163,7 @@ Asynchronous Approach:
 ## 📊 Common Async Patterns
 
 ### API Data Fetching
+
 ```javascript
 // Real-time search with debouncing
 let searchTimeout;
@@ -158,12 +171,14 @@ let searchTimeout;
 async function searchProducts(query) {
   // Clear previous search timeout
   clearTimeout(searchTimeout);
-  
+
   // Wait 300ms before searching (debounce)
   searchTimeout = setTimeout(async () => {
     try {
       showSearchSpinner();
-      const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+      const response = await fetch(
+        `/api/search?q=${encodeURIComponent(query)}`,
+      );
       const results = await response.json();
       displaySearchResults(results);
     } catch (error) {
@@ -176,11 +191,12 @@ async function searchProducts(query) {
 ```
 
 ### File Upload with Progress
+
 ```javascript
 async function uploadFile(file) {
   const formData = new FormData();
   formData.append('file', file);
-  
+
   try {
     const response = await fetch('/api/upload', {
       method: 'POST',
@@ -188,12 +204,12 @@ async function uploadFile(file) {
       // Track upload progress
       onUploadProgress: (progressEvent) => {
         const percentCompleted = Math.round(
-          (progressEvent.loaded * 100) / progressEvent.total
+          (progressEvent.loaded * 100) / progressEvent.total,
         );
         updateProgressBar(percentCompleted);
-      }
+      },
     });
-    
+
     if (response.ok) {
       const result = await response.json();
       showUploadSuccess(result.fileUrl);
@@ -205,17 +221,18 @@ async function uploadFile(file) {
 ```
 
 ### Real-time Updates
+
 ```javascript
 // Live notifications
 function setupRealTimeNotifications() {
   const eventSource = new EventSource('/api/notifications/stream');
-  
-  eventSource.onmessage = function(event) {
+
+  eventSource.onmessage = function (event) {
     const notification = JSON.parse(event.data);
     showNotification(notification.message, notification.type);
   };
-  
-  eventSource.onerror = function() {
+
+  eventSource.onerror = function () {
     console.log('Notification stream disconnected');
     // Attempt to reconnect after 5 seconds
     setTimeout(setupRealTimeNotifications, 5000);
@@ -243,8 +260,10 @@ A: Test with various network conditions, including slow connections and failures
 ## 🎯 What BAs Should Include in Requirements
 
 ### Async User Experience Requirements
+
 ```markdown
 ✅ Good Requirements:
+
 - "Search results must appear as user types with 300ms delay"
 - "Form submission must show loading state and disable button during processing"
 - "File upload must display progress indicator and estimated time remaining"
@@ -252,14 +271,17 @@ A: Test with various network conditions, including slow connections and failures
 - "Error messages must appear if operations fail after 10 seconds"
 
 ❌ Missing Async Considerations:
+
 - "Load user data" (no loading state specified)
 - "Submit form" (no error handling defined)
 - "Show search results" (no real-time behavior)
 ```
 
 ### Error Handling Requirements
+
 ```markdown
 Include in Requirements:
+
 - Loading states for all async operations
 - Timeout handling (what happens if operation takes too long)
 - Network failure recovery (retry mechanisms)
@@ -270,8 +292,10 @@ Include in Requirements:
 ## 🚦 Async Development Considerations
 
 ### Performance Planning
+
 ```markdown
 Async Performance Factors:
+
 - Network speed and reliability
 - Server response times
 - Data payload sizes
@@ -279,6 +303,7 @@ Async Performance Factors:
 - Mobile device capabilities
 
 Optimization Strategies:
+
 - Parallel data loading
 - Progressive data disclosure
 - Caching frequently accessed data
@@ -286,30 +311,30 @@ Optimization Strategies:
 ```
 
 ### User Communication
+
 ```javascript
 // Clear user feedback for async operations
 async function saveUserSettings(settings) {
   const statusMessage = document.getElementById('save-status');
-  
+
   try {
     statusMessage.textContent = 'Saving settings...';
     statusMessage.className = 'status-loading';
-    
+
     await fetch('/api/settings', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(settings)
+      body: JSON.stringify(settings),
     });
-    
+
     statusMessage.textContent = 'Settings saved successfully!';
     statusMessage.className = 'status-success';
-    
+
     // Clear message after 3 seconds
     setTimeout(() => {
       statusMessage.textContent = '';
       statusMessage.className = '';
     }, 3000);
-    
   } catch (error) {
     statusMessage.textContent = 'Failed to save settings. Please try again.';
     statusMessage.className = 'status-error';
@@ -320,12 +345,14 @@ async function saveUserSettings(settings) {
 ## 📈 Measuring Async Success
 
 ### Performance Metrics
+
 - **Time to First Byte** (server response speed)
 - **Time to Interactive** (when users can interact)
 - **Loading completion rate** (successful async operations)
 - **Error rates** (failed async operations)
 
 ### User Experience Metrics
+
 - **Perceived performance** (how fast site feels)
 - **Task completion rate** (users successfully completing flows)
 - **Bounce rate** (users leaving due to slow loading)
@@ -334,6 +361,7 @@ async function saveUserSettings(settings) {
 ## 🌟 Advanced Async Concepts
 
 ### Error Recovery
+
 ```javascript
 // Automatic retry with exponential backoff
 async function fetchWithRetry(url, options, maxRetries = 3) {
@@ -344,16 +372,17 @@ async function fetchWithRetry(url, options, maxRetries = 3) {
       throw new Error(`HTTP ${response.status}`);
     } catch (error) {
       if (attempt === maxRetries) throw error;
-      
+
       // Wait before retrying (exponential backoff)
       const delay = Math.pow(2, attempt) * 1000;
-      await new Promise(resolve => setTimeout(resolve, delay));
+      await new Promise((resolve) => setTimeout(resolve, delay));
     }
   }
 }
 ```
 
 ### Concurrent Operation Management
+
 ```javascript
 // Limit concurrent operations
 class RequestQueue {
@@ -362,22 +391,22 @@ class RequestQueue {
     this.running = 0;
     this.queue = [];
   }
-  
+
   async add(operation) {
     return new Promise((resolve, reject) => {
       this.queue.push({ operation, resolve, reject });
       this.process();
     });
   }
-  
+
   async process() {
     if (this.running >= this.maxConcurrent || this.queue.length === 0) {
       return;
     }
-    
+
     this.running++;
     const { operation, resolve, reject } = this.queue.shift();
-    
+
     try {
       const result = await operation();
       resolve(result);

@@ -5,6 +5,7 @@
 Debugging is like being a **detective for code**. When software doesn't work as expected, developers use debugging tools to find and fix the problem.
 
 Think of it as:
+
 - **Medical Diagnosis** - Finding what's wrong and treating it
 - **Car Mechanic** - Using tools to identify engine problems
 - **Quality Inspector** - Checking where the process went wrong
@@ -12,12 +13,14 @@ Think of it as:
 ## 🔍 Real-World Analogy
 
 **Fixing a Car:**
+
 - Car won't start (problem identified)
 - Check battery with multimeter (debugging tool)
 - Test spark plugs (step-by-step investigation)
 - Replace faulty part (fix the bug)
 
 **Debugging Software:**
+
 - Feature doesn't work (problem identified)
 - Use browser DevTools (debugging tool)
 - Step through code line by line (investigation)
@@ -26,11 +29,12 @@ Think of it as:
 ## 🛠️ Common Debugging Tools
 
 ### 1. Browser DevTools
+
 **What It Does:** Inspect web pages and find issues
 
 ```javascript
 // Example: Finding why a button doesn't work
-console.log("Button clicked"); // Check if event fires
+console.log('Button clicked'); // Check if event fires
 console.log(userData); // Check if data exists
 debugger; // Pause execution here
 ```
@@ -38,29 +42,31 @@ debugger; // Pause execution here
 **BA Translation:** Like X-ray vision for websites - shows what's happening behind the scenes.
 
 ### 2. Console Logging
+
 **What It Does:** Prints information to help track program flow
 
 ```javascript
 // Tracking user login process
-console.log("1. User clicked login button");
-console.log("2. Email:", userEmail);
-console.log("3. Calling authentication API");
-console.log("4. API response:", response);
+console.log('1. User clicked login button');
+console.log('2. Email:', userEmail);
+console.log('3. Calling authentication API');
+console.log('4. API response:', response);
 ```
 
 **BA Translation:** Like breadcrumbs in a forest - shows the path the code took.
 
 ### 3. Breakpoints
+
 **What It Does:** Pauses code execution at specific lines
 
 ```javascript
 function processPayment(amount, cardNumber) {
   debugger; // Execution stops here
-  
+
   // Developer can inspect variables:
   // - amount: $29.99
   // - cardNumber: **** **** **** 1234
-  
+
   const result = chargeCard(amount, cardNumber);
   return result;
 }
@@ -71,10 +77,11 @@ function processPayment(amount, cardNumber) {
 ## 🚨 Types of Bugs
 
 ### 1. Logic Errors
+
 ```javascript
 // Bug: Wrong calculation
 function calculateDiscount(price, percentage) {
-  return price + (price * percentage); // Should be minus!
+  return price + price * percentage; // Should be minus!
 }
 
 // Result: $100 item with 10% discount = $110 (wrong!)
@@ -82,6 +89,7 @@ function calculateDiscount(price, percentage) {
 ```
 
 ### 2. Runtime Errors
+
 ```javascript
 // Bug: Accessing undefined data
 function displayUserName(user) {
@@ -93,18 +101,19 @@ function displayUserName(user) {
   if (user && user.name) {
     return user.name.toUpperCase();
   }
-  return "Unknown User";
+  return 'Unknown User';
 }
 ```
 
 ### 3. Integration Errors
+
 ```javascript
 // Bug: API returns different format than expected
 // Expected: { status: "success", data: {...} }
 // Actual: { result: "ok", payload: {...} }
 
 // Code fails because it looks for 'status' but gets 'result'
-if (response.status === "success") {
+if (response.status === 'success') {
   // This never runs!
 }
 ```
@@ -112,20 +121,24 @@ if (response.status === "success") {
 ## 🎯 What This Means for Business Analysts
 
 ### 1. **Bug Impact Understanding**
+
 - **Critical bugs** stop core business functions
 - **Minor bugs** affect user experience
 - **Security bugs** expose sensitive data
 - **Performance bugs** slow down operations
 
 ### 2. **Timeline Implications**
+
 - **Simple bugs:** 30 minutes to 2 hours
 - **Complex bugs:** 1-3 days
 - **Integration bugs:** 3-7 days
 - **Legacy system bugs:** 1-2 weeks
 
 ### 3. **Cost Considerations**
+
 ```markdown
 Bug Fix Costs (Industry Average):
+
 - Development phase: $100
 - Testing phase: $1,000
 - Production phase: $10,000
@@ -137,10 +150,12 @@ Finding bugs early saves 90%+ of costs!
 ## 📊 Debugging Process
 
 ### 1. Problem Identification
+
 ```markdown
 User Report: "I can't complete my purchase"
 
 Developer Investigation:
+
 - When does it happen? (Always? Specific browsers?)
 - What error messages appear?
 - Can you reproduce it?
@@ -148,8 +163,10 @@ Developer Investigation:
 ```
 
 ### 2. Environment Replication
+
 ```markdown
 Debugging Environment Setup:
+
 - Same browser as user
 - Same data as user
 - Same network conditions
@@ -157,21 +174,24 @@ Debugging Environment Setup:
 ```
 
 ### 3. Step-by-Step Investigation
+
 ```javascript
 // Debugging payment flow
 function debugPaymentProcess() {
-  console.log("Step 1: Validate cart");
-  console.log("Step 2: Calculate total");
-  console.log("Step 3: Process payment");
-  console.log("Step 4: Send confirmation");
-  
+  console.log('Step 1: Validate cart');
+  console.log('Step 2: Calculate total');
+  console.log('Step 3: Process payment');
+  console.log('Step 4: Send confirmation');
+
   // Developer follows each step to find where it breaks
 }
 ```
 
 ### 4. Fix and Verify
+
 ```markdown
 Fix Process:
+
 1. Identify root cause
 2. Implement solution
 3. Test fix thoroughly
@@ -182,17 +202,19 @@ Fix Process:
 ## 🔧 Advanced Debugging Techniques
 
 ### Performance Debugging
+
 ```javascript
 // Finding slow operations
-console.time("Database Query");
+console.time('Database Query');
 const users = await database.getAllUsers();
-console.timeEnd("Database Query");
+console.timeEnd('Database Query');
 // Output: Database Query: 2.3 seconds (too slow!)
 
 // Solution: Add pagination or indexing
 ```
 
 ### Memory Debugging
+
 ```javascript
 // Finding memory leaks
 function trackMemoryUsage() {
@@ -205,48 +227,55 @@ setInterval(trackMemoryUsage, 5000);
 ```
 
 ### Network Debugging
+
 ```javascript
 // Finding API issues
 fetch('/api/users')
-  .then(response => {
-    console.log("Status:", response.status);
-    console.log("Headers:", response.headers);
+  .then((response) => {
+    console.log('Status:', response.status);
+    console.log('Headers:', response.headers);
     return response.json();
   })
-  .then(data => {
-    console.log("Response data:", data);
+  .then((data) => {
+    console.log('Response data:', data);
   })
-  .catch(error => {
-    console.error("Network error:", error);
+  .catch((error) => {
+    console.error('Network error:', error);
   });
 ```
 
 ## 🏢 Enterprise Debugging
 
 ### Production Debugging
+
 ```markdown
 Challenges:
+
 - Can't stop production systems for debugging
 - Limited access to production data
 - Need to debug without affecting users
 
 Solutions:
+
 - Logging systems (track what happened)
 - Error monitoring (automatic bug detection)
 - Staging environments (replica of production)
 ```
 
 ### Team Debugging Process
+
 ```markdown
 Bug Report Workflow:
+
 1. User reports issue → Support team
-2. Support reproduces → Development team  
+2. Support reproduces → Development team
 3. Developer debugs → Team lead review
 4. Fix implemented → QA testing
 5. Fix deployed → User verification
 ```
 
 ### Debugging Tools in Enterprise
+
 - **Application Performance Monitoring (APM)**
 - **Error Tracking Systems** (Sentry, Rollbar)
 - **Log Aggregation** (ELK Stack, Splunk)
@@ -272,21 +301,26 @@ A: Testing finds bugs, debugging fixes them. Both are essential but different ac
 ## 🎯 What BAs Should Include in Requirements
 
 ### Bug Prevention Requirements
+
 ```markdown
 ✅ Good Requirements:
+
 - "System must log all payment transaction attempts"
 - "Display clear error messages for invalid input"
 - "Provide fallback behavior when API is unavailable"
 - "Include comprehensive input validation"
 
 ❌ Missing Prevention:
+
 - "Process payments" (no error handling specified)
 - "Show user data" (no loading state specified)
 ```
 
 ### Debugging Support Requirements
+
 ```markdown
 Include in Requirements:
+
 - Error logging and monitoring
 - User-friendly error messages
 - Graceful failure handling
@@ -296,12 +330,14 @@ Include in Requirements:
 ## 🚦 Debugging Best Practices
 
 ### For Development Teams
+
 1. **Write debuggable code** - Clear variable names, good structure
 2. **Use proper logging** - Track important operations
 3. **Test thoroughly** - Multiple scenarios and edge cases
 4. **Document known issues** - Help future debugging
 
 ### For BA Teams
+
 1. **Include debugging time** in estimates (20-30% buffer)
 2. **Specify error handling** in requirements
 3. **Plan for monitoring** and logging needs
@@ -310,12 +346,14 @@ Include in Requirements:
 ## 📈 Measuring Debugging Effectiveness
 
 ### Key Metrics
+
 - **Mean Time to Detection (MTTD)** - How quickly bugs are found
 - **Mean Time to Resolution (MTTR)** - How quickly bugs are fixed
 - **Bug Escape Rate** - Bugs reaching production
 - **Customer Impact** - Revenue/users affected by bugs
 
 ### Success Indicators
+
 - ✅ 90% of bugs caught before production
 - ✅ Critical bugs fixed within 4 hours
 - ✅ Average debugging time under 2 hours
@@ -324,11 +362,13 @@ Include in Requirements:
 ## 🌟 Modern Debugging Trends
 
 ### AI-Assisted Debugging
+
 - **Automatic bug detection** using machine learning
 - **Suggested fixes** based on similar issues
 - **Predictive debugging** to prevent issues
 
 ### Real-Time Debugging
+
 - **Live debugging** in production (safely)
 - **Real-user monitoring** to catch edge cases
 - **Distributed tracing** for microservices

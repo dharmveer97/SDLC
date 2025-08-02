@@ -9,6 +9,7 @@ These practices will save you time, prevent problems, and make collaboration smo
 ### Write Clear Commit Messages
 
 #### ✅ Good Examples
+
 ```bash
 git commit -m "Add email validation to signup form"
 git commit -m "Fix mobile navigation menu not closing"
@@ -17,6 +18,7 @@ git commit -m "Remove deprecated payment gateway integration"
 ```
 
 #### ❌ Bad Examples
+
 ```bash
 git commit -m "fix"
 git commit -m "changes"
@@ -26,13 +28,14 @@ git commit -m "final version"
 ```
 
 ### Commit Message Template
+
 ```
 [Type]: [Brief description]
 
 Examples:
 Add: New feature or functionality
 Fix: Bug fixes
-Update: Modifications to existing features  
+Update: Modifications to existing features
 Remove: Deleted code or features
 Refactor: Code improvements without changing functionality
 Docs: Documentation changes
@@ -41,13 +44,14 @@ Test: Adding or updating tests
 ```
 
 ### Commit Frequency
+
 ```
 ✅ DO: Commit small, logical changes frequently
 ❌ DON'T: Save up a day's work in one massive commit
 
 Good example:
 - Commit 1: "Add user registration form HTML"
-- Commit 2: "Add form validation logic" 
+- Commit 2: "Add form validation logic"
 - Commit 3: "Style registration form"
 - Commit 4: "Add success/error messages"
 
@@ -58,15 +62,17 @@ Bad example:
 ## 🌿 Branch Strategy
 
 ### Branch Naming Convention
+
 ```
 feature/feature-name     → feature/user-profile
-bugfix/issue-description → bugfix/login-validation  
+bugfix/issue-description → bugfix/login-validation
 hotfix/critical-fix      → hotfix/security-patch
 release/version-number   → release/v1.2.0
 docs/documentation-type  → docs/api-guide
 ```
 
 ### Branch Lifecycle
+
 ```
 1. Create branch from main
 2. Work on feature/fix
@@ -78,6 +84,7 @@ docs/documentation-type  → docs/api-guide
 ```
 
 ### Keep Branches Focused
+
 ```
 ✅ One feature per branch
 - feature/user-login
@@ -91,14 +98,17 @@ docs/documentation-type  → docs/api-guide
 ## 🔄 Pull Request Guidelines
 
 ### PR Title and Description
+
 ```markdown
 Title: Add user authentication system
 
 ## Summary
-Implements complete user authentication including login, registration, 
+
+Implements complete user authentication including login, registration,
 and password reset functionality.
 
 ## Changes Made
+
 - Added login/registration forms
 - Implemented JWT token authentication
 - Created password reset workflow
@@ -106,17 +116,20 @@ and password reset functionality.
 - Updated API documentation
 
 ## Testing
+
 - [x] Unit tests for auth functions
 - [x] Integration tests for login flow
 - [x] Manual testing on dev environment
 - [x] Cross-browser testing completed
 
 ## Screenshots
+
 [Include relevant UI screenshots]
 
 ## Checklist
+
 - [x] Code follows style guidelines
-- [x] Self-review completed  
+- [x] Self-review completed
 - [x] Tests added/updated
 - [x] Documentation updated
 
@@ -125,6 +138,7 @@ Related to #125
 ```
 
 ### PR Size Guidelines
+
 ```
 ✅ Small PRs (under 300 lines)
 - Easier to review
@@ -132,7 +146,7 @@ Related to #125
 - Lower chance of bugs
 - Less likely to have conflicts
 
-❌ Large PRs (over 500 lines)  
+❌ Large PRs (over 500 lines)
 - Hard to review thoroughly
 - Takes longer to merge
 - More likely to have issues
@@ -142,10 +156,11 @@ Related to #125
 ## 🔒 Security Best Practices
 
 ### Never Commit Sensitive Information
+
 ```bash
 ❌ NEVER commit:
 - Passwords
-- API keys  
+- API keys
 - Database credentials
 - Private certificates
 - Personal information
@@ -158,6 +173,7 @@ Related to #125
 ```
 
 ### .gitignore File
+
 ```gitignore
 # Environment variables
 .env
@@ -188,6 +204,7 @@ private-keys/
 ```
 
 ### API Key Management
+
 ```javascript
 // ❌ BAD: Hard-coded in code
 const apiKey = "sk_live_abc123xyz789";
@@ -211,6 +228,7 @@ const config = {
 ## 📊 Repository Organization
 
 ### File Structure
+
 ```
 project-name/
 ├── README.md              ← Project overview
@@ -229,34 +247,42 @@ project-name/
 ```
 
 ### README.md Template
-```markdown
+
+````markdown
 # Project Name
 
 Brief description of what this project does.
 
 ## Features
+
 - Feature 1
 - Feature 2
 - Feature 3
 
 ## Installation
+
 ```bash
 npm install
 ```
+````
 
 ## Usage
+
 ```bash
 npm start
 ```
 
 ## Contributing
+
 1. Fork the repository
 2. Create feature branch
 3. Make changes
 4. Submit pull request
 
 ## License
+
 MIT License
+
 ```
 
 ## 👥 Collaboration Best Practices
@@ -265,7 +291,9 @@ MIT License
 
 #### For Authors (Who Submit PRs)
 ```
+
 ✅ DO:
+
 - Test your changes thoroughly
 - Write clear description
 - Keep changes focused
@@ -273,15 +301,19 @@ MIT License
 - Update based on suggestions
 
 ❌ DON'T:
+
 - Submit untested code
 - Ignore review comments
 - Mix unrelated changes
 - Take feedback personally
+
 ```
 
 #### For Reviewers
 ```
+
 ✅ DO:
+
 - Review promptly (within 24-48 hours)
 - Be constructive and specific
 - Test functionality if possible
@@ -289,21 +321,26 @@ MIT License
 - Approve when ready
 
 ❌ DON'T:
+
 - Just say "looks good" without reviewing
 - Be overly critical or rude
 - Request changes without explanation
 - Let PRs sit for days
+
 ```
 
 ### Communication Strategies
 ```
+
 GitHub Features for Communication:
+
 - @mentions for specific people
 - Issues for tracking problems/features
 - Discussions for general questions
 - Project boards for progress tracking
 - Milestones for release planning
-```
+
+````
 
 ## 🚨 Emergency Procedures
 
@@ -319,9 +356,10 @@ GitHub Features for Communication:
 7. Get expedited review
 8. Merge and deploy immediately
 9. Monitor production closely
-```
+````
 
 ### Rollback Process
+
 ```bash
 # If deployment causes issues
 1. git checkout main
@@ -333,6 +371,7 @@ GitHub Features for Communication:
 ```
 
 ### Accidental Main Branch Push
+
 ```bash
 # If you accidentally pushed bad code to main
 1. git revert <commit-hash>  # Undo the bad commit
@@ -344,12 +383,13 @@ GitHub Features for Communication:
 ## 📈 Workflow Optimization
 
 ### Daily Git Habits
+
 ```bash
 # Start of day
 git checkout main
 git pull origin main
 
-# Before starting new work  
+# Before starting new work
 git checkout -b feature/my-task
 
 # Throughout the day
@@ -362,6 +402,7 @@ git push origin feature/my-task  # Backup your work
 ```
 
 ### Weekly Maintenance
+
 ```bash
 # Clean up merged branches
 git branch --merged | grep -v main | xargs git branch -d
@@ -377,6 +418,7 @@ npm update
 ## 🎯 Team Standards
 
 ### Establish Team Rules
+
 ```markdown
 Team Git Guidelines:
 
@@ -391,12 +433,15 @@ Team Git Guidelines:
 ```
 
 ### Issue Templates
+
 ```markdown
 <!-- Bug Report Template -->
+
 **Bug Description**
 Clear description of the bug
 
 **Steps to Reproduce**
+
 1. Step one
 2. Step two
 3. Step three
@@ -404,11 +449,12 @@ Clear description of the bug
 **Expected Behavior**
 What should happen
 
-**Actual Behavior** 
+**Actual Behavior**
 What actually happens
 
 **Environment**
-- Browser: 
+
+- Browser:
 - OS:
 - Device:
 
@@ -419,6 +465,7 @@ Add screenshots if applicable
 ## 📊 Measuring Success
 
 ### Key Metrics to Track
+
 ```
 Code Quality:
 - Pull request review time
@@ -439,6 +486,7 @@ Process:
 ## 🎯 Tools and Integrations
 
 ### Useful GitHub Apps
+
 ```
 Code Quality:
 - CodeClimate (code analysis)
@@ -457,6 +505,7 @@ CI/CD:
 ```
 
 ### VS Code Extensions
+
 ```
 - GitLens (enhanced Git features)
 - GitHub Pull Requests (review PRs in editor)
@@ -467,6 +516,7 @@ CI/CD:
 ## 🎯 Key Takeaways
 
 ### For Business Analysts
+
 1. **Good practices reduce bugs** - Proper workflow catches issues early
 2. **Clear communication saves time** - Detailed issues and PRs prevent confusion
 3. **Small changes are safer** - Incremental updates are easier to review and fix
@@ -474,8 +524,9 @@ CI/CD:
 5. **Security is everyone's responsibility** - Never commit sensitive information
 
 ### For Everyone
+
 1. **Consistency is key** - Follow established patterns and conventions
-2. **Communication is crucial** - Over-communicate rather than under-communicate  
+2. **Communication is crucial** - Over-communicate rather than under-communicate
 3. **Quality over speed** - Take time to do things right the first time
 4. **Learn from mistakes** - Use post-mortems to improve processes
 5. **Stay updated** - Keep learning new Git features and best practices

@@ -3,12 +3,14 @@
 ## 🎯 What Is Backend Development?
 
 Think of a restaurant:
+
 - **Frontend** = Dining room (what customers see)
 - **Backend** = Kitchen (where the work happens)
 - **Database** = Pantry (where ingredients are stored)
 - **API** = Waiter (carries orders and food)
 
 Backend handles:
+
 - User authentication (login/logout)
 - Database operations
 - Business logic
@@ -22,10 +24,12 @@ Backend handles:
 ### What Is Node.js?
 
 Node.js lets you run JavaScript outside the browser. Before Node.js:
+
 - JavaScript = Only in browsers
 - Servers = PHP, Java, Python
 
 With Node.js:
+
 - JavaScript everywhere!
 - Same language for frontend and backend
 
@@ -33,7 +37,7 @@ With Node.js:
 
 ```javascript
 // hello.js
-console.log("Hello from Node.js!");
+console.log('Hello from Node.js!');
 
 // Run it:
 // node hello.js
@@ -110,14 +114,14 @@ npm install -g typescript
     "test": "jest"
   },
   "dependencies": {
-    "express": "^4.18.0",      // For building APIs
-    "mongoose": "^7.0.0",       // For MongoDB
-    "bcrypt": "^5.1.0",         // For password hashing
-    "jsonwebtoken": "^9.0.0"    // For authentication
+    "express": "^4.18.0", // For building APIs
+    "mongoose": "^7.0.0", // For MongoDB
+    "bcrypt": "^5.1.0", // For password hashing
+    "jsonwebtoken": "^9.0.0" // For authentication
   },
   "devDependencies": {
-    "nodemon": "^3.0.0",        // Auto-restart server
-    "jest": "^29.0.0"           // Testing
+    "nodemon": "^3.0.0", // Auto-restart server
+    "jest": "^29.0.0" // Testing
   }
 }
 ```
@@ -156,7 +160,7 @@ app.listen(port, () => {
 app.get('/users', (req, res) => {
   res.json([
     { id: 1, name: 'John' },
-    { id: 2, name: 'Jane' }
+    { id: 2, name: 'Jane' },
   ]);
 });
 
@@ -170,10 +174,10 @@ app.get('/users/:id', (req, res) => {
 app.post('/users', (req, res) => {
   const newUser = req.body;
   // Save to database...
-  res.status(201).json({ 
-    id: 3, 
+  res.status(201).json({
+    id: 3,
     ...newUser,
-    createdAt: new Date()
+    createdAt: new Date(),
   });
 });
 
@@ -182,10 +186,10 @@ app.put('/users/:id', (req, res) => {
   const userId = req.params.id;
   const updates = req.body;
   // Update in database...
-  res.json({ 
-    id: userId, 
+  res.json({
+    id: userId,
     ...updates,
-    updatedAt: new Date()
+    updatedAt: new Date(),
   });
 });
 
@@ -211,11 +215,11 @@ app.use((req, res, next) => {
 // Authentication middleware
 const authenticate = (req, res, next) => {
   const token = req.headers.authorization;
-  
+
   if (!token) {
     return res.status(401).json({ error: 'No token provided' });
   }
-  
+
   // Verify token...
   req.user = { id: 1, name: 'John' }; // Add user to request
   next();
@@ -238,6 +242,7 @@ app.use((err, req, res, next) => {
 ### What Is an API?
 
 API = Menu at a restaurant
+
 - Lists what's available
 - How to order it
 - What you'll get back
@@ -266,35 +271,35 @@ app.get('/api/posts', (req, res) => {
 
 // Get single post
 app.get('/api/posts/:id', (req, res) => {
-  const post = posts.find(p => p.id === parseInt(req.params.id));
-  
+  const post = posts.find((p) => p.id === parseInt(req.params.id));
+
   if (!post) {
     return res.status(404).json({ error: 'Post not found' });
   }
-  
+
   res.json(post);
 });
 
 // Create post
 app.post('/api/posts', (req, res) => {
   const { title, content, author } = req.body;
-  
+
   // Validation
   if (!title || !content) {
-    return res.status(400).json({ 
-      error: 'Title and content are required' 
+    return res.status(400).json({
+      error: 'Title and content are required',
     });
   }
-  
+
   const newPost = {
     id: posts.length + 1,
     title,
     content,
     author,
     createdAt: new Date(),
-    likes: 0
+    likes: 0,
   };
-  
+
   posts.push(newPost);
   res.status(201).json(newPost);
 });
@@ -308,8 +313,8 @@ res.json({
   success: true,
   data: {
     id: 1,
-    name: 'John'
-  }
+    name: 'John',
+  },
 });
 
 // Error response
@@ -318,8 +323,8 @@ res.status(400).json({
   error: {
     code: 'VALIDATION_ERROR',
     message: 'Email is required',
-    field: 'email'
-  }
+    field: 'email',
+  },
 });
 
 // Paginated response
@@ -330,8 +335,8 @@ res.json({
     page: 1,
     limit: 10,
     total: 100,
-    pages: 10
-  }
+    pages: 10,
+  },
 });
 ```
 
@@ -358,16 +363,16 @@ async function verifyPassword(password, hash) {
 // Usage
 app.post('/api/register', async (req, res) => {
   const { email, password } = req.body;
-  
+
   // Hash password
   const hashedPassword = await hashPassword(password);
-  
+
   // Save to database
   const user = {
     email,
-    password: hashedPassword
+    password: hashedPassword,
   };
-  
+
   // In real app, save to database
   res.json({ message: 'User registered successfully' });
 });
@@ -382,11 +387,7 @@ const JWT_SECRET = 'your-secret-key'; // In production, use environment variable
 
 // Create token
 function createToken(userId) {
-  return jwt.sign(
-    { userId }, 
-    JWT_SECRET, 
-    { expiresIn: '24h' }
-  );
+  return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '24h' });
 }
 
 // Verify token
@@ -401,54 +402,54 @@ function verifyToken(token) {
 // Login endpoint
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
-  
+
   // Find user (in real app, from database)
-  const user = users.find(u => u.email === email);
-  
+  const user = users.find((u) => u.email === email);
+
   if (!user) {
     return res.status(401).json({ error: 'Invalid credentials' });
   }
-  
+
   // Verify password
   const validPassword = await verifyPassword(password, user.password);
-  
+
   if (!validPassword) {
     return res.status(401).json({ error: 'Invalid credentials' });
   }
-  
+
   // Create token
   const token = createToken(user.id);
-  
-  res.json({ 
+
+  res.json({
     token,
     user: {
       id: user.id,
-      email: user.email
-    }
+      email: user.email,
+    },
   });
 });
 
 // Protected route middleware
 function authMiddleware(req, res, next) {
   const token = req.headers.authorization?.split(' ')[1]; // "Bearer TOKEN"
-  
+
   if (!token) {
     return res.status(401).json({ error: 'No token provided' });
   }
-  
+
   const decoded = verifyToken(token);
-  
+
   if (!decoded) {
     return res.status(401).json({ error: 'Invalid token' });
   }
-  
+
   req.userId = decoded.userId;
   next();
 }
 
 // Protected route
 app.get('/api/profile', authMiddleware, (req, res) => {
-  const user = users.find(u => u.id === req.userId);
+  const user = users.find((u) => u.id === req.userId);
   res.json({ user });
 });
 ```
@@ -473,36 +474,36 @@ const posts = [];
 app.post('/api/auth/register', async (req, res) => {
   try {
     const { email, password, name } = req.body;
-    
+
     // Check if user exists
-    if (users.find(u => u.email === email)) {
+    if (users.find((u) => u.email === email)) {
       return res.status(400).json({ error: 'User already exists' });
     }
-    
+
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
-    
+
     // Create user
     const user = {
       id: users.length + 1,
       email,
       password: hashedPassword,
       name,
-      createdAt: new Date()
+      createdAt: new Date(),
     };
-    
+
     users.push(user);
-    
+
     // Create token
     const token = jwt.sign({ userId: user.id }, 'secret', { expiresIn: '7d' });
-    
+
     res.status(201).json({
       token,
       user: {
         id: user.id,
         email: user.email,
-        name: user.name
-      }
+        name: user.name,
+      },
     });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
@@ -513,29 +514,29 @@ app.post('/api/auth/register', async (req, res) => {
 app.post('/api/auth/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    
+
     // Find user
-    const user = users.find(u => u.email === email);
+    const user = users.find((u) => u.email === email);
     if (!user) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
-    
+
     // Check password
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
-    
+
     // Create token
     const token = jwt.sign({ userId: user.id }, 'secret', { expiresIn: '7d' });
-    
+
     res.json({
       token,
       user: {
         id: user.id,
         email: user.email,
-        name: user.name
-      }
+        name: user.name,
+      },
     });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });
@@ -545,11 +546,11 @@ app.post('/api/auth/login', async (req, res) => {
 // Auth middleware
 const auth = (req, res, next) => {
   const token = req.headers.authorization?.split(' ')[1];
-  
+
   if (!token) {
     return res.status(401).json({ error: 'Access denied' });
   }
-  
+
   try {
     const decoded = jwt.verify(token, 'secret');
     req.userId = decoded.userId;
@@ -562,44 +563,44 @@ const auth = (req, res, next) => {
 // Create post
 app.post('/api/posts', auth, (req, res) => {
   const { title, content } = req.body;
-  
+
   const post = {
     id: posts.length + 1,
     title,
     content,
     authorId: req.userId,
     createdAt: new Date(),
-    likes: 0
+    likes: 0,
   };
-  
+
   posts.push(post);
   res.status(201).json(post);
 });
 
 // Get all posts
 app.get('/api/posts', (req, res) => {
-  const postsWithAuthors = posts.map(post => {
-    const author = users.find(u => u.id === post.authorId);
+  const postsWithAuthors = posts.map((post) => {
+    const author = users.find((u) => u.id === post.authorId);
     return {
       ...post,
       author: {
         id: author.id,
-        name: author.name
-      }
+        name: author.name,
+      },
     };
   });
-  
+
   res.json(postsWithAuthors);
 });
 
 // Like post
 app.post('/api/posts/:id/like', auth, (req, res) => {
-  const post = posts.find(p => p.id === parseInt(req.params.id));
-  
+  const post = posts.find((p) => p.id === parseInt(req.params.id));
+
   if (!post) {
     return res.status(404).json({ error: 'Post not found' });
   }
-  
+
   post.likes += 1;
   res.json({ likes: post.likes });
 });
@@ -613,17 +614,19 @@ app.listen(3000, () => {
 ## 🔄 REST vs GraphQL
 
 ### REST API
+
 ```javascript
 // Multiple endpoints
-GET /api/users/1
-GET /api/users/1/posts
-GET /api/users/1/comments
+GET / api / users / 1;
+GET / api / users / 1 / posts;
+GET / api / users / 1 / comments;
 
 // Fixed response structure
 // May over-fetch or under-fetch data
 ```
 
 ### GraphQL
+
 ```graphql
 # Single endpoint, flexible queries
 query {
@@ -655,20 +658,20 @@ const typeDefs = gql`
     email: String!
     posts: [Post!]!
   }
-  
+
   type Post {
     id: ID!
     title: String!
     content: String!
     author: User!
   }
-  
+
   type Query {
     users: [User!]!
     user(id: ID!): User
     posts: [Post!]!
   }
-  
+
   type Mutation {
     createUser(name: String!, email: String!): User!
     createPost(title: String!, content: String!, authorId: ID!): Post!
@@ -679,8 +682,8 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     users: () => users,
-    user: (_, { id }) => users.find(u => u.id === id),
-    posts: () => posts
+    user: (_, { id }) => users.find((u) => u.id === id),
+    posts: () => posts,
   },
   Mutation: {
     createUser: (_, { name, email }) => {
@@ -689,22 +692,22 @@ const resolvers = {
       return user;
     },
     createPost: (_, { title, content, authorId }) => {
-      const post = { 
-        id: String(posts.length + 1), 
-        title, 
-        content, 
-        authorId 
+      const post = {
+        id: String(posts.length + 1),
+        title,
+        content,
+        authorId,
       };
       posts.push(post);
       return post;
-    }
+    },
   },
   User: {
-    posts: (user) => posts.filter(p => p.authorId === user.id)
+    posts: (user) => posts.filter((p) => p.authorId === user.id),
   },
   Post: {
-    author: (post) => users.find(u => u.id === post.authorId)
-  }
+    author: (post) => users.find((u) => u.id === post.authorId),
+  },
 };
 
 // Setup
@@ -727,14 +730,16 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => {
     const uniqueName = Date.now() + '-' + file.originalname;
     cb(null, uniqueName);
-  }
+  },
 });
 
 // File filter
 const fileFilter = (req, file, cb) => {
   const allowedTypes = /jpeg|jpg|png|gif/;
-  const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
-  
+  const extname = allowedTypes.test(
+    path.extname(file.originalname).toLowerCase(),
+  );
+
   if (extname) {
     cb(null, true);
   } else {
@@ -742,10 +747,10 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-const upload = multer({ 
+const upload = multer({
   storage,
   fileFilter,
-  limits: { fileSize: 5 * 1024 * 1024 } // 5MB limit
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
 });
 
 // Upload endpoint
@@ -753,11 +758,11 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No file uploaded' });
   }
-  
+
   res.json({
     filename: req.file.filename,
     size: req.file.size,
-    url: `/uploads/${req.file.filename}`
+    url: `/uploads/${req.file.filename}`,
   });
 });
 ```
@@ -771,22 +776,22 @@ const io = new Server(server);
 // Connection
 io.on('connection', (socket) => {
   console.log('User connected:', socket.id);
-  
+
   // Join room
   socket.on('join-room', (roomId) => {
     socket.join(roomId);
     socket.to(roomId).emit('user-joined', socket.id);
   });
-  
+
   // Chat message
   socket.on('chat-message', (data) => {
     io.to(data.room).emit('message', {
       user: socket.id,
       text: data.text,
-      timestamp: new Date()
+      timestamp: new Date(),
     });
   });
-  
+
   // Disconnect
   socket.on('disconnect', () => {
     console.log('User disconnected:', socket.id);
@@ -803,23 +808,23 @@ const emailQueue = new Queue('email');
 // Process jobs
 emailQueue.process(async (job) => {
   const { to, subject, body } = job.data;
-  
+
   // Send email
   await sendEmail(to, subject, body);
-  
+
   return { sent: true };
 });
 
 // Add job to queue
 app.post('/api/send-welcome-email', async (req, res) => {
   const { userId } = req.body;
-  
+
   await emailQueue.add({
     to: user.email,
     subject: 'Welcome!',
-    body: 'Thanks for joining...'
+    body: 'Thanks for joining...',
   });
-  
+
   res.json({ message: 'Email queued' });
 });
 ```

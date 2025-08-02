@@ -7,9 +7,11 @@ This section shows practical examples of how JavaScript and TypeScript solve rea
 ## 🛒 E-commerce Shopping Cart
 
 ### Business Problem
+
 Customers need to add items to cart, modify quantities, and see updated totals without page reloads.
 
 ### Solution Example
+
 ```typescript
 interface CartItem {
   productId: string;
@@ -33,27 +35,31 @@ class CartManager {
     subtotal: 0,
     tax: 0,
     shipping: 0,
-    total: 0
+    total: 0,
   };
 
   addItem(product: CartItem): void {
-    const existingItem = this.cart.items.find(item => item.productId === product.productId);
-    
+    const existingItem = this.cart.items.find(
+      (item) => item.productId === product.productId,
+    );
+
     if (existingItem) {
       existingItem.quantity += product.quantity;
     } else {
       this.cart.items.push(product);
     }
-    
+
     this.updateTotals();
     this.saveToStorage();
     this.updateDisplay();
   }
 
   private updateTotals(): void {
-    this.cart.subtotal = this.cart.items.reduce((sum, item) => 
-      sum + (item.price * item.quantity), 0);
-    
+    this.cart.subtotal = this.cart.items.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0,
+    );
+
     this.cart.tax = this.cart.subtotal * 0.08; // 8% tax
     this.cart.shipping = this.cart.subtotal > 50 ? 0 : 9.99;
     this.cart.total = this.cart.subtotal + this.cart.tax + this.cart.shipping;
@@ -62,6 +68,7 @@ class CartManager {
 ```
 
 ### Business Value
+
 - **Instant feedback** - Customers see changes immediately
 - **Reduced bounce rate** - No page reloads keep users engaged
 - **Increased sales** - Easy cart management encourages more purchases
@@ -72,9 +79,11 @@ class CartManager {
 ## 📝 Dynamic Form Validation
 
 ### Business Problem
+
 Forms need real-time validation to guide users and prevent submission errors.
 
 ### Solution Example
+
 ```typescript
 interface ValidationRule {
   field: string;
@@ -87,34 +96,39 @@ class FormValidator {
     {
       field: 'email',
       validator: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
-      message: 'Please enter a valid email address'
+      message: 'Please enter a valid email address',
     },
     {
       field: 'phone',
       validator: (value) => /^\(\d{3}\) \d{3}-\d{4}$/.test(value),
-      message: 'Phone format: (123) 456-7890'
+      message: 'Phone format: (123) 456-7890',
     },
     {
       field: 'password',
-      validator: (value) => value.length >= 8 && /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(value),
-      message: 'Password must be 8+ characters with uppercase, lowercase, and number'
-    }
+      validator: (value) =>
+        value.length >= 8 && /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(value),
+      message:
+        'Password must be 8+ characters with uppercase, lowercase, and number',
+    },
   ];
 
-  validateField(fieldName: string, value: string): { isValid: boolean; message?: string } {
-    const rule = this.rules.find(r => r.field === fieldName);
+  validateField(
+    fieldName: string,
+    value: string,
+  ): { isValid: boolean; message?: string } {
+    const rule = this.rules.find((r) => r.field === fieldName);
     if (!rule) return { isValid: true };
 
     const isValid = rule.validator(value);
     return {
       isValid,
-      message: isValid ? undefined : rule.message
+      message: isValid ? undefined : rule.message,
     };
   }
 
   validateForm(formData: Record<string, string>): boolean {
     let isValid = true;
-    
+
     for (const rule of this.rules) {
       const result = this.validateField(rule.field, formData[rule.field] || '');
       if (!result.isValid) {
@@ -124,13 +138,14 @@ class FormValidator {
         this.clearError(rule.field);
       }
     }
-    
+
     return isValid;
   }
 }
 ```
 
 ### Business Value
+
 - **Higher conversion rates** - Users complete forms successfully
 - **Reduced support tickets** - Fewer invalid submissions
 - **Better data quality** - Validated data from the start
@@ -141,9 +156,11 @@ class FormValidator {
 ## 📊 Real-time Dashboard
 
 ### Business Problem
+
 Business stakeholders need live updates of key metrics without manual refresh.
 
 ### Solution Example
+
 ```typescript
 interface DashboardMetrics {
   totalSales: number;
@@ -159,16 +176,16 @@ class LiveDashboard {
     todayOrders: 0,
     activeUsers: 0,
     conversionRate: 0,
-    lastUpdated: new Date()
+    lastUpdated: new Date(),
   };
 
   async initialize(): Promise<void> {
     // Load initial data
     await this.refreshMetrics();
-    
+
     // Set up real-time updates every 30 seconds
     setInterval(() => this.refreshMetrics(), 30000);
-    
+
     // Set up WebSocket for instant notifications
     this.setupRealTimeUpdates();
   }
@@ -177,7 +194,7 @@ class LiveDashboard {
     try {
       const response = await fetch('/api/dashboard/metrics');
       const newMetrics: DashboardMetrics = await response.json();
-      
+
       this.updateMetrics(newMetrics);
       this.updateDisplay();
     } catch (error) {
@@ -187,14 +204,26 @@ class LiveDashboard {
 
   private updateMetrics(newMetrics: DashboardMetrics): void {
     // Animate changes for visual impact
-    this.animateChange('total-sales', this.metrics.totalSales, newMetrics.totalSales);
-    this.animateChange('today-orders', this.metrics.todayOrders, newMetrics.todayOrders);
-    
+    this.animateChange(
+      'total-sales',
+      this.metrics.totalSales,
+      newMetrics.totalSales,
+    );
+    this.animateChange(
+      'today-orders',
+      this.metrics.todayOrders,
+      newMetrics.todayOrders,
+    );
+
     this.metrics = newMetrics;
     this.metrics.lastUpdated = new Date();
   }
 
-  private animateChange(elementId: string, oldValue: number, newValue: number): void {
+  private animateChange(
+    elementId: string,
+    oldValue: number,
+    newValue: number,
+  ): void {
     const element = document.getElementById(elementId);
     if (!element) return;
 
@@ -211,8 +240,9 @@ class LiveDashboard {
 ```
 
 ### Business Value
+
 - **Real-time decision making** - Current data enables quick responses
-- **Increased engagement** - Stakeholders check dashboard more frequently  
+- **Increased engagement** - Stakeholders check dashboard more frequently
 - **Operational efficiency** - Immediate awareness of issues or opportunities
 - **Better performance tracking** - Live metrics show impact of changes
 
@@ -221,9 +251,11 @@ class LiveDashboard {
 ## 🔍 Advanced Search with Autocomplete
 
 ### Business Problem
+
 Users need to find products quickly with intelligent search suggestions.
 
 ### Solution Example
+
 ```typescript
 interface SearchResult {
   id: string;
@@ -245,12 +277,14 @@ class SmartSearch {
     }
 
     try {
-      const response = await fetch(`/api/search?q=${encodeURIComponent(query)}&limit=10`);
+      const response = await fetch(
+        `/api/search?q=${encodeURIComponent(query)}&limit=10`,
+      );
       const results: SearchResult[] = await response.json();
-      
+
       // Cache results for faster subsequent searches
       this.searchCache.set(query, results);
-      
+
       return results;
     } catch (error) {
       console.error('Search failed:', error);
@@ -261,7 +295,7 @@ class SmartSearch {
   setupAutoComplete(inputElement: HTMLInputElement): void {
     inputElement.addEventListener('input', (event) => {
       const query = (event.target as HTMLInputElement).value.trim();
-      
+
       // Clear previous timeout
       if (this.searchTimeout) {
         clearTimeout(this.searchTimeout);
@@ -279,27 +313,32 @@ class SmartSearch {
     });
   }
 
-  private showSuggestions(results: SearchResult[], inputElement: HTMLInputElement): void {
+  private showSuggestions(
+    results: SearchResult[],
+    inputElement: HTMLInputElement,
+  ): void {
     const suggestionsBox = document.getElementById('search-suggestions');
     if (!suggestionsBox) return;
 
     suggestionsBox.innerHTML = '';
-    
-    results.slice(0, 5).forEach(result => {
+
+    results.slice(0, 5).forEach((result) => {
       const suggestion = document.createElement('div');
       suggestion.className = 'search-suggestion';
       suggestion.innerHTML = `
-        <img src="${result.imageUrl}" alt="${result.title}" class="suggestion-image">
+        <img src="${result.imageUrl}" alt="${
+        result.title
+      }" class="suggestion-image">
         <div class="suggestion-content">
           <div class="suggestion-title">${result.title}</div>
           <div class="suggestion-price">$${result.price.toFixed(2)}</div>
         </div>
       `;
-      
+
       suggestion.addEventListener('click', () => {
         window.location.href = `/products/${result.id}`;
       });
-      
+
       suggestionsBox.appendChild(suggestion);
     });
 
@@ -309,6 +348,7 @@ class SmartSearch {
 ```
 
 ### Business Value
+
 - **Improved product discovery** - Users find items faster
 - **Higher search conversion** - Better results lead to more purchases
 - **Reduced bounce rate** - Users stay engaged with helpful suggestions
@@ -319,9 +359,11 @@ class SmartSearch {
 ## 📱 Progressive Web App Features
 
 ### Business Problem
+
 Mobile users expect app-like experiences with offline capabilities.
 
 ### Solution Example
+
 ```typescript
 class PWAManager {
   private isOnline = navigator.onLine;
@@ -399,6 +441,7 @@ class PWAManager {
 ```
 
 ### Business Value
+
 - **Increased mobile engagement** - App-like experience on web
 - **Better conversion rates** - Works even with poor connectivity
 - **Reduced app development costs** - One codebase for web and mobile
@@ -409,9 +452,11 @@ class PWAManager {
 ## 📈 A/B Testing Framework
 
 ### Business Problem
+
 Need to test different features and measure their impact on user behavior.
 
 ### Solution Example
+
 ```typescript
 interface ExperimentConfig {
   name: string;
@@ -427,14 +472,14 @@ class ABTestManager {
     const userId = this.getUserId();
     const variantIndex = this.getVariantForUser(userId, config);
     const variant = config.variants[variantIndex];
-    
+
     this.activeExperiments.set(config.name, variant);
-    
+
     // Track experiment participation
     this.trackEvent('experiment_started', {
       experiment: config.name,
       variant: variant,
-      userId: userId
+      userId: userId,
     });
 
     return variant;
@@ -448,7 +493,7 @@ class ABTestManager {
       experiment: experimentName,
       variant: variant,
       value: conversionValue || 1,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   }
 
@@ -456,7 +501,7 @@ class ABTestManager {
     // Consistent assignment based on user ID
     const hash = this.hashUserId(userId);
     const bucket = hash % 100;
-    
+
     let cumulativeWeight = 0;
     for (let i = 0; i < config.trafficSplit.length; i++) {
       cumulativeWeight += config.trafficSplit[i];
@@ -464,7 +509,7 @@ class ABTestManager {
         return i;
       }
     }
-    
+
     return 0; // Default to first variant
   }
 
@@ -474,7 +519,7 @@ class ABTestManager {
       name: 'checkout_button_text',
       variants: ['Buy Now', 'Complete Purchase', 'Order Now'],
       trafficSplit: [33, 33, 34], // Equal split
-      conversionGoal: 'purchase_completed'
+      conversionGoal: 'purchase_completed',
     });
 
     // Apply the variant
@@ -487,6 +532,7 @@ class ABTestManager {
 ```
 
 ### Business Value
+
 - **Data-driven decisions** - Measure actual impact of changes
 - **Increased conversion rates** - Optimize based on real user behavior
 - **Risk mitigation** - Test changes on subset before full rollout

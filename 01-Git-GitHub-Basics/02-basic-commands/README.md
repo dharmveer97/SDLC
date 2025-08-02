@@ -3,6 +3,7 @@
 ## Why BAs Should Understand Git Commands
 
 You don't need to use Git commands daily, but understanding them helps you:
+
 - **Communicate better** with developers
 - **Understand status updates** from your team
 - **Ask informed questions** about development progress
@@ -23,8 +24,9 @@ You don't need to use Git commands daily, but understanding them helps you:
 **BA impact:** Progress is tracked and can be reviewed
 
 **Example workflow you might hear:**
+
 1. "Working on user authentication"
-2. "Staging the auth changes" 
+2. "Staging the auth changes"
 3. "Committing with message: 'Add user login and password validation'"
 4. "Login feature is now committed and ready for review"
 
@@ -35,6 +37,7 @@ You don't need to use Git commands daily, but understanding them helps you:
 **BA impact:** Multiple features can be developed simultaneously without interference
 
 **Common branch names you'll hear:**
+
 - `main` or `master` - The stable, production-ready code
 - `develop` - Integration branch for testing features together
 - `feature/user-profile` - Working on user profile functionality
@@ -49,7 +52,8 @@ You don't need to use Git commands daily, but understanding them helps you:
 
 ## Git Status Updates (Decoding Developer Language)
 
-### When developers say:
+### When developers say
+
 - **"I'm working on a branch"** → They're developing a feature in isolation
 - **"Ready for code review"** → Feature is complete and needs peer review
 - **"Merge conflict"** → Two developers changed the same code, needs manual resolution
@@ -59,6 +63,7 @@ You don't need to use Git commands daily, but understanding them helps you:
 ## Common Git Workflows (What You'll Observe)
 
 ### Feature Development Workflow
+
 1. **Branch creation** - Developer starts new feature
 2. **Daily commits** - Progress checkpoints with descriptions
 3. **Testing** - Feature tested in isolation
@@ -67,6 +72,7 @@ You don't need to use Git commands daily, but understanding them helps you:
 6. **Deployment** - Feature goes live
 
 ### Bug Fix Workflow
+
 1. **Issue reported** - Bug identified and documented
 2. **Hotfix branch** - Emergency branch created
 3. **Quick fix** - Minimal changes to resolve issue
@@ -76,17 +82,20 @@ You don't need to use Git commands daily, but understanding them helps you:
 
 ## Questions BAs Can Ask Developers
 
-### About Progress:
+### About Progress
+
 - "Which features are currently on branches?"
 - "What's the status of the user-profile branch?"
 - "When will the payment feature be ready for merge?"
 
-### About Planning:
+### About Planning
+
 - "How many commits do you estimate for this feature?"
 - "Should we create separate branches for each user story?"
 - "What's our branching strategy for this release?"
 
-### About Issues:
+### About Issues
+
 - "Is there a merge conflict blocking the release?"
 - "Which branch should we test for the demo?"
 - "Are all features merged into the develop branch?"
@@ -94,16 +103,19 @@ You don't need to use Git commands daily, but understanding them helps you:
 ## How This Helps Your BA Work
 
 ### Better Requirements Writing
+
 - Understand that complex features may need multiple commits
 - Know that changes can be reviewed and refined
 - Realize that requirements changes can be tracked over time
 
 ### Improved Communication
+
 - Speak the same language as developers
 - Understand why some changes take longer (merge conflicts, code reviews)
 - Know when to expect features to be ready
 
 ### Enhanced Project Management
+
 - Track actual progress through commit history
 - Understand dependencies between features
 - Plan releases based on branch readiness
@@ -111,12 +123,14 @@ You don't need to use Git commands daily, but understanding them helps you:
 ## What You Don't Need to Do
 
 As a BA, you typically **don't need to:**
+
 - Run Git commands yourself
 - Resolve merge conflicts
 - Create branches or commits
 - Set up repositories
 
 **You might occasionally:**
+
 - Review pull requests for business logic
 - Update documentation in Git repositories
 - Track issues using GitHub's issue system

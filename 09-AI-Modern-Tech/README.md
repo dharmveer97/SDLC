@@ -3,6 +3,7 @@
 ## 🎯 What Is AI in Simple Terms?
 
 AI (Artificial Intelligence) is like teaching computers to:
+
 - **Understand** - Read and comprehend text
 - **Generate** - Write new content
 - **Reason** - Solve problems
@@ -13,19 +14,23 @@ Think of AI as a very smart assistant that can help with many tasks.
 ## 🧠 Types of AI for Developers
 
 ### 1. **Large Language Models (LLMs)**
+
 - ChatGPT, Claude, Gemini
 - Understand and generate text
 - Help with coding, writing, analysis
 
 ### 2. **Image Generation**
+
 - DALL-E, Midjourney, Stable Diffusion
 - Create images from text descriptions
 
 ### 3. **Code Assistants**
+
 - GitHub Copilot, Cursor, Tabnine
 - Suggest code as you type
 
 ### 4. **Specialized AI**
+
 - Voice (speech-to-text)
 - Translation
 - Data analysis
@@ -35,6 +40,7 @@ Think of AI as a very smart assistant that can help with many tasks.
 ### What Is Claude?
 
 Claude is Anthropic's AI assistant that can:
+
 - Write and debug code
 - Explain complex concepts
 - Review code for improvements
@@ -78,33 +84,31 @@ function validateEmail(email) {
 ```javascript
 const OpenAI = require('openai');
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 // Basic completion
 async function askGPT(prompt) {
   const completion = await openai.chat.completions.create({
-    model: "gpt-4",
+    model: 'gpt-4',
     messages: [
       {
-        role: "user",
-        content: prompt
-      }
-    ]
+        role: 'user',
+        content: prompt,
+      },
+    ],
   });
-  
+
   return completion.choices[0].message.content;
 }
 
 // Example: Generate product description
 const description = await askGPT(
-  "Write a product description for wireless headphones"
+  'Write a product description for wireless headphones',
 );
 
 // Example: Code generation
-const code = await askGPT(
-  "Write a Node.js function to upload files to S3"
-);
+const code = await askGPT('Write a Node.js function to upload files to S3');
 ```
 
 ### Building a Chatbot
@@ -115,37 +119,37 @@ class Chatbot {
   constructor() {
     this.messages = [
       {
-        role: "system",
-        content: "You are a helpful customer service assistant."
-      }
+        role: 'system',
+        content: 'You are a helpful customer service assistant.',
+      },
     ];
   }
-  
+
   async chat(userMessage) {
     // Add user message
     this.messages.push({
-      role: "user",
-      content: userMessage
+      role: 'user',
+      content: userMessage,
     });
-    
+
     // Get AI response
     const completion = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: 'gpt-4',
       messages: this.messages,
-      temperature: 0.7  // Controls randomness (0-2)
+      temperature: 0.7, // Controls randomness (0-2)
     });
-    
+
     const aiResponse = completion.choices[0].message;
     this.messages.push(aiResponse);
-    
+
     return aiResponse.content;
   }
 }
 
 // Usage
 const bot = new Chatbot();
-const response1 = await bot.chat("What are your hours?");
-const response2 = await bot.chat("Do you ship internationally?");
+const response1 = await bot.chat('What are your hours?');
+const response2 = await bot.chat('Do you ship internationally?');
 ```
 
 ## 🔗 Integrating AI into Applications
@@ -155,15 +159,15 @@ const response2 = await bot.chat("Do you ship internationally?");
 ```javascript
 // Blog post generator
 async function generateBlogPost(topic) {
-  const prompt = `Write a 500-word blog post about ${topic}. 
+  const prompt = `Write a 500-word blog post about ${topic}.
     Include an introduction, 3 main points, and a conclusion.`;
-  
+
   const content = await askGPT(prompt);
-  
+
   return {
     title: `Everything You Need to Know About ${topic}`,
     content: content,
-    generatedAt: new Date()
+    generatedAt: new Date(),
   };
 }
 
@@ -171,7 +175,7 @@ async function generateBlogPost(topic) {
 async function generateProductNames(description) {
   const prompt = `Generate 5 creative product names for: ${description}`;
   const names = await askGPT(prompt);
-  return names.split('\n').filter(name => name.trim());
+  return names.split('\n').filter((name) => name.trim());
 }
 ```
 
@@ -185,10 +189,10 @@ async function reviewCode(code) {
     2. Performance issues
     3. Security concerns
     4. Best practices
-    
+
     Code:
     ${code}`;
-  
+
   return await askGPT(prompt);
 }
 
@@ -205,26 +209,26 @@ async function generateDocs(code) {
 // Semantic search using embeddings
 async function createEmbedding(text) {
   const response = await openai.embeddings.create({
-    model: "text-embedding-ada-002",
-    input: text
+    model: 'text-embedding-ada-002',
+    input: text,
   });
-  
+
   return response.data[0].embedding;
 }
 
 // Find similar content
 async function findSimilar(query, documents) {
   const queryEmbedding = await createEmbedding(query);
-  
+
   // Calculate similarity for each document
   const results = await Promise.all(
     documents.map(async (doc) => {
       const docEmbedding = await createEmbedding(doc.content);
       const similarity = cosineSimilarity(queryEmbedding, docEmbedding);
       return { document: doc, similarity };
-    })
+    }),
   );
-  
+
   // Sort by similarity
   return results.sort((a, b) => b.similarity - a.similarity);
 }
@@ -235,6 +239,7 @@ async function findSimilar(query, documents) {
 ### What Are AI Agents?
 
 AI Agents are programs that can:
+
 - Make decisions
 - Use tools
 - Complete multi-step tasks
@@ -254,32 +259,32 @@ class AIAgent {
       search: async (query) => {
         // Search the web
         return `Results for: ${query}`;
-      }
+      },
     };
   }
-  
+
   async process(userRequest) {
     // Understand what the user wants
     const analysis = await askGPT(`
       Analyze this request and determine which tools to use:
       "${userRequest}"
-      
+
       Available tools: calculator, weather, search
-      
+
       Respond with JSON: { tool: "name", params: "..." }
     `);
-    
+
     const { tool, params } = JSON.parse(analysis);
-    
+
     // Use the appropriate tool
     if (this.tools[tool]) {
       const result = await this.tools[tool](params);
-      
+
       // Generate final response
       return await askGPT(`
         The user asked: "${userRequest}"
         Tool result: ${result}
-        
+
         Provide a helpful response.
       `);
     }
@@ -299,6 +304,7 @@ const response = await agent.process("What's the weather in Boston?");
 RAG = Give AI access to your specific data
 
 Instead of relying only on training data, RAG:
+
 1. Searches your documents
 2. Finds relevant information
 3. Uses it to answer questions
@@ -311,42 +317,40 @@ class RAGSystem {
   constructor() {
     this.documents = [];
   }
-  
+
   async addDocument(content, metadata) {
     const embedding = await createEmbedding(content);
     this.documents.push({
       content,
       metadata,
-      embedding
+      embedding,
     });
   }
-  
+
   async query(question) {
     // Find relevant documents
     const questionEmbedding = await createEmbedding(question);
-    
+
     const relevant = this.documents
-      .map(doc => ({
+      .map((doc) => ({
         ...doc,
-        similarity: cosineSimilarity(questionEmbedding, doc.embedding)
+        similarity: cosineSimilarity(questionEmbedding, doc.embedding),
       }))
       .sort((a, b) => b.similarity - a.similarity)
       .slice(0, 3); // Top 3 most relevant
-    
+
     // Build context
-    const context = relevant
-      .map(doc => doc.content)
-      .join('\n\n');
-    
+    const context = relevant.map((doc) => doc.content).join('\n\n');
+
     // Generate answer using context
     const prompt = `
       Context: ${context}
-      
+
       Question: ${question}
-      
+
       Answer based on the context provided.
     `;
-    
+
     return await askGPT(prompt);
   }
 }
@@ -355,13 +359,13 @@ class RAGSystem {
 const rag = new RAGSystem();
 
 // Add company documentation
-await rag.addDocument(
-  "Our return policy allows returns within 30 days...",
-  { type: "policy", topic: "returns" }
-);
+await rag.addDocument('Our return policy allows returns within 30 days...', {
+  type: 'policy',
+  topic: 'returns',
+});
 
 // Query the system
-const answer = await rag.query("What is your return policy?");
+const answer = await rag.query('What is your return policy?');
 ```
 
 ## 🗄️ Vector Databases
@@ -371,6 +375,7 @@ const answer = await rag.query("What is your return policy?");
 Vector databases store embeddings (number arrays) and find similar ones quickly.
 
 Think of it like:
+
 - Regular database: Find exact matches
 - Vector database: Find similar meanings
 
@@ -383,7 +388,7 @@ const { PineconeClient } = require('@pinecone-database/pinecone');
 const pinecone = new PineconeClient();
 await pinecone.init({
   apiKey: process.env.PINECONE_API_KEY,
-  environment: 'us-east-1'
+  environment: 'us-east-1',
 });
 
 const index = pinecone.Index('my-index');
@@ -396,21 +401,21 @@ await index.upsert({
       values: embedding, // Array of numbers
       metadata: {
         title: 'Product Manual',
-        category: 'documentation'
-      }
-    }
-  ]
+        category: 'documentation',
+      },
+    },
+  ],
 });
 
 // Search similar
 const queryResponse = await index.query({
   vector: queryEmbedding,
   topK: 5,
-  includeMetadata: true
+  includeMetadata: true,
 });
 
 // Results sorted by similarity
-queryResponse.matches.forEach(match => {
+queryResponse.matches.forEach((match) => {
   console.log(`Score: ${match.score}, Title: ${match.metadata.title}`);
 });
 ```
@@ -423,33 +428,33 @@ queryResponse.matches.forEach(match => {
 // Generate images with OpenAI
 async function generateImage(prompt) {
   const response = await openai.images.generate({
-    model: "dall-e-3",
+    model: 'dall-e-3',
     prompt: prompt,
     n: 1,
-    size: "1024x1024"
+    size: '1024x1024',
   });
-  
+
   return response.data[0].url;
 }
 
 // Example: Generate product images
 const imageUrl = await generateImage(
-  "A modern minimalist coffee mug on a wooden table, " +
-  "soft morning light, professional product photography"
+  'A modern minimalist coffee mug on a wooden table, ' +
+    'soft morning light, professional product photography',
 );
 
 // Variations
 async function createVariations(imageUrl) {
   // Download image first
   const imageBuffer = await downloadImage(imageUrl);
-  
+
   const response = await openai.images.createVariation({
     image: imageBuffer,
     n: 3,
-    size: "1024x1024"
+    size: '1024x1024',
   });
-  
-  return response.data.map(img => img.url);
+
+  return response.data.map((img) => img.url);
 }
 ```
 
@@ -458,6 +463,7 @@ async function createVariations(imageUrl) {
 ### 1. **Cursor** - AI Code Editor
 
 Cursor is VS Code + AI built-in:
+
 - Write code with AI
 - Chat with your codebase
 - Fix bugs automatically
@@ -486,13 +492,13 @@ import { OpenAIStream, StreamingTextResponse } from 'ai';
 // Streaming responses in Next.js
 export async function POST(req) {
   const { messages } = await req.json();
-  
+
   const response = await openai.chat.completions.create({
     model: 'gpt-4',
     stream: true,
-    messages
+    messages,
   });
-  
+
   const stream = OpenAIStream(response);
   return new StreamingTextResponse(stream);
 }
@@ -515,8 +521,8 @@ await index.saveObjects([
     name: 'iPhone 15',
     description: 'Latest Apple smartphone',
     price: 999,
-    category: 'Electronics'
-  }
+    category: 'Electronics',
+  },
 ]);
 
 // Search with typo tolerance
@@ -525,7 +531,7 @@ const results = await index.search('iphon'); // Typo!
 
 // Faceted search
 const results = await index.search('phone', {
-  facetFilters: ['category:Electronics', 'price<1000']
+  facetFilters: ['category:Electronics', 'price<1000'],
 });
 ```
 
@@ -536,7 +542,7 @@ const Typesense = require('typesense');
 
 const client = new Typesense.Client({
   nodes: [{ host: 'localhost', port: 8108, protocol: 'http' }],
-  apiKey: 'xyz'
+  apiKey: 'xyz',
 });
 
 // Create collection (like table)
@@ -545,18 +551,16 @@ await client.collections().create({
   fields: [
     { name: 'name', type: 'string' },
     { name: 'description', type: 'string' },
-    { name: 'price', type: 'float' }
-  ]
+    { name: 'price', type: 'float' },
+  ],
 });
 
 // Search with AI features
-const results = await client.collections('products')
-  .documents()
-  .search({
-    q: 'wireless headphones',
-    query_by: 'name,description',
-    sort_by: 'price:asc'
-  });
+const results = await client.collections('products').documents().search({
+  q: 'wireless headphones',
+  query_by: 'name,description',
+  sort_by: 'price:asc',
+});
 ```
 
 ## 🐍 Python in AI Development
@@ -564,6 +568,7 @@ const results = await client.collections('products')
 ### Why Python for AI?
 
 Python is the main language for AI because:
+
 - Simple syntax
 - Powerful libraries
 - AI frameworks support
@@ -592,7 +597,7 @@ class Product:
     def __init__(self, name, price):
         self.name = name
         self.price = price
-    
+
     def display(self):
         print(f"{self.name}: ${self.price}")
 ```
@@ -632,25 +637,25 @@ response = conversation.predict(input="Tell me about AI")
 class SupportBot {
   constructor() {
     this.context = {
-      companyName: "TechCorp",
-      supportEmail: "support@techcorp.com",
-      businessHours: "9 AM - 5 PM EST"
+      companyName: 'TechCorp',
+      supportEmail: 'support@techcorp.com',
+      businessHours: '9 AM - 5 PM EST',
     };
   }
-  
+
   async handleQuery(userMessage) {
     const prompt = `
       You are a customer support agent for ${this.context.companyName}.
-      
+
       Context:
       - Support email: ${this.context.supportEmail}
       - Business hours: ${this.context.businessHours}
-      
+
       Customer message: "${userMessage}"
-      
+
       Provide a helpful, professional response.
     `;
-    
+
     return await askGPT(prompt);
   }
 }
@@ -662,15 +667,15 @@ class SupportBot {
 async function documentAPI(code) {
   const prompt = `
     Generate OpenAPI/Swagger documentation for this Express.js API:
-    
+
     ${code}
-    
+
     Include:
     - Endpoint descriptions
     - Request/response schemas
     - Example requests
   `;
-  
+
   const documentation = await askGPT(prompt);
   return documentation;
 }
@@ -681,19 +686,19 @@ async function documentAPI(code) {
 ```javascript
 async function moderateContent(text) {
   const response = await openai.moderations.create({
-    input: text
+    input: text,
   });
-  
+
   const results = response.results[0];
-  
+
   if (results.flagged) {
     return {
       allowed: false,
       categories: results.categories,
-      reason: "Content violates community guidelines"
+      reason: 'Content violates community guidelines',
     };
   }
-  
+
   return { allowed: true };
 }
 ```
@@ -703,15 +708,18 @@ async function moderateContent(text) {
 ### Emerging Trends
 
 1. **AI Pair Programming**
+
    - AI writes code alongside you
    - Suggests architecture decisions
    - Automated testing
 
 2. **Natural Language to Code**
+
    - Describe what you want
    - AI builds entire features
 
 3. **AI DevOps**
+
    - Automated deployment
    - Performance optimization
    - Bug prediction

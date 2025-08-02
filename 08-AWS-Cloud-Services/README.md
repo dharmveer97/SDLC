@@ -3,10 +3,12 @@
 ## 🎯 What Is Cloud Computing?
 
 Think of cloud computing like renting vs buying:
+
 - **Traditional**: Buy a car (own servers)
 - **Cloud**: Use Uber (rent servers)
 
 You get:
+
 - No upfront costs
 - Pay only for what you use
 - Scale up or down instantly
@@ -15,6 +17,7 @@ You get:
 ## 🌍 AWS Overview
 
 AWS (Amazon Web Services) is like a massive tech mall where you can rent:
+
 - Computers (EC2)
 - Storage units (S3)
 - Databases (RDS, DynamoDB)
@@ -40,6 +43,7 @@ World
 S3 = Unlimited Google Drive for developers
 
 Use cases:
+
 - Store images, videos, files
 - Host static websites
 - Backup data
@@ -68,9 +72,9 @@ async function uploadFile(fileName, fileContent) {
     Bucket: 'my-app-bucket',
     Key: `uploads/${fileName}`,
     Body: fileContent,
-    ContentType: 'image/jpeg'
+    ContentType: 'image/jpeg',
   };
-  
+
   const result = await s3.upload(params).promise();
   return result.Location; // URL of uploaded file
 }
@@ -79,9 +83,9 @@ async function uploadFile(fileName, fileContent) {
 async function downloadFile(fileName) {
   const params = {
     Bucket: 'my-app-bucket',
-    Key: `uploads/${fileName}`
+    Key: `uploads/${fileName}`,
   };
-  
+
   const data = await s3.getObject(params).promise();
   return data.Body;
 }
@@ -91,9 +95,9 @@ function getSignedUrl(fileName, expiresIn = 3600) {
   const params = {
     Bucket: 'my-app-bucket',
     Key: fileName,
-    Expires: expiresIn // Seconds
+    Expires: expiresIn, // Seconds
   };
-  
+
   return s3.getSignedUrl('getObject', params);
 }
 
@@ -101,9 +105,9 @@ function getSignedUrl(fileName, expiresIn = 3600) {
 async function deleteFile(fileName) {
   const params = {
     Bucket: 'my-app-bucket',
-    Key: fileName
+    Key: fileName,
   };
-  
+
   await s3.deleteObject(params).promise();
 }
 ```
@@ -139,6 +143,7 @@ async function deleteFile(fileName) {
 EC2 = Renting computers in the cloud
 
 Like having a computer that:
+
 - Lives in Amazon's data center
 - You can access from anywhere
 - Can be turned on/off anytime
@@ -200,6 +205,7 @@ Load Balancer
 Lambda = Code that runs without servers
 
 Like having a butler who:
+
 - Only works when called
 - You pay per task
 - No need to manage them
@@ -211,16 +217,16 @@ Like having a butler who:
 // Lambda function
 exports.handler = async (event) => {
   console.log('Event:', event);
-  
+
   // Process the event
   const name = event.name || 'World';
-  
+
   // Return response
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: `Hello ${name}!`
-    })
+      message: `Hello ${name}!`,
+    }),
   };
 };
 ```
@@ -248,26 +254,28 @@ exports.handler = async (event) => {
   // Get the uploaded image
   const bucket = event.Records[0].s3.bucket.name;
   const key = event.Records[0].s3.object.key;
-  
+
   // Download from S3
-  const image = await s3.getObject({
-    Bucket: bucket,
-    Key: key
-  }).promise();
-  
+  const image = await s3
+    .getObject({
+      Bucket: bucket,
+      Key: key,
+    })
+    .promise();
+
   // Resize image
-  const resized = await sharp(image.Body)
-    .resize(200, 200)
-    .toBuffer();
-  
+  const resized = await sharp(image.Body).resize(200, 200).toBuffer();
+
   // Upload thumbnail
-  await s3.putObject({
-    Bucket: bucket,
-    Key: `thumbnails/${key}`,
-    Body: resized,
-    ContentType: 'image/jpeg'
-  }).promise();
-  
+  await s3
+    .putObject({
+      Bucket: bucket,
+      Key: `thumbnails/${key}`,
+      Body: resized,
+      ContentType: 'image/jpeg',
+    })
+    .promise();
+
   return 'Thumbnail created';
 };
 ```
@@ -288,6 +296,7 @@ Your responsibility:
 ```
 
 **Example**: Running Node.js on EC2
+
 ```javascript
 // Always running, always costing money
 const express = require('express');
@@ -312,6 +321,7 @@ AWS responsibility:
 ```
 
 **Example**: Same API with Lambda
+
 ```javascript
 // Only runs when called
 exports.handler = async (event) => {
@@ -325,6 +335,7 @@ exports.handler = async (event) => {
 ### When to Use What?
 
 **Use Serverless when:**
+
 - Sporadic traffic
 - Event-driven tasks
 - Microservices
@@ -332,6 +343,7 @@ exports.handler = async (event) => {
 - Quick prototypes
 
 **Use Server-full when:**
+
 - Constant high traffic
 - Long-running processes
 - WebSocket connections
@@ -350,11 +362,11 @@ async function sendEmail(to, subject, body) {
   const params = {
     Source: 'noreply@yourapp.com',
     Destination: {
-      ToAddresses: [to]
+      ToAddresses: [to],
     },
     Message: {
       Subject: {
-        Data: subject
+        Data: subject,
       },
       Body: {
         Html: {
@@ -365,12 +377,12 @@ async function sendEmail(to, subject, body) {
                 <p>${body}</p>
               </body>
             </html>
-          `
-        }
-      }
-    }
+          `,
+        },
+      },
+    },
   };
-  
+
   await ses.sendEmail(params).promise();
 }
 
@@ -378,7 +390,7 @@ async function sendEmail(to, subject, body) {
 await sendEmail(
   'user@example.com',
   'Welcome to our app!',
-  'Thanks for signing up...'
+  'Thanks for signing up...',
 );
 ```
 
@@ -386,31 +398,35 @@ await sendEmail(
 
 ```javascript
 // Create template
-await ses.createTemplate({
-  Template: {
-    TemplateName: 'WelcomeEmail',
-    SubjectPart: 'Welcome {{name}}!',
-    HtmlPart: `
+await ses
+  .createTemplate({
+    Template: {
+      TemplateName: 'WelcomeEmail',
+      SubjectPart: 'Welcome {{name}}!',
+      HtmlPart: `
       <h1>Welcome {{name}}!</h1>
       <p>Thanks for joining {{company}}.</p>
       <a href="{{link}}">Get Started</a>
-    `
-  }
-}).promise();
+    `,
+    },
+  })
+  .promise();
 
 // Send using template
-await ses.sendTemplatedEmail({
-  Source: 'noreply@yourapp.com',
-  Destination: {
-    ToAddresses: ['user@example.com']
-  },
-  Template: 'WelcomeEmail',
-  TemplateData: JSON.stringify({
-    name: 'John',
-    company: 'YourApp',
-    link: 'https://yourapp.com/start'
+await ses
+  .sendTemplatedEmail({
+    Source: 'noreply@yourapp.com',
+    Destination: {
+      ToAddresses: ['user@example.com'],
+    },
+    Template: 'WelcomeEmail',
+    TemplateData: JSON.stringify({
+      name: 'John',
+      company: 'YourApp',
+      link: 'https://yourapp.com/start',
+    }),
   })
-}).promise();
+  .promise();
 ```
 
 ## 🌐 Route 53 (DNS Service)
@@ -420,6 +436,7 @@ await ses.sendTemplatedEmail({
 Route 53 = Phone book for the internet
 
 Converts:
+
 - `yourapp.com` → `54.123.45.67` (IP address)
 
 ### DNS Record Types
@@ -455,6 +472,7 @@ CNAME Record:
 Amplify = All-in-one platform for web/mobile apps
 
 Includes:
+
 - Hosting
 - Authentication
 - APIs
@@ -500,7 +518,7 @@ async function signUp(email, password) {
     const { user } = await Auth.signUp({
       username: email,
       password,
-      attributes: { email }
+      attributes: { email },
     });
     return user;
   } catch (error) {
@@ -534,21 +552,21 @@ async function getPosts() {
 exports.handler = async (event) => {
   const method = event.httpMethod;
   const path = event.path;
-  
+
   // Route requests
   if (method === 'GET' && path === '/users') {
     return {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({
-        users: ['John', 'Jane', 'Bob']
-      })
+        users: ['John', 'Jane', 'Bob'],
+      }),
     };
   }
-  
+
   if (method === 'POST' && path === '/users') {
     const body = JSON.parse(event.body);
     // Create user...
@@ -556,16 +574,16 @@ exports.handler = async (event) => {
       statusCode: 201,
       body: JSON.stringify({
         message: 'User created',
-        user: body
-      })
+        user: body,
+      }),
     };
   }
-  
+
   return {
     statusCode: 404,
     body: JSON.stringify({
-      error: 'Not found'
-    })
+      error: 'Not found',
+    }),
   };
 };
 ```
@@ -586,10 +604,10 @@ async function createUser(user) {
       userId: user.id,
       email: user.email,
       name: user.name,
-      createdAt: new Date().toISOString()
-    }
+      createdAt: new Date().toISOString(),
+    },
   };
-  
+
   await dynamodb.put(params).promise();
 }
 
@@ -597,9 +615,9 @@ async function createUser(user) {
 async function getUser(userId) {
   const params = {
     TableName: 'Users',
-    Key: { userId }
+    Key: { userId },
   };
-  
+
   const result = await dynamodb.get(params).promise();
   return result.Item;
 }
@@ -610,10 +628,10 @@ async function getUserPosts(userId) {
     TableName: 'Posts',
     KeyConditionExpression: 'userId = :userId',
     ExpressionAttributeValues: {
-      ':userId': userId
-    }
+      ':userId': userId,
+    },
   };
-  
+
   const result = await dynamodb.query(params).promise();
   return result.Items;
 }
@@ -625,14 +643,14 @@ async function updateUser(userId, updates) {
     Key: { userId },
     UpdateExpression: 'SET #name = :name, updatedAt = :updatedAt',
     ExpressionAttributeNames: {
-      '#name': 'name'
+      '#name': 'name',
     },
     ExpressionAttributeValues: {
       ':name': updates.name,
-      ':updatedAt': new Date().toISOString()
-    }
+      ':updatedAt': new Date().toISOString(),
+    },
   };
-  
+
   await dynamodb.update(params).promise();
 }
 ```
@@ -644,6 +662,7 @@ async function updateUser(userId, updates) {
 IAM = Security guard for AWS
 
 Controls:
+
 - Who can access (Users)
 - What they can access (Permissions)
 - How they access (Policies)
@@ -656,10 +675,7 @@ Controls:
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": [
-        "s3:GetObject",
-        "s3:PutObject"
-      ],
+      "Action": ["s3:GetObject", "s3:PutObject"],
       "Resource": "arn:aws:s3:::my-bucket/*"
     },
     {
@@ -688,11 +704,11 @@ async function trackMetric(metricName, value) {
         MetricName: metricName,
         Value: value,
         Unit: 'Count',
-        Timestamp: new Date()
-      }
-    ]
+        Timestamp: new Date(),
+      },
+    ],
   };
-  
+
   await cloudwatch.putMetricData(params).promise();
 }
 

@@ -5,6 +5,7 @@
 TypeScript is **JavaScript with safety features**. It's like having a spell-checker and grammar assistant for code - catching errors before they become problems and making code easier to understand and maintain.
 
 Think of it as:
+
 - **Safety net** for developers (prevents common mistakes)
 - **Documentation** that's built into the code
 - **Quality control** system for large projects
@@ -13,11 +14,13 @@ Think of it as:
 ## 📝 Real-World Analogy
 
 **Writing Documents:**
+
 - **Plain Text** (JavaScript) - Fast to write, but no error checking
 - **Microsoft Word** (TypeScript) - Catches spelling/grammar errors as you type
 - **Professional Editor** (TypeScript tools) - Suggests improvements and catches issues
 
 **Code Development:**
+
 - **JavaScript** - Fast and flexible, but prone to runtime errors
 - **TypeScript** - Catches errors during development, clearer documentation
 - **Development Tools** - Better autocomplete, refactoring, and debugging
@@ -25,24 +28,26 @@ Think of it as:
 ## 🛡️ How TypeScript Helps
 
 ### Error Prevention
+
 ```typescript
 // JavaScript - errors only found when code runs
 function calculateTotal(price, quantity) {
   return price * quantity; // What if price is a string?
 }
 
-calculateTotal("29.99", 2); // Returns "29.9929.99" (wrong!)
+calculateTotal('29.99', 2); // Returns "29.9929.99" (wrong!)
 
 // TypeScript - errors caught immediately
 function calculateTotal(price: number, quantity: number): number {
   return price * quantity;
 }
 
-calculateTotal("29.99", 2); // Error: Argument must be number!
-calculateTotal(29.99, 2);   // Correct: Returns 59.98
+calculateTotal('29.99', 2); // Error: Argument must be number!
+calculateTotal(29.99, 2); // Correct: Returns 59.98
 ```
 
 ### Better Documentation
+
 ```typescript
 // Clear interfaces show what data looks like
 interface User {
@@ -72,12 +77,15 @@ function processOrder(order: Order): Promise<boolean> {
 ## 🎯 What This Means for Business Analysts
 
 ### 1. **Reduced Development Time**
+
 ```markdown
 Common Development Issues:
+
 - JavaScript: "Cannot read property 'name' of undefined" (runtime error)
 - TypeScript: Catches missing properties during development
 
 Time Savings:
+
 - 30-40% fewer bugs reach testing phase
 - 50% faster debugging when issues occur
 - 60% better code completion and navigation
@@ -85,6 +93,7 @@ Time Savings:
 ```
 
 ### 2. **Better Team Communication**
+
 ```typescript
 // API contracts are clear and enforced
 interface CustomerRegistration {
@@ -92,7 +101,7 @@ interface CustomerRegistration {
   password: string;
   firstName: string;
   lastName: string;
-  phoneNumber?: string;        // Optional
+  phoneNumber?: string; // Optional
   marketingOptIn: boolean;
   termsAccepted: boolean;
 }
@@ -104,14 +113,17 @@ function registerCustomer(data: CustomerRegistration): Promise<User> {
 ```
 
 ### 3. **Easier Maintenance**
+
 ```markdown
 Large Codebase Benefits:
+
 - Refactoring is safer (TypeScript catches breaking changes)
 - New team members understand code faster
 - Integration points are clearly defined
 - Business logic is more readable
 
 Enterprise Value:
+
 - 40% reduction in critical bugs
 - 50% faster feature development after initial setup
 - 60% easier code reviews
@@ -121,6 +133,7 @@ Enterprise Value:
 ## 📊 TypeScript in Business Applications
 
 ### API Integration
+
 ```typescript
 // Clear API response types
 interface ProductResponse {
@@ -147,10 +160,17 @@ async function fetchProducts(page: number): Promise<ProductResponse> {
 ```
 
 ### Business Logic Validation
+
 ```typescript
 // Business rules as types
 type UserRole = 'customer' | 'admin' | 'moderator';
-type OrderStatus = 'cart' | 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+type OrderStatus =
+  | 'cart'
+  | 'pending'
+  | 'processing'
+  | 'shipped'
+  | 'delivered'
+  | 'cancelled';
 
 interface BusinessRules {
   minOrderAmount: number;
@@ -161,19 +181,21 @@ interface BusinessRules {
 
 // Type-safe business logic
 function canPlaceOrder(
-  user: User, 
-  order: Order, 
-  rules: BusinessRules
+  user: User,
+  order: Order,
+  rules: BusinessRules,
 ): { allowed: boolean; reason?: string } {
-  
   if (order.total < rules.minOrderAmount) {
-    return { allowed: false, reason: `Minimum order is $${rules.minOrderAmount}` };
+    return {
+      allowed: false,
+      reason: `Minimum order is $${rules.minOrderAmount}`,
+    };
   }
-  
+
   if (!user.isActive) {
     return { allowed: false, reason: 'Account is inactive' };
   }
-  
+
   return { allowed: true };
 }
 ```
@@ -198,21 +220,26 @@ A: For projects under 1,000 lines of code, the overhead may not be worth it.
 ## 🎯 What BAs Should Include in Requirements
 
 ### Type Safety Requirements
+
 ```markdown
 ✅ Good Requirements:
+
 - "API responses must be validated against defined schemas"
 - "Form validation must catch type mismatches before submission"
 - "User permissions must be type-checked at compile time"
 - "Payment processing must use strongly-typed currency values"
 
 ❌ Missing Type Considerations:
+
 - "Validate user input" (no specific type requirements)
 - "Handle API data" (no schema validation specified)
 ```
 
 ### Development Quality Requirements
+
 ```markdown
 Include in Requirements:
+
 - Code must pass TypeScript compiler checks
 - All API interfaces must be documented with types
 - Business logic must use defined types for validation
@@ -222,18 +249,22 @@ Include in Requirements:
 ## 🚦 TypeScript Adoption Strategy
 
 ### Gradual Migration Approach
+
 ```markdown
 Phase 1: Setup and Basic Types (2 weeks)
+
 - Install TypeScript in existing project
 - Add basic type annotations to new files
 - Define core data interfaces
 
-Phase 2: Critical Components (4 weeks)  
+Phase 2: Critical Components (4 weeks)
+
 - Convert API integration code
 - Add types to business logic functions
 - Type form validation and user input
 
 Phase 3: Full Coverage (8 weeks)
+
 - Convert remaining JavaScript files
 - Add strict type checking
 - Implement advanced TypeScript features
@@ -242,18 +273,22 @@ Timeline: 3-4 months for complete migration
 ```
 
 ### Team Training Plan
+
 ```markdown
 Week 1: TypeScript Fundamentals
+
 - Basic type annotations
 - Interfaces and type definitions
 - Compiler configuration
 
 Week 2: Advanced Features
+
 - Generic types
 - Utility types
 - Error handling patterns
 
 Week 3: Best Practices
+
 - Code organization
 - Testing with TypeScript
 - Integration with build tools
@@ -262,12 +297,14 @@ Week 3: Best Practices
 ## 📈 Measuring TypeScript Success
 
 ### Quality Metrics
+
 - **Compile-time error rate** (errors caught before runtime)
 - **Runtime error reduction** (fewer production bugs)
 - **Code review efficiency** (faster, more focused reviews)
 - **Development velocity** (feature delivery speed)
 
 ### Business Impact
+
 - **Bug reduction** in production (30-50% fewer critical issues)
 - **Onboarding time** for new developers (40% faster)
 - **Maintenance costs** (30% reduction in debugging time)
@@ -276,6 +313,7 @@ Week 3: Best Practices
 ## 🌟 Advanced TypeScript Benefits
 
 ### IDE Integration
+
 ```typescript
 // Excellent autocomplete and IntelliSense
 const user: User = getCurrentUser();
@@ -292,6 +330,7 @@ interface User {
 ```
 
 ### Generic Programming
+
 ```typescript
 // Reusable, type-safe code
 interface APIResponse<T> {

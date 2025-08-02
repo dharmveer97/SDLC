@@ -5,6 +5,7 @@
 DevOps = Development + Operations
 
 Think of it like a restaurant:
+
 - **Development** = Chefs creating recipes
 - **Operations** = Running the restaurant
 - **DevOps** = Making sure recipes work in the real restaurant
@@ -16,11 +17,13 @@ DevOps makes sure code works everywhere, not just on developer's laptop.
 ### What Is CI/CD?
 
 **Continuous Integration (CI)**:
+
 - Automatically test code when it's pushed
 - Catch problems early
 - Merge code frequently
 
 **Continuous Deployment (CD)**:
+
 - Automatically deploy working code
 - Fast, reliable releases
 - Reduce manual errors
@@ -38,6 +41,7 @@ Developer → Git Push → CI Tests → CD Deploy → Production
 GitHub Actions = Automated workflows for your repository
 
 When you push code, GitHub can:
+
 - Run tests
 - Build the application
 - Deploy to production
@@ -51,47 +55,47 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        cache: 'npm'
-    
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: Run tests
-      run: npm test
-    
-    - name: Run linting
-      run: npm run lint
-    
-    - name: Build application
-      run: npm run build
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Run linting
+        run: npm run lint
+
+      - name: Build application
+        run: npm run build
 
   deploy:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    
+
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Deploy to production
-      run: |
-        echo "Deploying to production..."
-        # Your deployment commands here
+      - uses: actions/checkout@v3
+
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production..."
+          # Your deployment commands here
 ```
 
 ### Real-World Example: Deploy to Netlify
@@ -101,40 +105,40 @@ name: Deploy to Netlify
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-    
-    - name: Install dependencies
-      run: npm install
-    
-    - name: Run tests
-      run: npm test
-    
-    - name: Build project
-      run: npm run build
-    
-    - name: Deploy to Netlify
-      uses: nwtgck/actions-netlify@v2.0
-      with:
-        publish-dir: './build'
-        production-branch: main
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        deploy-message: "Deploy from GitHub Actions"
-      env:
-        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2.0
+        with:
+          publish-dir: './build'
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: 'Deploy from GitHub Actions'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 ```
 
 ## 🌐 Deployment Platforms
@@ -240,11 +244,13 @@ git push heroku main
 Docker = Shipping containers for code
 
 Like how shipping containers:
+
 - Work on any ship
 - Contain everything needed
 - Same everywhere
 
 Docker containers:
+
 - Work on any server
 - Contain app + dependencies
 - Same in dev and production
@@ -306,7 +312,7 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       - NODE_ENV=production
       - DATABASE_URL=postgresql://user:password@db:5432/myapp
@@ -326,7 +332,7 @@ services:
   redis:
     image: redis:alpine
     ports:
-      - "6379:6379"
+      - '6379:6379'
 
 volumes:
   postgres_data:
@@ -368,34 +374,32 @@ eb deploy
 ```yaml
 # ecs-task-definition.json
 {
-  "family": "my-app",
-  "taskRoleArn": "arn:aws:iam::123456789:role/ecsTaskRole",
-  "executionRoleArn": "arn:aws:iam::123456789:role/ecsTaskExecutionRole",
-  "networkMode": "awsvpc",
-  "requiresCompatibilities": ["FARGATE"],
-  "cpu": "256",
-  "memory": "512",
-  "containerDefinitions": [
-    {
-      "name": "my-app",
-      "image": "my-app:latest",
-      "portMappings": [
-        {
-          "containerPort": 3000,
-          "protocol": "tcp"
-        }
-      ],
-      "essential": true,
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/ecs/my-app",
-          "awslogs-region": "us-east-1",
-          "awslogs-stream-prefix": "ecs"
-        }
-      }
-    }
-  ]
+  'family': 'my-app',
+  'taskRoleArn': 'arn:aws:iam::123456789:role/ecsTaskRole',
+  'executionRoleArn': 'arn:aws:iam::123456789:role/ecsTaskExecutionRole',
+  'networkMode': 'awsvpc',
+  'requiresCompatibilities': ['FARGATE'],
+  'cpu': '256',
+  'memory': '512',
+  'containerDefinitions':
+    [
+      {
+        'name': 'my-app',
+        'image': 'my-app:latest',
+        'portMappings': [{ 'containerPort': 3000, 'protocol': 'tcp' }],
+        'essential': true,
+        'logConfiguration':
+          {
+            'logDriver': 'awslogs',
+            'options':
+              {
+                'awslogs-group': '/ecs/my-app',
+                'awslogs-region': 'us-east-1',
+                'awslogs-stream-prefix': 'ecs',
+              },
+          },
+      },
+    ],
 }
 ```
 
@@ -406,11 +410,13 @@ eb deploy
 Deployment environments are **separate copies of your application** used for different purposes in the development and release process. Think of them as **different stages in a theater production**.
 
 **Theater Analogy:**
+
 - **Rehearsal Studio** (Development) - Actors practice scenes, make mistakes freely
 - **Dress Rehearsal** (Staging) - Full production run with costumes, lights, etc.
 - **Opening Night** (Production) - Real audience, everything must work perfectly
 
 **Software Environments:**
+
 - **Development** - Developers write and test code
 - **Staging/Pre-Production** - Final testing before release
 - **Production** - Real users, real data, real business impact
@@ -419,13 +425,14 @@ Deployment environments are **separate copies of your application** used for dif
 
 ```markdown
 Developer Laptop → Development → Staging → Pre-Production → Production
-     ↓                ↓           ↓            ↓              ↓
-   Local testing    Integration  User Testing  Final Check   Live Users
+↓ ↓ ↓ ↓ ↓
+Local testing Integration User Testing Final Check Live Users
 ```
 
 ### 📋 **Environment Details for Business Analysts**
 
 #### 1. **Development Environment**
+
 ```markdown
 **Purpose:** Where developers write and test code
 **Who Uses:** Development team
@@ -435,13 +442,15 @@ Developer Laptop → Development → Staging → Pre-Production → Production
 **Business Impact:** None (internal only)
 
 **What BAs Need to Know:**
+
 - Used for initial feature development
 - Bugs here are expected and normal
 - Not suitable for stakeholder demos
 - Fastest environment to get changes
 ```
 
-#### 2. **Staging Environment** 
+#### 2. **Staging Environment**
+
 ```markdown
 **Purpose:** Test complete features before production
 **Who Uses:** Developers, QA, Product Managers, BAs
@@ -451,6 +460,7 @@ Developer Laptop → Development → Staging → Pre-Production → Production
 **Business Impact:** Affects testing schedule
 
 **What BAs Need to Know:**
+
 - Best environment for stakeholder demos
 - Use for user acceptance testing (UAT)
 - Data resets periodically (don't expect persistence)
@@ -459,6 +469,7 @@ Developer Laptop → Development → Staging → Pre-Production → Production
 ```
 
 #### 3. **Pre-Production Environment**
+
 ```markdown
 **Purpose:** Final validation before production release
 **Who Uses:** QA, DevOps, Senior developers
@@ -468,6 +479,7 @@ Developer Laptop → Development → Staging → Pre-Production → Production
 **Business Impact:** Delays affect release schedules
 
 **What BAs Need to Know:**
+
 - Final checkpoint before going live
 - Used for performance and security testing
 - Exact replica of production infrastructure
@@ -476,6 +488,7 @@ Developer Laptop → Development → Staging → Pre-Production → Production
 ```
 
 #### 4. **Production Environment**
+
 ```markdown
 **Purpose:** Serve real customers and business operations
 **Who Uses:** Real users, customers, business operations
@@ -485,6 +498,7 @@ Developer Laptop → Development → Staging → Pre-Production → Production
 **Business Impact:** Direct impact on revenue and customers
 
 **What BAs Need to Know:**
+
 - Any issues here affect real customers
 - Changes require extensive approval process
 - Monitoring and alerts are critical
@@ -496,6 +510,7 @@ Developer Laptop → Development → Staging → Pre-Production → Production
 
 ```markdown
 **Code Promotion Flow:**
+
 1. Developer writes code → Development Environment
 2. Code reviewed and tested → Staging Environment
 3. Stakeholder approval → Pre-Production Environment
@@ -510,6 +525,7 @@ Fake/Test Data → Development
 ### 🎯 **Environment Configuration Examples**
 
 #### Development Environment
+
 ```javascript
 // config/development.js
 module.exports = {
@@ -518,26 +534,27 @@ module.exports = {
     port: 5432,
     name: 'myapp_dev',
     username: 'dev_user',
-    password: 'dev_password'
+    password: 'dev_password',
   },
   api: {
     baseUrl: 'http://localhost:3000',
-    timeout: 5000
+    timeout: 5000,
   },
   features: {
     enableLogging: true,
     enableDebugMode: true,
-    enableExperimentalFeatures: true
+    enableExperimentalFeatures: true,
   },
   payments: {
     provider: 'stripe',
     mode: 'test', // Using test keys
-    webhookSecret: 'test_webhook_secret'
-  }
+    webhookSecret: 'test_webhook_secret',
+  },
 };
 ```
 
 #### Staging Environment
+
 ```javascript
 // config/staging.js
 module.exports = {
@@ -546,26 +563,27 @@ module.exports = {
     port: 5432,
     name: 'myapp_staging',
     username: 'staging_user',
-    password: process.env.STAGING_DB_PASSWORD
+    password: process.env.STAGING_DB_PASSWORD,
   },
   api: {
     baseUrl: 'https://staging-api.company.com',
-    timeout: 10000
+    timeout: 10000,
   },
   features: {
     enableLogging: true,
     enableDebugMode: false,
-    enableExperimentalFeatures: true
+    enableExperimentalFeatures: true,
   },
   payments: {
     provider: 'stripe',
     mode: 'test', // Still test mode
-    webhookSecret: process.env.STAGING_WEBHOOK_SECRET
-  }
+    webhookSecret: process.env.STAGING_WEBHOOK_SECRET,
+  },
 };
 ```
 
 #### Production Environment
+
 ```javascript
 // config/production.js
 module.exports = {
@@ -574,40 +592,41 @@ module.exports = {
     port: 5432,
     name: 'myapp_production',
     username: 'prod_user',
-    password: process.env.PROD_DB_PASSWORD
+    password: process.env.PROD_DB_PASSWORD,
   },
   api: {
     baseUrl: 'https://api.company.com',
-    timeout: 15000
+    timeout: 15000,
   },
   features: {
     enableLogging: false, // Only errors
     enableDebugMode: false,
-    enableExperimentalFeatures: false
+    enableExperimentalFeatures: false,
   },
   payments: {
     provider: 'stripe',
     mode: 'live', // Real payments!
-    webhookSecret: process.env.PROD_WEBHOOK_SECRET
-  }
+    webhookSecret: process.env.PROD_WEBHOOK_SECRET,
+  },
 };
 ```
 
 ### 📊 **Environment Comparison for BAs**
 
-| Aspect | Development | Staging | Pre-Production | Production |
-|--------|-------------|---------|----------------|------------|
-| **Purpose** | Code development | Feature testing | Final validation | Live operations |
-| **Data** | Fake/Test | Production-like | Production copy | Real business |
-| **Updates** | Hourly | Daily | Weekly | Scheduled |
-| **Bugs** | Expected | Some expected | Should be none | Critical issue |
-| **Downtime** | Acceptable | Limited | Minimal | Never acceptable |
-| **Access** | Developers | Team + stakeholders | Limited team | Customers |
-| **Monitoring** | Basic | Moderate | Extensive | Maximum |
+| Aspect         | Development      | Staging             | Pre-Production   | Production       |
+| -------------- | ---------------- | ------------------- | ---------------- | ---------------- |
+| **Purpose**    | Code development | Feature testing     | Final validation | Live operations  |
+| **Data**       | Fake/Test        | Production-like     | Production copy  | Real business    |
+| **Updates**    | Hourly           | Daily               | Weekly           | Scheduled        |
+| **Bugs**       | Expected         | Some expected       | Should be none   | Critical issue   |
+| **Downtime**   | Acceptable       | Limited             | Minimal          | Never acceptable |
+| **Access**     | Developers       | Team + stakeholders | Limited team     | Customers        |
+| **Monitoring** | Basic            | Moderate            | Extensive        | Maximum          |
 
 ### 🚨 **Environment Responsibilities for Different Roles**
 
 #### **Business Analysts Should:**
+
 ```markdown
 ✅ Use Staging for stakeholder demos
 ✅ Test user stories in Staging environment
@@ -623,6 +642,7 @@ module.exports = {
 ```
 
 #### **Developers Should:**
+
 ```markdown
 ✅ Test thoroughly in Development before promotion
 ✅ Ensure staging deployment works before production
@@ -631,6 +651,7 @@ module.exports = {
 ```
 
 #### **QA Should:**
+
 ```markdown
 ✅ Test in Staging environment primarily
 ✅ Validate in Pre-Production before release approval
@@ -641,25 +662,30 @@ module.exports = {
 ### 🔄 **Environment Deployment Workflow**
 
 #### **Typical Release Process:**
+
 ```markdown
 Week 1: Development
+
 - Features developed and unit tested
 - Code merged to development branch
 - Deployed to Development environment
 
 Week 2: Staging
+
 - Code promoted to staging branch
 - Deployed to Staging environment
 - QA testing and stakeholder review
 - User acceptance testing (UAT)
 
 Week 3: Pre-Production
+
 - Code promoted to pre-production
 - Performance and security testing
 - Final business validation
 - Production deployment rehearsal
 
 Week 4: Production
+
 - Scheduled production deployment
 - Monitoring and validation
 - User communication and support
@@ -669,6 +695,7 @@ Week 4: Production
 ### 🎯 **Environment Issues and Solutions**
 
 #### **Common Environment Problems:**
+
 ```markdown
 Problem: "It works on my machine but not in staging"
 Solution: Environment configuration differences
@@ -690,28 +717,34 @@ Action: Improve staging data and load testing
 ### 📈 **Environment Monitoring and Metrics**
 
 #### **Development Environment:**
+
 ```markdown
 Metrics to Track:
+
 - Build success rate
 - Test coverage
 - Deployment frequency
 - Developer productivity
 
 Monitoring:
+
 - Basic uptime monitoring
 - Build pipeline status
 - Simple error logging
 ```
 
 #### **Staging Environment:**
+
 ```markdown
 Metrics to Track:
+
 - Feature completion rate
 - Bug detection rate
 - Stakeholder approval rate
 - UAT success rate
 
 Monitoring:
+
 - Application performance
 - Database performance
 - Integration test results
@@ -719,14 +752,17 @@ Monitoring:
 ```
 
 #### **Production Environment:**
+
 ```markdown
 Metrics to Track:
+
 - System uptime (99.9%+ target)
 - Response times (<200ms target)
 - Error rates (<0.1% target)
 - Business KPIs (conversion, revenue)
 
 Monitoring:
+
 - 24/7 system monitoring
 - Real-time alerts
 - Business impact tracking
@@ -761,22 +797,22 @@ const config = {
   development: {
     port: process.env.PORT || 3000,
     database: {
-      url: process.env.DATABASE_URL || 'postgresql://localhost:5432/myapp_dev'
+      url: process.env.DATABASE_URL || 'postgresql://localhost:5432/myapp_dev',
     },
     jwt: {
-      secret: process.env.JWT_SECRET || 'dev_secret'
-    }
+      secret: process.env.JWT_SECRET || 'dev_secret',
+    },
   },
-  
+
   production: {
     port: process.env.PORT || 80,
     database: {
-      url: process.env.DATABASE_URL
+      url: process.env.DATABASE_URL,
     },
     jwt: {
-      secret: process.env.JWT_SECRET
-    }
-  }
+      secret: process.env.JWT_SECRET,
+    },
+  },
 };
 
 module.exports = config[process.env.NODE_ENV || 'development'];
@@ -797,7 +833,7 @@ app.get('/health', (req, res) => {
     status: 'healthy',
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
-    memory: process.memoryUsage()
+    memory: process.memoryUsage(),
   });
 });
 
@@ -806,15 +842,15 @@ app.get('/ready', async (req, res) => {
   try {
     // Check database connection
     await database.ping();
-    
+
     // Check external services
     await redis.ping();
-    
+
     res.status(200).json({ status: 'ready' });
   } catch (error) {
-    res.status(503).json({ 
+    res.status(503).json({
       status: 'not ready',
-      error: error.message 
+      error: error.message,
     });
   }
 });
@@ -830,16 +866,16 @@ const logger = winston.createLogger({
   format: winston.format.combine(
     winston.format.timestamp(),
     winston.format.errors({ stack: true }),
-    winston.format.json()
+    winston.format.json(),
   ),
   defaultMeta: { service: 'my-app' },
   transports: [
     new winston.transports.File({ filename: 'error.log', level: 'error' }),
     new winston.transports.File({ filename: 'combined.log' }),
     new winston.transports.Console({
-      format: winston.format.simple()
-    })
-  ]
+      format: winston.format.simple(),
+    }),
+  ],
 });
 
 // Usage
@@ -851,7 +887,7 @@ app.use((req, res, next) => {
   logger.info('Request received', {
     method: req.method,
     url: req.url,
-    userAgent: req.get('User-Agent')
+    userAgent: req.get('User-Agent'),
   });
   next();
 });
@@ -897,7 +933,7 @@ const rateLimit = require('express-rate-limit');
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
-  message: 'Too many requests from this IP'
+  message: 'Too many requests from this IP',
 });
 
 app.use('/api/', limiter);
@@ -953,12 +989,12 @@ const client = new StatsD();
 // Track API response times
 app.use((req, res, next) => {
   const start = Date.now();
-  
+
   res.on('finish', () => {
     const duration = Date.now() - start;
     client.timing('api.response_time', duration, [`endpoint:${req.path}`]);
   });
-  
+
   next();
 });
 ```
@@ -974,7 +1010,7 @@ mongoose.set('debug', (collection, method, query, doc) => {
     collection,
     method,
     query,
-    executionTime: Date.now() - query._startTime
+    executionTime: Date.now() - query._startTime,
   });
 });
 ```
@@ -1002,7 +1038,7 @@ npm run migrate:rollback
 // Feature flag system
 const featureFlags = {
   newCheckoutFlow: process.env.FEATURE_NEW_CHECKOUT === 'true',
-  betaFeatures: process.env.FEATURE_BETA === 'true'
+  betaFeatures: process.env.FEATURE_BETA === 'true',
 };
 
 // Use in code
@@ -1034,7 +1070,7 @@ provider "aws" {
 resource "aws_instance" "web" {
   ami           = "ami-0abcdef1234567890"
   instance_type = "t2.micro"
-  
+
   tags = {
     Name = "MyApp-Production"
     Environment = "production"
@@ -1043,21 +1079,21 @@ resource "aws_instance" "web" {
 
 resource "aws_security_group" "web" {
   name = "web-sg"
-  
+
   ingress {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  
+
   ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -1129,7 +1165,7 @@ Understanding DevOps helps you:
 
 ---
 
-## 🎉 Course Complete!
+## 🎉 Course Complete
 
 Congratulations! You've completed the Software Development Lifecycle course. You now understand:
 

@@ -1,81 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Business Analyst's Guide to Software Development</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Business Analyst's Guide to Software Development - Learn how to work effectively with development teams">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <style>
-    :root {
-      --docsifyLocalstorageName: 'docsify-ba-guide';
-    }
-    .sidebar {
-      background-color: #f8f9fa;
-    }
-    .sidebar-nav > ul > li > a {
-      font-weight: 600;
-      color: #2c3e50;
-    }
-    .app-name-link {
-      font-size: 18px !important;
-      font-weight: bold;
-    }
-    .markdown-section h1 {
-      color: #2c3e50;
-      border-bottom: 2px solid #3498db;
-      padding-bottom: 10px;
-    }
-    .markdown-section h2 {
-      color: #34495e;
-    }
-    .search .input-wrap {
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-<body>
-  <div id="app">Loading...</div>
-  <script>
-    window.$docsify = {
-      name: 'BA\'s Guide to Software Development',
-      repo: 'https://github.com/dharmveer97/SDLC',
-      loadSidebar: true,
-      subMaxLevel: 2,
-      search: {
-        placeholder: 'Type to search...',
-        noData: 'No results found.',
-        depth: 3
-      },
-      auto2top: true,
-      coverpage: false,
-      onlyCover: false,
-      maxLevel: 4,
-      mergeNavbar: true,
-      executeScript: true,
-      noEmoji: false,
-      themeColor: '#3498db',
-      alias: {
-        '/.*/_sidebar.md': '/_sidebar.md'
-      },
-      plugins: [
-        function(hook, vm) {
-          hook.beforeEach(function (html) {
-            return html
-          })
-        }
-      ]
-    }
-  </script>
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Business Analyst's Guide to Software Development</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="description"
+      content="Business Analyst's Guide to Software Development - Learn how to work effectively with development teams"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+    />
+    <style>
+      :root {
+        --docsifyLocalstorageName: 'docsify-ba-guide';
+      }
+      .sidebar {
+        background-color: #f8f9fa;
+      }
+      .sidebar-nav > ul > li > a {
+        font-weight: 600;
+        color: #2c3e50;
+      }
+      .app-name-link {
+        font-size: 18px !important;
+        font-weight: bold;
+      }
+      .markdown-section h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      .markdown-section h2 {
+        color: #34495e;
+      }
+      .search .input-wrap {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">Loading...</div>
+    <script>
+      window.$docsify = {
+        name: "BA's Guide to Software Development",
+        repo: 'https://github.com/dharmveer97/SDLC',
+        loadSidebar: true,
+        subMaxLevel: 2,
+        search: {
+          placeholder: 'Type to search...',
+          noData: 'No results found.',
+          depth: 3,
+        },
+        auto2top: true,
+        coverpage: false,
+        onlyCover: false,
+        maxLevel: 4,
+        mergeNavbar: true,
+        executeScript: true,
+        noEmoji: false,
+        themeColor: '#3498db',
+        alias: {
+          '/.*/_sidebar.md': '/_sidebar.md',
+        },
+        plugins: [
+          function (hook, vm) {
+            hook.beforeEach(function (html) {
+              return html;
+            });
+          },
+        ],
+      };
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  </body>
 </html>

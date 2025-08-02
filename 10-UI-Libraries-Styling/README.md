@@ -3,6 +3,7 @@
 ## 🎯 What Are UI Libraries?
 
 UI Libraries are like LEGO sets for websites:
+
 - Pre-built components (buttons, forms, menus)
 - Consistent design
 - Save development time
@@ -13,9 +14,13 @@ Instead of building from scratch, developers use these ready-made pieces.
 ## 🌟 Popular UI Libraries
 
 ### 1. **Tailwind CSS** - Utility-First
+
 ### 2. **Material UI** - Google's Design System
+
 ### 3. **Ant Design** - Enterprise-Class
+
 ### 4. **Chakra UI** - Simple & Modular
+
 ### 5. **Bootstrap** - Classic Framework
 
 ## 🎨 Tailwind CSS - The Popular Choice
@@ -25,6 +30,7 @@ Instead of building from scratch, developers use these ready-made pieces.
 Tailwind = Utility classes for styling
 
 Instead of writing CSS:
+
 ```css
 .button {
   background-color: blue;
@@ -35,10 +41,9 @@ Instead of writing CSS:
 ```
 
 Use Tailwind classes:
+
 ```html
-<button class="bg-blue-500 text-white px-6 py-3 rounded-md">
-  Click me
-</button>
+<button class="bg-blue-500 text-white px-6 py-3 rounded-md">Click me</button>
 ```
 
 ### Tailwind Setup
@@ -69,27 +74,53 @@ module.exports = {
 
 ```html
 <!-- Layout -->
-<div class="container mx-auto px-4">     <!-- Centered container -->
-<div class="flex justify-between">       <!-- Flexbox -->
-<div class="grid grid-cols-3 gap-4">     <!-- CSS Grid -->
+<div class="container mx-auto px-4">
+  <!-- Centered container -->
+  <div class="flex justify-between">
+    <!-- Flexbox -->
+    <div class="grid grid-cols-3 gap-4">
+      <!-- CSS Grid -->
 
-<!-- Spacing -->
-<div class="p-4">        <!-- Padding: 1rem -->
-<div class="m-8">        <!-- Margin: 2rem -->
-<div class="mt-4 mb-2">  <!-- Margin top/bottom -->
+      <!-- Spacing -->
+      <div class="p-4">
+        <!-- Padding: 1rem -->
+        <div class="m-8">
+          <!-- Margin: 2rem -->
+          <div class="mt-4 mb-2">
+            <!-- Margin top/bottom -->
 
-<!-- Colors -->
-<div class="bg-blue-500">      <!-- Background -->
-<div class="text-red-600">     <!-- Text color -->
-<div class="border-green-300"> <!-- Border color -->
+            <!-- Colors -->
+            <div class="bg-blue-500">
+              <!-- Background -->
+              <div class="text-red-600">
+                <!-- Text color -->
+                <div class="border-green-300">
+                  <!-- Border color -->
 
-<!-- Typography -->
-<h1 class="text-2xl font-bold">     <!-- Size & weight -->
-<p class="text-center italic">      <!-- Alignment & style -->
+                  <!-- Typography -->
+                  <h1 class="text-2xl font-bold">
+                    <!-- Size & weight -->
+                    <p class="text-center italic">
+                      <!-- Alignment & style -->
 
-<!-- Effects -->
-<div class="shadow-lg rounded-lg hover:shadow-xl">
-<button class="transition duration-300 ease-in-out">
+                      <!-- Effects -->
+                    </p>
+
+                    <div class="shadow-lg rounded-lg hover:shadow-xl">
+                      <button
+                        class="transition duration-300 ease-in-out"
+                      ></button>
+                    </div>
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 ```
 
 ### Building a Card Component
@@ -99,28 +130,26 @@ function ProductCard({ product }) {
   return (
     <div className="max-w-sm mx-auto bg-white rounded-lg shadow-md overflow-hidden">
       {/* Image */}
-      <img 
-        className="w-full h-48 object-cover" 
-        src={product.image} 
+      <img
+        className="w-full h-48 object-cover"
+        src={product.image}
         alt={product.name}
       />
-      
+
       {/* Content */}
       <div className="p-6">
         <h3 className="text-xl font-semibold text-gray-800 mb-2">
           {product.name}
         </h3>
-        
-        <p className="text-gray-600 text-sm mb-4">
-          {product.description}
-        </p>
-        
+
+        <p className="text-gray-600 text-sm mb-4">{product.description}</p>
+
         {/* Price and Button */}
         <div className="flex items-center justify-between">
           <span className="text-2xl font-bold text-blue-600">
             ${product.price}
           </span>
-          
+
           <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-200">
             Add to Cart
           </button>
@@ -135,23 +164,29 @@ function ProductCard({ product }) {
 
 ```html
 <!-- Mobile first approach -->
-<div class="
+<div
+  class="
   w-full           <!-- Mobile: full width -->
   md:w-1/2         <!-- Medium screens: half width -->
   lg:w-1/3         <!-- Large screens: one third -->
   xl:w-1/4         <!-- Extra large: one quarter -->
-">
-
-<!-- Responsive text -->
-<h1 class="
+"
+>
+  <!-- Responsive text -->
+  <h1
+    class="
   text-xl          <!-- Mobile: 1.25rem -->
   md:text-2xl      <!-- Medium: 1.5rem -->
   lg:text-3xl      <!-- Large: 1.875rem -->
-">
-
-<!-- Hide/show on different screens -->
-<div class="hidden md:block">    <!-- Hidden on mobile, shown on medium+ -->
-<div class="md:hidden">          <!-- Shown on mobile, hidden on medium+ -->
+"
+  >
+    <!-- Hide/show on different screens -->
+    <div class="hidden md:block">
+      <!-- Hidden on mobile, shown on medium+ -->
+      <div class="md:hidden"><!-- Shown on mobile, hidden on medium+ --></div>
+    </div>
+  </h1>
+</div>
 ```
 
 ## 🎭 Material UI - Google's Design System
@@ -159,6 +194,7 @@ function ProductCard({ product }) {
 ### What Is Material UI?
 
 Material UI implements Google's Material Design:
+
 - Consistent design language
 - Pre-built React components
 - Theming system
@@ -174,13 +210,13 @@ npm install @mui/icons-material  # Optional: icons
 ### Basic Components
 
 ```jsx
-import { 
-  Button, 
-  TextField, 
-  Card, 
-  CardContent, 
+import {
+  Button,
+  TextField,
+  Card,
+  CardContent,
   Typography,
-  Box 
+  Box,
 } from '@mui/material';
 
 function LoginForm() {
@@ -190,7 +226,7 @@ function LoginForm() {
         <Typography variant="h4" component="h1" gutterBottom>
           Login
         </Typography>
-        
+
         <Box component="form" sx={{ mt: 2 }}>
           <TextField
             fullWidth
@@ -199,7 +235,7 @@ function LoginForm() {
             margin="normal"
             required
           />
-          
+
           <TextField
             fullWidth
             label="Password"
@@ -207,7 +243,7 @@ function LoginForm() {
             margin="normal"
             required
           />
-          
+
           <Button
             type="submit"
             fullWidth
@@ -248,11 +284,7 @@ const theme = createTheme({
 });
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      {/* Your components */}
-    </ThemeProvider>
-  );
+  return <ThemeProvider theme={theme}>{/* Your components */}</ThemeProvider>;
 }
 ```
 
@@ -261,6 +293,7 @@ function App() {
 ### What Is Ant Design?
 
 Ant Design = Professional business applications
+
 - Rich set of components
 - Enterprise-focused
 - Built-in form validation
@@ -275,15 +308,7 @@ npm install antd
 ### Ant Design Components
 
 ```jsx
-import { 
-  Form, 
-  Input, 
-  Button, 
-  Table, 
-  Space, 
-  Tag,
-  DatePicker
-} from 'antd';
+import { Form, Input, Button, Table, Space, Tag, DatePicker } from 'antd';
 
 function UserManagement() {
   const columns = [
@@ -313,7 +338,9 @@ function UserManagement() {
       render: (_, record) => (
         <Space size="middle">
           <Button type="link">Edit</Button>
-          <Button type="link" danger>Delete</Button>
+          <Button type="link" danger>
+            Delete
+          </Button>
         </Space>
       ),
     },
@@ -332,9 +359,9 @@ function UserManagement() {
           <Button type="primary">Search</Button>
         </Form.Item>
       </Form>
-      
-      <Table 
-        columns={columns} 
+
+      <Table
+        columns={columns}
         dataSource={users}
         pagination={{ pageSize: 10 }}
       />
@@ -348,6 +375,7 @@ function UserManagement() {
 ### What Is Chakra UI?
 
 Chakra UI = Simple, composable components
+
 - Easy to customize
 - Great developer experience
 - Accessibility built-in
@@ -371,12 +399,12 @@ import {
   Text,
   useColorModeValue,
   Flex,
-  Spacer
+  Spacer,
 } from '@chakra-ui/react';
 
 function Dashboard() {
   const bg = useColorModeValue('white', 'gray.800');
-  
+
   return (
     <Box bg={bg} p={6} rounded="lg" shadow="md">
       <Flex>
@@ -386,7 +414,7 @@ function Dashboard() {
           Add New
         </Button>
       </Flex>
-      
+
       <Stack spacing={4} mt={6}>
         <Box p={4} bg="gray.50" rounded="md">
           <Text fontSize="sm" color="gray.600">
@@ -396,7 +424,7 @@ function Dashboard() {
             1,234
           </Text>
         </Box>
-        
+
         <Box p={4} bg="blue.50" rounded="md">
           <Text fontSize="sm" color="gray.600">
             Revenue
@@ -416,6 +444,7 @@ function Dashboard() {
 ### What Is Bootstrap?
 
 Bootstrap = CSS framework that started it all
+
 - Grid system
 - Responsive design
 - jQuery components (v4 and below)
@@ -435,7 +464,7 @@ function ProductGrid({ products }) {
   return (
     <Container>
       <Row>
-        {products.map(product => (
+        {products.map((product) => (
           <Col md={4} key={product.id} className="mb-4">
             <Card>
               <Card.Img variant="top" src={product.image} />
@@ -456,6 +485,7 @@ function ProductGrid({ products }) {
 ## 🎨 Styling Approaches Comparison
 
 ### 1. Tailwind CSS
+
 ```jsx
 // Pros: Fast, customizable, utility-first
 // Cons: HTML can look cluttered
@@ -466,32 +496,33 @@ function ProductGrid({ products }) {
 ```
 
 ### 2. CSS Modules
+
 ```jsx
 // Pros: Scoped styles, familiar CSS
 // Cons: More files to manage
 
 import styles from './Button.module.css';
 
-<button className={styles.button}>
-  Click me
-</button>
+<button className={styles.button}>Click me</button>;
 ```
 
 ### 3. Styled Components
+
 ```jsx
 // Pros: CSS-in-JS, dynamic styling
 // Cons: Runtime overhead
 
 const Button = styled.button`
-  background: ${props => props.primary ? 'blue' : 'gray'};
+  background: ${(props) => (props.primary ? 'blue' : 'gray')};
   color: white;
   padding: 8px 16px;
 `;
 
-<Button primary>Click me</Button>
+<Button primary>Click me</Button>;
 ```
 
 ### 4. UI Libraries
+
 ```jsx
 // Pros: Consistent design, pre-built components
 // Cons: Less customization, bundle size
@@ -500,7 +531,7 @@ import { Button } from '@mui/material';
 
 <Button variant="contained" color="primary">
   Click me
-</Button>
+</Button>;
 ```
 
 ## 🎭 Advanced UI Patterns
@@ -511,7 +542,7 @@ import { Button } from '@mui/material';
 // Using Tailwind + React
 function ThemeToggle() {
   const [darkMode, setDarkMode] = useState(false);
-  
+
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -519,7 +550,7 @@ function ThemeToggle() {
       document.documentElement.classList.remove('dark');
     }
   }, [darkMode]);
-  
+
   return (
     <button
       onClick={() => setDarkMode(!darkMode)}
@@ -536,7 +567,7 @@ function ThemeToggle() {
 ```jsx
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <nav className="bg-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4">
@@ -545,14 +576,20 @@ function Navigation() {
           <div className="flex items-center">
             <h1 className="text-xl font-bold">MyApp</h1>
           </div>
-          
+
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-700 hover:text-blue-600">Home</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600">About</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600">Contact</a>
+            <a href="#" className="text-gray-700 hover:text-blue-600">
+              Home
+            </a>
+            <a href="#" className="text-gray-700 hover:text-blue-600">
+              About
+            </a>
+            <a href="#" className="text-gray-700 hover:text-blue-600">
+              Contact
+            </a>
           </div>
-          
+
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
@@ -563,14 +600,20 @@ function Navigation() {
             </button>
           </div>
         </div>
-        
+
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <a href="#" className="block px-3 py-2 text-gray-700">Home</a>
-              <a href="#" className="block px-3 py-2 text-gray-700">About</a>
-              <a href="#" className="block px-3 py-2 text-gray-700">Contact</a>
+              <a href="#" className="block px-3 py-2 text-gray-700">
+                Home
+              </a>
+              <a href="#" className="block px-3 py-2 text-gray-700">
+                About
+              </a>
+              <a href="#" className="block px-3 py-2 text-gray-700">
+                Contact
+              </a>
             </div>
           </div>
         )}
@@ -590,9 +633,10 @@ function LoadingButton({ loading, children, onClick }) {
       disabled={loading}
       className={`
         px-4 py-2 rounded-md font-medium
-        ${loading 
-          ? 'bg-gray-400 cursor-not-allowed' 
-          : 'bg-blue-500 hover:bg-blue-600'
+        ${
+          loading
+            ? 'bg-gray-400 cursor-not-allowed'
+            : 'bg-blue-500 hover:bg-blue-600'
         }
         text-white transition duration-200
       `}
@@ -677,13 +721,13 @@ const colors = {
   primary: {
     50: '#eff6ff',
     500: '#3b82f6',
-    900: '#1e3a8a'
+    900: '#1e3a8a',
   },
   gray: {
     50: '#f9fafb',
     500: '#6b7280',
-    900: '#111827'
-  }
+    900: '#111827',
+  },
 };
 ```
 
@@ -691,22 +735,42 @@ const colors = {
 
 ```css
 /* Consistent text sizes */
-.text-xs { font-size: 0.75rem; }
-.text-sm { font-size: 0.875rem; }
-.text-base { font-size: 1rem; }
-.text-lg { font-size: 1.125rem; }
-.text-xl { font-size: 1.25rem; }
-.text-2xl { font-size: 1.5rem; }
+.text-xs {
+  font-size: 0.75rem;
+}
+.text-sm {
+  font-size: 0.875rem;
+}
+.text-base {
+  font-size: 1rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+}
+.text-2xl {
+  font-size: 1.5rem;
+}
 ```
 
 ### 3. Spacing System
 
 ```css
 /* 8px base unit */
-.space-1 { margin: 0.25rem; } /* 4px */
-.space-2 { margin: 0.5rem; }  /* 8px */
-.space-4 { margin: 1rem; }    /* 16px */
-.space-8 { margin: 2rem; }    /* 32px */
+.space-1 {
+  margin: 0.25rem;
+} /* 4px */
+.space-2 {
+  margin: 0.5rem;
+} /* 8px */
+.space-4 {
+  margin: 1rem;
+} /* 16px */
+.space-8 {
+  margin: 2rem;
+} /* 32px */
 ```
 
 ## 📱 Mobile-First Design
@@ -758,18 +822,22 @@ const colors = {
 ## 🎯 Choosing the Right UI Library
 
 ### For Startups/Quick Prototypes
+
 - **Tailwind CSS** - Fast development
 - **Chakra UI** - Simple and clean
 
 ### For Enterprise Applications
+
 - **Ant Design** - Rich components
 - **Material UI** - Google's proven design
 
 ### For Custom Brands
+
 - **Tailwind CSS** - Highly customizable
 - **Styled Components** - Complete control
 
 ### For Large Teams
+
 - **Material UI** - Consistent standards
 - **Ant Design** - Comprehensive documentation
 

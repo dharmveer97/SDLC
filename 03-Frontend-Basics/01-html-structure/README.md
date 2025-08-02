@@ -3,6 +3,7 @@
 ## What Is HTML?
 
 HTML (HyperText Markup Language) is the foundation of every website. For BAs, understanding HTML helps you:
+
 - **Communicate better** with developers about website structure
 - **Write clearer requirements** for web features
 - **Understand complexity** of different page layouts
@@ -11,6 +12,7 @@ HTML (HyperText Markup Language) is the foundation of every website. For BAs, un
 ## HTML in Business Terms
 
 Think of HTML like the **blueprint of a building**:
+
 - **Foundation** - Basic page structure
 - **Rooms** - Different content sections
 - **Labels** - Headings, titles, descriptions
@@ -20,7 +22,9 @@ Think of HTML like the **blueprint of a building**:
 ## Key HTML Concepts for BAs
 
 ### 1. Page Structure
+
 **What developers create:**
+
 - **Header** - Top section with navigation and branding
 - **Main content** - Primary information users came to see
 - **Sidebar** - Secondary information or navigation
@@ -29,7 +33,9 @@ Think of HTML like the **blueprint of a building**:
 **BA perspective:** Like organizing a document with clear sections that users expect to find.
 
 ### 2. Content Hierarchy
+
 **Heading levels** organize information like an outline:
+
 - **Main title** - Most important topic (like a book title)
 - **Section headings** - Major topics (like chapter titles)
 - **Subsection headings** - Specific topics (like section titles)
@@ -38,7 +44,9 @@ Think of HTML like the **blueprint of a building**:
 **Business impact:** Good hierarchy improves user experience and search engine visibility.
 
 ### 3. Interactive Elements
+
 **Forms** collect user information:
+
 - **Text fields** - Name, email, addresses
 - **Dropdowns** - State selection, product categories
 - **Checkboxes** - Multiple selections (interests, permissions)
@@ -71,7 +79,9 @@ Here's what a basic business page structure looks like:
 ## How HTML Affects Your Projects
 
 ### 1. Content Organization
+
 **Good HTML structure:**
+
 - Makes content easier to find and read
 - Improves search engine ranking
 - Works better with accessibility tools
@@ -80,7 +90,9 @@ Here's what a basic business page structure looks like:
 **Business benefit:** More visitors find and engage with your content.
 
 ### 2. User Experience
+
 **Well-organized pages help users:**
+
 - **Navigate quickly** to desired information
 - **Complete tasks** easily (purchases, signups, contact)
 - **Trust your brand** through professional presentation
@@ -89,7 +101,9 @@ Here's what a basic business page structure looks like:
 **Business benefit:** Higher conversion rates and customer satisfaction.
 
 ### 3. Search Engine Optimization (SEO)
+
 **Proper HTML structure helps search engines:**
+
 - **Understand content** and show relevant results
 - **Index pages** faster and more accurately
 - **Display rich snippets** in search results
@@ -98,7 +112,9 @@ Here's what a basic business page structure looks like:
 **Business benefit:** More organic traffic and qualified leads.
 
 ### 4. Maintenance and Updates
+
 **Clean HTML structure makes it easier to:**
+
 - **Update content** without breaking layout
 - **Add new features** to existing pages
 - **Rebrand** by updating styles consistently
@@ -108,19 +124,22 @@ Here's what a basic business page structure looks like:
 
 ## Questions BAs Should Ask About HTML Structure
 
-### Content Planning:
+### Content Planning
+
 - "What are the main sections users need on this page?"
 - "How should information be prioritized and organized?"
 - "What actions do we want users to take?"
 - "What content will change frequently vs rarely?"
 
-### User Experience:
+### User Experience
+
 - "How do users typically navigate through our content?"
 - "What information do users need before making decisions?"
 - "Are there accessibility requirements for our audience?"
 - "How will this work on mobile devices?"
 
-### Business Goals:
+### Business Goals
+
 - "What calls-to-action are most important?"
 - "How does this page support our conversion goals?"
 - "What tracking do we need for analytics?"
@@ -129,18 +148,21 @@ Here's what a basic business page structure looks like:
 ## HTML Best Practices for Business
 
 ### 1. Clear Information Architecture
+
 - **Logical flow** from general to specific information
 - **Consistent navigation** across all pages
 - **Clear headings** that describe content accurately
 - **Obvious calls-to-action** for desired user behaviors
 
 ### 2. Business-Focused Content
+
 - **Benefit-driven headings** instead of feature lists
 - **Scannable text** with bullet points and short paragraphs
 - **Trust indicators** like testimonials and certifications
 - **Contact information** easily accessible
 
 ### 3. Conversion Optimization
+
 - **Forms** that only ask for necessary information
 - **Progress indicators** for multi-step processes
 - **Error messages** that help users correct issues
@@ -148,13 +170,15 @@ Here's what a basic business page structure looks like:
 
 ## Common HTML Issues BAs Should Know
 
-### Problems That Affect Business:
+### Problems That Affect Business
+
 - **Poor heading structure** - Users can't find information quickly
 - **Missing alt text** - Images invisible to screen readers
 - **Broken links** - Users hit dead ends and leave
 - **Unclear forms** - Users abandon tasks before completion
 
-### Solutions to Request:
+### Solutions to Request
+
 - **Logical content hierarchy** with clear headings
 - **Descriptive link text** that explains destination
 - **Form validation** that helps users complete tasks
@@ -163,12 +187,14 @@ Here's what a basic business page structure looks like:
 ## What BAs Don't Need to Worry About
 
 You typically **don't need to:**
+
 - Write HTML code yourself
 - Understand technical syntax details
 - Debug HTML validation errors
 - Optimize HTML performance
 
 You **should focus on:**
+
 - Content organization and user flow
 - Business requirements and goals
 - User experience and accessibility
@@ -176,13 +202,15 @@ You **should focus on:**
 
 ## Business Impact of Good HTML
 
-### Measurable Benefits:
+### Measurable Benefits
+
 - **Higher search rankings** leading to more organic traffic
 - **Better conversion rates** from improved user experience
 - **Lower bounce rates** from clearer navigation
 - **Faster page loads** improving user satisfaction
 
-### Strategic Advantages:
+### Strategic Advantages
+
 - **Professional appearance** builds brand credibility
 - **Accessibility compliance** expands market reach
 - **Mobile optimization** captures mobile users
