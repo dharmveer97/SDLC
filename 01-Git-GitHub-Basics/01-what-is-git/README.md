@@ -31,6 +31,8 @@ my-project/
 ├── index.html
 ├── styles.css
 └── script.js
+
+
 ```
 
 ### Commit

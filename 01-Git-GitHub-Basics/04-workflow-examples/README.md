@@ -6,7 +6,8 @@ Let's follow a complete feature from idea to production.
 
 ### Scenario: Adding a "Forgot Password" Feature
 
-#### Step 1: Create Issue (BA Creates)
+#### Step 1: Create Issue BA Creates
+
 ```
 Title: Add forgot password functionality
 
@@ -61,6 +62,7 @@ git push origin feature/forgot-password
 ```
 
 #### Step 3: Create Pull Request (Developer)
+
 ```
 Title: Add forgot password functionality
 
@@ -97,8 +99,9 @@ Ready for review! @ba-sarah @developer-mike
 #### Step 4: Review Process (BA + Team)
 
 **BA Review (Sarah):**
+
 ```
-Great work! I tested the feature and it works as expected. 
+Great work! I tested the feature and it works as expected.
 Few suggestions:
 
 ✅ All acceptance criteria met
@@ -113,6 +116,7 @@ Approved pending minor changes.
 ```
 
 **Developer Review (Mike):**
+
 ```
 Code looks good overall! Few technical suggestions:
 
@@ -129,6 +133,7 @@ Approved after addressing the typo.
 ```
 
 #### Step 5: Address Feedback
+
 ```bash
 # Developer makes requested changes
 git add confirmation-message.html
@@ -141,6 +146,7 @@ git push origin feature/forgot-password
 ```
 
 #### Step 6: Final Approval & Merge
+
 ```bash
 # After approvals, merge to main
 git checkout main
@@ -154,6 +160,7 @@ git push origin --delete feature/forgot-password
 ```
 
 #### Step 7: Deployment & Testing
+
 ```
 🚀 Auto-deployment triggered
 ✅ Tests passed
@@ -168,6 +175,7 @@ git push origin --delete feature/forgot-password
 ### Scenario: Login Button Not Working on Mobile
 
 #### Step 1: Bug Report (User or QA)
+
 ```
 Title: Login button unresponsive on mobile devices
 
@@ -198,6 +206,7 @@ Priority: High (blocking user logins)
 ```
 
 #### Step 2: Quick Investigation
+
 ```bash
 # Developer creates hotfix branch
 git checkout main
@@ -209,6 +218,7 @@ git checkout -b hotfix/mobile-login-button
 ```
 
 #### Step 3: Quick Fix
+
 ```bash
 # Fix the CSS issue
 git add mobile-styles.css
@@ -225,13 +235,14 @@ git push origin hotfix/mobile-login-button
 ```
 
 #### Step 4: Fast-Track Review
+
 ```
 Title: HOTFIX: Fix mobile login button touch events
 
 🚨 URGENT: This fixes a critical bug blocking user logins on mobile
 
 ## Issue
-Login button wasn't responding to touch on mobile devices due to 
+Login button wasn't responding to touch on mobile devices due to
 CSS hover effects interfering with touch events.
 
 ## Solution
@@ -241,7 +252,7 @@ CSS hover effects interfering with touch events.
 
 ## Testing
 - [x] iPhone 12 - Safari ✅
-- [x] iPhone 12 - Chrome ✅  
+- [x] iPhone 12 - Chrome ✅
 - [x] Samsung Galaxy S21 - Chrome ✅
 - [x] iPad - Safari ✅
 
@@ -251,6 +262,7 @@ Fixes #456
 ```
 
 #### Step 5: Quick Deploy
+
 ```bash
 # After fast approval, merge immediately
 git checkout main
@@ -267,9 +279,11 @@ git push origin main
 ### Scenario: Multi-Developer Feature
 
 #### The Situation
+
 Building a user dashboard with multiple components:
+
 - User profile section (Developer A)
-- Activity timeline (Developer B)  
+- Activity timeline (Developer B)
 - Settings panel (Developer C)
 
 #### Coordination Strategy
@@ -280,7 +294,7 @@ git checkout -b feature/user-dashboard
 
 # Each developer creates sub-branches
 git checkout -b feature/user-dashboard-profile    # Developer A
-git checkout -b feature/user-dashboard-timeline   # Developer B  
+git checkout -b feature/user-dashboard-timeline   # Developer B
 git checkout -b feature/user-dashboard-settings   # Developer C
 ```
 
@@ -315,6 +329,7 @@ git push origin feature/user-dashboard
 ### Scenario: Preparing Version 2.1.0
 
 #### Step 1: Release Planning
+
 ```
 Milestone: Version 2.1.0
 Target Date: March 15, 2024
@@ -332,6 +347,7 @@ Bug Fixes:
 ```
 
 #### Step 2: Release Branch
+
 ```bash
 # Create release branch from main
 git checkout main
@@ -347,6 +363,7 @@ git commit -m "Bump version to 2.1.0"
 ```
 
 #### Step 3: Testing & QA
+
 ```
 Release Testing Checklist:
 - [ ] All new features working
@@ -359,6 +376,7 @@ Release Testing Checklist:
 ```
 
 #### Step 4: Deploy to Production
+
 ```bash
 # After QA approval
 git checkout main
@@ -374,6 +392,7 @@ git push origin v2.1.0
 ## 🎯 GitHub Best Practices in Action
 
 ### Branch Naming Convention
+
 ```
 feature/description     → feature/user-dashboard
 bugfix/description      → bugfix/mobile-login
@@ -382,6 +401,7 @@ release/version         → release/v2.1.0
 ```
 
 ### Commit Message Standards
+
 ```
 type(scope): description
 
@@ -395,22 +415,27 @@ test(login): add unit tests for password reset
 ```
 
 ### PR Template
+
 ```markdown
 ## Description
+
 Brief description of changes
 
 ## Type of Change
+
 - [ ] Bug fix
 - [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Testing
+
 - [ ] Unit tests pass
 - [ ] Integration tests pass
 - [ ] Manual testing completed
 
 ## Checklist
+
 - [ ] Code follows style guidelines
 - [ ] Self-review completed
 - [ ] Documentation updated
@@ -419,6 +444,7 @@ Brief description of changes
 ## 🔍 Troubleshooting Common Issues
 
 ### Merge Conflicts
+
 ```bash
 # When git says there are conflicts
 git status  # Shows conflicted files
@@ -437,6 +463,7 @@ git commit -m "Resolve merge conflict in user authentication"
 ```
 
 ### Accidentally Committed to Wrong Branch
+
 ```bash
 # Move last commit to correct branch
 git reset --soft HEAD~1  # Undo commit, keep changes
